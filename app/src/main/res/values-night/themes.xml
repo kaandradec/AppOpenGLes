@@ -4,4 +4,26 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+
+    <!-- Mi Tema Personalizado. -->
+    <style name="Theme.openGLes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">#742c41</item>
+        <item name="colorPrimaryVariant">#E91E63</item>
+        <item name="colorOnPrimary">#000000</item>
+
+        <item name="colorSecondary">#fff</item>
+        <item name="colorSecondaryVariant">#fff</item>
+        <item name="colorOnSecondary">#fff</item>
+
+
+        <item name="android:statusBarColor">#0e72a9</item>
+
+
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+
+
+
 </resources>
