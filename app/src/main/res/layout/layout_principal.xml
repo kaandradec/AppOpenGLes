@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +26,7 @@
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="333dp"
         android:layout_height="300dp"
-        android:src="@drawable/donagif"
+        android:src="@drawable/objetoszoom1"
         app:layout_constraintBottom_toTopOf="@+id/btnEjercicios"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
