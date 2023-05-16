@@ -22,7 +22,6 @@ public class EjerciciosActivity extends AppCompatActivity {
         btnColorPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EjerciciosActivity.this, "Presiono boton \"Color Pantalla\"", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(view.getContext(), ColorPantallaActivity.class);
                 startActivity(intent);
@@ -35,6 +34,7 @@ public class EjerciciosActivity extends AppCompatActivity {
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("CAMBIO\n");
                 Intent intent = new Intent(view.getContext(), PrincipalActivity.class );
                 startActivity(intent);
                 finish();

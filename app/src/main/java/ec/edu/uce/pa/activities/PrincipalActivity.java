@@ -31,7 +31,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
-        Toast.makeText(this, "Hola Mundo", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Hola Mundo", Toast.LENGTH_SHORT).show();
 
         Button btnSalir = findViewById(R.id.btnSalir);
         btnSalir.setOnClickListener(new View.OnClickListener() {
@@ -45,12 +45,12 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "Bienvnido nuevamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Bienvenido nuevamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this, "Voy a dormir", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Voy a dormir", Toast.LENGTH_SHORT).show();
     }
 }
