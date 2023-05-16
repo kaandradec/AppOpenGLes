@@ -21,8 +21,12 @@ public class EjerciciosActivity extends AppCompatActivity {
         Button btnColorPantalla = findViewById(R.id.btnColorPantalla);
         btnColorPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Toast.makeText(EjerciciosActivity.this, "Presiono boton \"Color Pantalla\"", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(view.getContext(), ColorPantallaActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

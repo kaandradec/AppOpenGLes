@@ -12,7 +12,7 @@ public class RenderColores implements GLSurfaceView.Renderer {
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
         //Esto es lo qye noi va a cambiar en nsetro programa
         //Inicializa lo que queremos inicializar por primera vez
-        //TODO lo estatico deberia estar aqui
+        //TOD0 lo estatico deberia estar aqui
         //RGBA (Toma valores de 0 a 1)
         gl.glClearColor(0.2f,  0.2f, 0.2f, 1);//limpia la pantalla de un color
 
