@@ -21,8 +21,11 @@ public class EjerciciosActivity extends AppCompatActivity {
         Button btnColorPantalla = findViewById(R.id.btnColorPantalla);
         btnColorPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(EjerciciosActivity.this, "Presiono boton \"Color Pantalla\"", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), ColorPantallaActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -31,6 +34,7 @@ public class EjerciciosActivity extends AppCompatActivity {
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("CAMBIO\n");
                 Intent intent = new Intent(view.getContext(), PrincipalActivity.class );
                 startActivity(intent);
                 finish();
