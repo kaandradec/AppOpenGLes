@@ -12,13 +12,8 @@ import ec.edu.uce.pa.activities.ColorPantallaActivity;
 
 public class RenderColores implements GLSurfaceView.Renderer {
     private float vIncremento= 0f;
-    private static boolean interruptor= false;
-    private float[] arrColor = {1f, 0f ,0f ,0f};
-
-    private boolean tmp;
-
-
-
+//    private static boolean interruptor= false;
+//    private float[] arrColor = {1f, 0f ,0f ,0f};
 
 
     @Override
@@ -27,7 +22,7 @@ public class RenderColores implements GLSurfaceView.Renderer {
         //TOD0 lo estatico deberia estar aqui
 
         //RGBA (Toma valores de 0 a 1)
-        gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
+        //gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
 
     }
 
@@ -36,14 +31,9 @@ public class RenderColores implements GLSurfaceView.Renderer {
         //Cambios que se ejecutan al cambiar la posicion de la pantalla
 
         //cambio entre colores random
-        arrColor[0] = (float)Math.random();
-        arrColor[1] = (float)Math.random();
-        arrColor[2] = (float)Math.random();
-
-
-
-
-
+//        arrColor[0] = (float)Math.random();
+//        arrColor[1] = (float)Math.random();
+//        arrColor[2] = (float)Math.random();
 
         //Cambio entre colores fijos
 //        if(interruptor){
@@ -59,21 +49,21 @@ public class RenderColores implements GLSurfaceView.Renderer {
 //
 //        }
 
-        System.out.println("Giro de pantalla: colores: RGBA " + arrColor[0] + ", " + arrColor[1] + ", " + arrColor[2] + ", 1");
-
-
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         //se genera cada vez que dibujemos algo en pantalla
         gl.glClear(gl.GL_COLOR_BUFFER_BIT); //Antes de dibujar limpia la pantalla de tod0 lo que estaba antes
-//        vIncremento +=0.001;
+        vIncremento +=0.001;
 //        gl.glClearColor(vIncremento,  0.2f, 0.2f, 1);
 
+        gl.glClearColor(ColorPantallaActivity.red,
+                ColorPantallaActivity.green,
+                ColorPantallaActivity.blue,
+                ColorPantallaActivity.alpha);
 
-
-        gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
+        //gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
 
 
 
