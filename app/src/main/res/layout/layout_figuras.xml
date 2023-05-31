@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EJERCICIOS_OPENGL_ES"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <RadioGroup
+        android:id="@+id/rgOpciones"
+        android:layout_width="353dp"
+        android:layout_height="248dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172">
+
+        <RadioButton
+            android:id="@+id/rbPantalla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pintar Pantalla" />
+
+        <RadioButton
+            android:id="@+id/rbPuntos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puntos" />
+
+        <RadioButton
+            android:id="@+id/rbLineas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lineas" />
+
+        <RadioButton
+            android:id="@+id/rbTriangulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Triangulos" />
+
+        <RadioButton
+            android:id="@+id/rbPoligonos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Poligonos" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnDibujar"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Dibujar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
+    <EditText
+        android:id="@+id/inputNumPrimitivas"
+        android:layout_width="202dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="320dp"
+        android:ems="10"
+        android:hint="Cantidad a dibujar"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDibujar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgOpciones" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,17 +55,17 @@ public class RenderColores implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl) {
         //se genera cada vez que dibujemos algo en pantalla
         gl.glClear(gl.GL_COLOR_BUFFER_BIT); //Antes de dibujar limpia la pantalla de tod0 lo que estaba antes
-        vIncremento +=0.001;
-//        gl.glClearColor(vIncremento,  0.2f, 0.2f, 1);
-
-        gl.glClearColor(ColorPantallaActivity.red,
-                ColorPantallaActivity.green,
-                ColorPantallaActivity.blue,
-                ColorPantallaActivity.alpha);
+        vIncremento +=0.002;
+////        gl.glClearColor(vIncremento,  0.2f, 0.2f, 1);
+//
+//        gl.glClearColor(ColorPantallaActivity.red,
+//                ColorPantallaActivity.green,
+//                ColorPantallaActivity.blue,
+//                ColorPantallaActivity.alpha);
 
         //gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
 
-
+        gl.glClearColor(vIncremento, 0, vIncremento, 0.5f);
 
     }
 }
