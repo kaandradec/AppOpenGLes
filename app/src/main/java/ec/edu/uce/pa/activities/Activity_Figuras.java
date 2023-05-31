@@ -5,18 +5,27 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderColores;
+import ec.edu.uce.pa.renders.RenderLinea;
+import ec.edu.uce.pa.renderers.RenderPunto;
 
 public class Activity_Figuras extends AppCompatActivity {
     private GLSurfaceView view;
     private GLSurfaceView.Renderer renderer;
+
+
+    public static int numPrimitivas = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,10 +37,16 @@ public class Activity_Figuras extends AppCompatActivity {
 
         renderer = null;
 
+
+
+
+        //input numero de primitivas a dibujar
+        EditText inputNumPrimitivas = (EditText) findViewById(R.id.inputNumPrimitivas);
+
         Button btnDibujar = findViewById(R.id.btnDibujar);
         btnDibujar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View a) {//SE CAMBIO View view por View a
+            public void onClick(View v) {//SE CAMBIO View view por View a
                 renderer = null;
 
                 int optionSel;
@@ -43,27 +58,40 @@ public class Activity_Figuras extends AppCompatActivity {
                     if(optionSel ==  R.id.rbPantalla){
                         renderer = new RenderColores();
                     }
-                    if(optionSel ==  R.id.rbPunto){
+                    if(optionSel ==  R.id.rbPuntos){
+                        renderer = new RenderPunto();
+                    }
+                    if(optionSel ==  R.id.rbLineas){
+                        renderer = new RenderLinea();
+                    }
+                    if(optionSel ==  R.id.rbTriangulos){
                         renderer = new RenderColores();
                     }
-                    if(optionSel ==  R.id.rbLinea){
-                        renderer = new RenderColores();
-                    }
-                    if(optionSel ==  R.id.rbTriangulo){
-                        renderer = new RenderColores();
-                    }
-                    if(optionSel ==  R.id.rbPoligono){
+                    if(optionSel ==  R.id.rbPoligonos){
                         renderer = new RenderColores();
                     }
 
-                    view.setRenderer(new RenderColores());
+                    view.setRenderer(renderer);
                     setContentView(view);
 
                 }else {
                     Toast.makeText(Activity_Figuras.this, "Seleccione una figura", Toast.LENGTH_SHORT).show();
                 }
+
+                //input numero de primitivas a dibujar -> int
+                try{
+                    numPrimitivas = Integer.parseInt(inputNumPrimitivas.getText().toString());
+                }catch (NumberFormatException e){
+                    numPrimitivas = 0;
+                }
+
+
             }
         });
+
+
+
+
 
 
 
