@@ -17,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderColores;
-import ec.edu.uce.pa.renders.RenderLinea;
+import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderPunto;
 
 public class Activity_Figuras extends AppCompatActivity {

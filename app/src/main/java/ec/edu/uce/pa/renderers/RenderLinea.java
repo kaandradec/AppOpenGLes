@@ -1,4 +1,4 @@
-package ec.edu.uce.pa.renders;
+package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
 
@@ -13,7 +13,7 @@ public class RenderLinea implements GLSurfaceView.Renderer {
     private Linea linea;
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        gl.glClearColor(0.5f,0.5f,0.5f,1.0f);
+        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
         linea = new Linea();
     }
     @Override
@@ -29,9 +29,9 @@ public class RenderLinea implements GLSurfaceView.Renderer {
         gl.glClear(gl.GL_COLOR_BUFFER_BIT); //Limpiar buffer de colores
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
-        gl.glTranslatef(0.0f,0.0f,-2.0f);//x,y,z
-        gl.glScalef(1,2,1);//Escalar un punto en X,Y,Z
-        gl.glRotatef(vIncremento,0,0,1); //Rotar en el eje X,Y,Z
+        gl.glTranslatef(0.0f,0.0f,-1.5f);//x,y,z
+        gl.glScalef(1,0.5f,1);//Escalar un punto en X,Y,Z
+        gl.glRotatef(vIncremento,0,0.0f,1); //Rotar en el eje X,Y,Z
         linea.dibujar(gl);
 
         gl.glTranslatef(0.0f,0.0f,0.0f); //Vamos a trasladar

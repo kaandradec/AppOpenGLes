@@ -18,24 +18,42 @@ public class Punto {
 
     //private int numPuntos = RenderPunto.numPuntos;
 
-    private int numPuntos = Activity_Figuras.numPrimitivas;
+    private int numPuntos = Activity_Figuras.numPrimitivas;//input Numero de primitavas
 
 
     public Punto(){
         float[] vertices ={
+                4.0f, 4.0f,  //0
+                4.0f, -4.0f, //1
+                -4.0f, -4.0f,//2
+                -4.0f, 4.0f, //3
+
+                4.0f, 0.0f,
+                0.0f, -4.0f,
+                -4.0f, 0.0f,
+                0.0f, 4.0f,
+
+                1.0f, 1.0f,
+                1.0f, -1.0f,
+                -1.0f, -1.0f,
+                -1.0f, 1.0f,
+
+                0,0
+
+
 //            4.0f,4.0f, //0
 //            4.0f,-4.0f, //1
 //            -4.0f,-4.0f, //2
 //            -4.0f,4.0f //3
-                1.0f,1.0f,
-                4.0f,4.0f,
-                2.0f,2.0f,
-                4.0f,-4.0f,
-                2.0f,-2.0f,
-                -4.0f,-4.0f,
-                -2.0f,-2.0f,
-                -4.0f,4.0f,
-                -2.0f,2.0f,
+//                1.0f,1.0f,
+//                4.0f,4.0f,
+//                2.0f,2.0f,
+//                4.0f,-4.0f,
+//                2.0f,-2.0f,
+//                -4.0f,-4.0f,
+//                -2.0f,-2.0f,
+//                -4.0f,4.0f,
+//                -2.0f,2.0f,
 
 
         };
@@ -44,7 +62,17 @@ public class Punto {
                 1.0f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
                 0.0f,1.0f,0.0f,1.0f,
                 0.0f,0.0f,1.0f,1.0f,
-                1.0f,1.0f,0.0f,1.0f
+                1.0f,1.0f,0.0f,1.0f,
+
+                0.5f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
+                0.0f,0.5f,0.0f,1.0f,
+                0.0f,0.0f,0.5f,1.0f,
+                0.5f,0.5f,0.0f,1.0f,
+
+                0.25f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
+                0.0f,0.25f,0.0f,1.0f,
+                0.0f,0.0f,0.25f,1.0f,
+                0.25f,0.25f,0.0f,1.0f
         };
 
         ByteBuffer buffer = ByteBuffer.allocateDirect(vertices.length*byteFlotante);
@@ -74,8 +102,8 @@ public class Punto {
 //          Podemos cambiar los puntos de color y redireccionar los puntos
 //        gl.glColor4f(0.0f,0.0f,0.0f,1.0f);
 //        gl.glDrawArrays(gl.GL_POINTS,1,1);
-        gl.glPointSize(50);
-        gl.glDrawArrays(gl.GL_POINTS,0,numPuntos);
+        gl.glPointSize(40);
+        gl.glDrawArrays(gl.GL_POINTS,0,numPuntos);//numero de vertices a dibujar
         gl.glFrontFace(gl.GL_CW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
 

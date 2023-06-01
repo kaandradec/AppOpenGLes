@@ -6,6 +6,8 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import ec.edu.uce.pa.activities.Activity_Figuras;
+
 public class Linea {
     private FloatBuffer bufferVertices;
     private FloatBuffer bufferColores;
@@ -13,20 +15,47 @@ public class Linea {
     private final static int comPorVertices = 2;
     private final static int comPorColor = 4;
 
+
+    private int numPuntos = Activity_Figuras.numPrimitivas;//input Numero de primitavas
+
     public Linea(){
         float[] vertices ={
-                4.0f,4.0f, //0
-                4.0f,-4.0f, //1
-                -4.0f,-4.0f, //2
-                -4.0f,4.0f //3
+                4.0f, 4.0f,  //0
+                4.0f, -4.0f, //1
+                -4.0f, -4.0f,//2
+                -4.0f, 4.0f, //3
+
+                4.0f, 0.0f,
+                0.0f, -4.0f,
+                -4.0f, 0.0f,
+                0.0f, 4.0f,
+
+                1.0f, 1.0f,
+                1.0f, -1.0f,
+                -1.0f, -1.0f,
+                -1.0f, 1.0f,
+
+                0,0
+
         };
 
         float[] colores ={
                 1.0f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
                 0.0f,1.0f,0.0f,1.0f,
                 0.0f,0.0f,1.0f,1.0f,
-                1.0f,1.0f,0.0f,1.0f
+                1.0f,1.0f,0.0f,1.0f,
+
+                0.5f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
+                0.0f,0.5f,0.0f,1.0f,
+                0.0f,0.0f,0.5f,1.0f,
+                0.5f,0.5f,0.0f,1.0f,
+
+                0.25f,0.0f,0.0f,1.0f,//posiciones desde 1.0f->0 hasta n
+                0.0f,0.25f,0.0f,1.0f,
+                0.0f,0.0f,0.25f,1.0f,
+                0.25f,0.25f,0.0f,1.0f
         };
+
 
         ByteBuffer buffer = ByteBuffer.allocateDirect(vertices.length*byteFlotante);
         buffer.order(ByteOrder.nativeOrder());
@@ -55,8 +84,8 @@ public class Linea {
 //          Podemos cambiar los puntos de color y redireccionar los puntos
 //        gl.glColor4f(0.0f,0.0f,0.0f,1.0f);
 //        gl.glDrawArrays(gl.GL_POINTS,1,1);
-        gl.glLineWidth(50);
-        gl.glDrawArrays(gl.GL_LINES,0,4);
+        gl.glLineWidth(25);
+        gl.glDrawArrays(gl.GL_LINES,0,numPuntos);
         gl.glFrontFace(gl.GL_CW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
 
