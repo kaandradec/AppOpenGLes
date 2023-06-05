@@ -31,10 +31,8 @@ public class RenderLinea implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();
         gl.glTranslatef(0.0f,0.0f,-1.5f);//x,y,z
         gl.glScalef(1,0.5f,1);//Escalar un punto en X,Y,Z
-        gl.glRotatef(vIncremento,0,0.0f,1); //Rotar en el eje X,Y,Z
+        //gl.glRotatef(vIncremento,0,0.0f,1); //Rotar en el eje X,Y,Z
         linea.dibujar(gl);
 
-        gl.glTranslatef(0.0f,0.0f,0.0f); //Vamos a trasladar
-        linea.dibujar(gl);//Si copio este mismo otra vez cambia el sentido
     }
 }

@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import ec.edu.uce.pa.R;
+import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderPunto;
@@ -63,6 +64,9 @@ public class Activity_Figuras extends AppCompatActivity {
                     }
                     if(optionSel ==  R.id.rbLineas){
                         renderer = new RenderLinea();
+                    }
+                    if(optionSel ==  R.id.rbCarro){
+                        renderer = new RenderCarro();
                     }
                     if(optionSel ==  R.id.rbTriangulos){
                         renderer = new RenderColores();

@@ -20,23 +20,20 @@ public class Linea {
 
     public Linea(){
         float[] vertices ={
-                4.0f, 4.0f,  //0
-                4.0f, -4.0f, //1
-                -4.0f, -4.0f,//2
-                -4.0f, 4.0f, //3
+                //Line Strip y Hexagono
+                -5.0f, 12.0f,
+                -4.0f, 9.0f,
+                -1.0f, 9.0f,
+                0.0f, 12.0f,
+                1.0f, 9.0f,
+                5.0f, 9.0f,
 
-                4.0f, 0.0f,
-                0.0f, -4.0f,
-                -4.0f, 0.0f,
-                0.0f, 4.0f,
-
-                1.0f, 1.0f,
-                1.0f, -1.0f,
-                -1.0f, -1.0f,
-                -1.0f, 1.0f,
-
-                0,0
-
+                2.0f, 3.0f,
+                3.5f, 0.0f,
+                2.0f, -3.0f,
+                -2.0f, -3.0f,
+                -3.5f, 0.0f,
+                -2.0f, 3.0f
         };
 
         float[] colores ={
@@ -85,7 +82,11 @@ public class Linea {
 //        gl.glColor4f(0.0f,0.0f,0.0f,1.0f);
 //        gl.glDrawArrays(gl.GL_POINTS,1,1);
         gl.glLineWidth(25);
-        gl.glDrawArrays(gl.GL_LINES,0,numPuntos);
+        gl.glDrawArrays(gl.GL_LINE_STRIP,0,6); //vertice 1
+
+        gl.glDrawArrays(gl.GL_LINE_LOOP, 6, 6); //vertice 7
+
+
         gl.glFrontFace(gl.GL_CW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
 
