@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,8 @@ public class Activity_Figuras extends AppCompatActivity {
 
         renderer = null;
 
-
+        //Hacer invisible la input
+        findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
 
 
         //input numero de primitivas a dibujar
@@ -93,12 +95,6 @@ public class Activity_Figuras extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
         Button btnSalir = findViewById(R.id.btnSalir);
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +105,52 @@ public class Activity_Figuras extends AppCompatActivity {
 
             }
         });
+
+        RadioButton rbPantalla = findViewById(R.id.rbPantalla);
+        rbPantalla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
+            }
+        });
+
+
+        RadioButton rbPunto = findViewById(R.id.rbPuntos);
+        rbPunto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                inputNumPrimitivas.setHint("Cantidad a dibujar");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+            }
+        });
+
+        RadioButton rbLinea = findViewById(R.id.rbLineas);
+        rbLinea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                inputNumPrimitivas.setHint("Cantidad a dibujar");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        RadioButton rbCarro = findViewById(R.id.rbCarro);
+        rbCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                inputNumPrimitivas.setHint("Puntos para cada rueda");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
+
+
     }
     //Boton Back de Android
     @Override
