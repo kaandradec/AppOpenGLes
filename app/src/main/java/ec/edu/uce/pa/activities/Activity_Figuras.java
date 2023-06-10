@@ -19,8 +19,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderColores;
+import ec.edu.uce.pa.renderers.RenderCubo;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderPunto;
+import ec.edu.uce.pa.renderers.RenderTriangulo;
 
 public class Activity_Figuras extends AppCompatActivity {
     private GLSurfaceView view;
@@ -71,7 +73,10 @@ public class Activity_Figuras extends AppCompatActivity {
                         renderer = new RenderCarro();
                     }
                     if(optionSel ==  R.id.rbTriangulos){
-                        renderer = new RenderColores();
+                        renderer = new RenderTriangulo();
+                    }
+                    if(optionSel ==  R.id.rbCubo){
+                        renderer = new RenderCubo();
                     }
                     if(optionSel ==  R.id.rbPoligonos){
                         renderer = new RenderColores();
@@ -144,6 +149,26 @@ public class Activity_Figuras extends AppCompatActivity {
 
                 inputNumPrimitivas.setHint("Puntos para cada rueda");
                 findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+            }
+        });
+
+        RadioButton rbTriangulo = findViewById(R.id.rbTriangulos);
+        rbCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //inputNumPrimitivas.setHint("Puntos para cada rueda");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        RadioButton rbCubo = findViewById(R.id.rbCubo);
+        rbCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               // inputNumPrimitivas.setHint("Puntos para cada rueda");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
             }
         });
 

@@ -21,8 +21,8 @@
 
     <RadioGroup
         android:id="@+id/rgOpciones"
-        android:layout_width="360dp"
-        android:layout_height="307dp"
+        android:layout_width="358dp"
+        android:layout_height="355dp"
         android:layout_marginTop="47dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,13 +54,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Carro"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/rbTriangulos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Triangulos"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/rbCubo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cubo"
             android:textSize="16dp" />
 
         <RadioButton
