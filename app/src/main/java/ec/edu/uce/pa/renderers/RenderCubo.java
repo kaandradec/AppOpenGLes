@@ -32,14 +32,17 @@ public class RenderCubo implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        vIncremento += 2.5f;
+
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
 
         gl.glTranslatef(0.0f, 0.0f, -4.0f);
-        gl.glRotatef(vIncremento, 1, 1, 0.5f);
+         gl.glRotatef(vIncremento, 0.8f, 1, 0.5f);
+
         cubo.dibujar(gl);
-        vIncremento += 1f;
+
 
     }
 }
