@@ -21,8 +21,8 @@
 
     <RadioGroup
         android:id="@+id/rgOpciones"
-        android:layout_width="358dp"
-        android:layout_height="355dp"
+        android:layout_width="353dp"
+        android:layout_height="400dp"
         android:layout_marginTop="47dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,13 @@
             android:layout_height="wrap_content"
             android:text="Poligonos"
             android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/rbObjeto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Objeto Blender"
+            android:textSize="16dp"/>
     </RadioGroup>
 
     <Button

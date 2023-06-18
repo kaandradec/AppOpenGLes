@@ -162,6 +162,12 @@ public class Cubo {
 
     }
 
+    //Frontal ROJO
+    //Top VERDE
+    //Izquierda AZUL
+    //Atras MORADO
+    //Derecha BLANCO
+    //Abajo AMARILLO
     public void dibujar (GL10 gl){
         gl.glFrontFace(gl.GL_CW);
 
