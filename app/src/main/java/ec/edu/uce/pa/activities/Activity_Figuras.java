@@ -21,6 +21,7 @@ import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderCubo;
+import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderIcosfera;
 import ec.edu.uce.pa.renderers.RenderPunto;
@@ -64,7 +65,7 @@ public class Activity_Figuras extends AppCompatActivity {
                 if(optionSel>0){
 
                     if(optionSel ==  R.id.rbPantalla){
-                        renderer = new RenderPushPop();
+                        renderer = new RenderDepthTest();
                     }
                     if(optionSel ==  R.id.rbPuntos){
                         renderer = new RenderPunto();
