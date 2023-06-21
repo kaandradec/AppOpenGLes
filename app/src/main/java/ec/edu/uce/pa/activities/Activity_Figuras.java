@@ -22,6 +22,7 @@ import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderCubo;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
+import ec.edu.uce.pa.renderers.RenderEsfera;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderIcosfera;
 import ec.edu.uce.pa.renderers.RenderPunto;
@@ -65,7 +66,7 @@ public class Activity_Figuras extends AppCompatActivity {
                 if(optionSel>0){
 
                     if(optionSel ==  R.id.rbPantalla){
-                        renderer = new RenderDepthTest();
+                        renderer = new RenderEsfera();
                     }
                     if(optionSel ==  R.id.rbPuntos){
                         renderer = new RenderPunto();
@@ -83,10 +84,15 @@ public class Activity_Figuras extends AppCompatActivity {
                         renderer = new RenderCubo();
                     }
                     if(optionSel ==  R.id.rbPoligonos){
-                        renderer = new RenderColores();
+                        renderer = new RenderDepthTest();
                     }
                     if(optionSel ==  R.id.rbObjeto){
-                        renderer = new RenderIcosfera();
+                        //renderer = new RenderIcosfera();
+                        Intent intent = new Intent(view.getContext(), TrabajoFiguras.class);
+                        startActivity(intent);
+                        finish();
+                        return;
+
                     }
 
                     view.setRenderer(renderer);
@@ -160,7 +166,7 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
         RadioButton rbTriangulo = findViewById(R.id.rbTriangulos);
-        rbCarro.setOnClickListener(new View.OnClickListener() {
+        rbTriangulo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -170,7 +176,7 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
         RadioButton rbCubo = findViewById(R.id.rbCubo);
-        rbCarro.setOnClickListener(new View.OnClickListener() {
+        rbCubo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -180,7 +186,7 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
         RadioButton rbObjeto = findViewById(R.id.rbObjeto);
-        rbCarro.setOnClickListener(new View.OnClickListener() {
+        rbObjeto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -189,55 +195,17 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
 
-
-
-
     }
+
+
+
+
+
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Activity_Figuras.this, EjerciciosActivity.class );
+        Intent intent = new Intent(Activity_Figuras.this, Activity_Figuras.class );
         startActivity(intent);
         finish();
-
-    }
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-            Toast.makeText(this, "DERECHA ", Toast.LENGTH_SHORT).show();
-            RenderIcosfera.anguloSigno = 1;
-            RenderIcosfera.rx = 0f;
-            RenderIcosfera.ry = 1f;
-            RenderIcosfera.rz = 0f;
-            return true; // consume el evento
-        }
-        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-            Toast.makeText(this, "IZQUIERDA ", Toast.LENGTH_SHORT).show();
-            RenderIcosfera.anguloSigno = -1;
-            RenderIcosfera.rx = 0f;
-            RenderIcosfera.ry = 1f;
-            RenderIcosfera.rz = 0f;
-            return true; // consume el evento
-        }
-        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-            Toast.makeText(this, "ABAJO ", Toast.LENGTH_SHORT).show();
-            RenderIcosfera.anguloSigno = 1;
-            RenderIcosfera.rx = 1f;
-            RenderIcosfera.ry = 0f;
-            RenderIcosfera.rz = 0f;
-            return true; // consume el evento
-        }
-        if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-            Toast.makeText(this, "ARRIBA ", Toast.LENGTH_SHORT).show();
-            RenderIcosfera.anguloSigno = -1;
-            RenderIcosfera.rx = 1f;
-            RenderIcosfera.ry = 0f;
-            RenderIcosfera.rz = 0f;
-            return true; // consume el evento
-        }
-
-        return super.onKeyDown(keyCode, event);
     }
 }

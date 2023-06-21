@@ -28,7 +28,7 @@ public class RenderFiguras implements GLSurfaceView.Renderer{
     private float vIncremento = 0;
     private float theta = 0;
     //Angulo corrdenadas para mover el mundo (objeto):
-    public static float anguloSigno = 1, rx = 0 ,ry = 0,rz = 0;
+    public static float anguloSigno = 1, rx = 0 ,ry = 1,rz = 0;
     //Coordenadas para mover la camara (nosotros):
     public static float ejex = 0 ,ejey = 0,ejez = 0;
     //Saber si el mundo esta girando:

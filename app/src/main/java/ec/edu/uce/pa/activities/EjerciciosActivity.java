@@ -56,7 +56,7 @@ public class EjerciciosActivity extends AppCompatActivity {
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(EjerciciosActivity.this, PrincipalActivity.class );
+        Intent intent = new Intent(EjerciciosActivity.this, EjerciciosActivity.class );
         startActivity(intent);
         finish();
 

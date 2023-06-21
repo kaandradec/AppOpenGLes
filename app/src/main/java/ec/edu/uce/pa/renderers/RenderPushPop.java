@@ -32,66 +32,35 @@ public class RenderPushPop implements GLSurfaceView.Renderer {
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
 
-//            gl.glPushMatrix();
-//                gl.glTranslatef(0.0f,0.0f,-6.0f);
-//                gl.glPushMatrix();
-//                    gl.glRotatef(vIncremento,0,0,1);
-//                    triangulo.dibujar(gl);
-//                    gl.glPushMatrix();
-//                        gl.glTranslatef(0.0f,0.0f,-6.0f);
-//                        gl.glScalef(0.5f,0.5f,5f);
-//                        triangulo.dibujar(gl);
-//                    gl.glPopMatrix();
-//                gl.glPopMatrix();
-//
-//
-//            gl.glPopMatrix();
 
 
         gl.glTranslatef(0.0f,-2.0f,-15.0f);
         gl.glPushMatrix();
-        gl.glRotatef(vIncremento,0,0,1);
-        triangulo.dibujar(gl);
 
-        gl.glPushMatrix();
-        gl.glRotatef(-vIncremento-vIncremento,0,0,1);
-        gl.glTranslatef(0.0f,9.0f,0.0f);
-        gl.glScalef(0.5f,0.5f,5f);
-        triangulo.dibujar(gl);
+            gl.glRotatef(vIncremento,0,0,1);
+            triangulo.dibujar(gl);
 
-        gl.glPushMatrix();
-        gl.glRotatef(vIncremento*2,0,0,1);
-        gl.glTranslatef(0.0f,9.0f,0.0f);
-        gl.glScalef(0.5f,0.5f,5f);
-        triangulo.dibujar(gl);
+            gl.glPushMatrix();
+
+                gl.glRotatef(-vIncremento-vIncremento,0,0,1);
+                gl.glTranslatef(0.0f,9.0f,0.0f);
+                gl.glScalef(0.5f,0.5f,5f);
+                triangulo.dibujar(gl);
+
+                gl.glPushMatrix();
+
+                    gl.glRotatef(vIncremento*2,0,0,1);
+                    gl.glTranslatef(0.0f,9.0f,0.0f);
+                    gl.glScalef(0.5f,0.5f,5f);
+                    triangulo.dibujar(gl);
+
+                gl.glPopMatrix();
+
+            gl.glPopMatrix();
+
         gl.glPopMatrix();
 
-        gl.glPopMatrix();
-        gl.glPopMatrix();
 
 
-
-
-
-
-
-//            gl.glPushMatrix(); //se guarda los anteriores matriz e identity
-//            gl.glTranslatef(0.0f,0.0f,-3.0f);
-//            gl.glRotatef(vIncremento,0,0,1);
-//            gl.glScalef(0.5f,0.5f,0.5f);
-//            triangulo.dibujar(gl);
-//            gl.glPushMatrix();
-//            gl.glTranslatef(0.0f,25.0f,-7.0f);
-//            //gl.glRotatef(vIncremento,0,0,1);
-//            gl.glScalef(0.5f,0.5f,0.5f);
-//            triangulo.dibujar(gl);
-//            gl.glPopMatrix();
-//            gl.glPopMatrix();
-//
-//            gl.glPushMatrix();
-//            gl.glTranslatef(0.0f,0f,2.0f);
-//            gl.glScalef(0.5f,0.5f,0.5f);
-//            triangulo.dibujar(gl);
-//            gl.glPopMatrix();
     }
 }
