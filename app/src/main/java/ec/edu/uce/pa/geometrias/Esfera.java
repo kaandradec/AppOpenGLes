@@ -87,6 +87,7 @@ public class Esfera {
             vertices[iVertice+2] = vertices[iVertice+5];
             vertices[iVertice+5] = vertices[iVertice-1];
         }
+
         bufferVertices = Funciones.generarBuffer(vertices);
         bufferColores = Funciones.generarBuffer(colores);
 

@@ -25,6 +25,7 @@ import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderIcosfera;
+import ec.edu.uce.pa.renderers.RenderPractica;
 import ec.edu.uce.pa.renderers.RenderPunto;
 import ec.edu.uce.pa.renderers.RenderPushPop;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
@@ -69,7 +70,7 @@ public class Activity_Figuras extends AppCompatActivity {
                         renderer = new RenderEsfera();
                     }
                     if(optionSel ==  R.id.rbPuntos){
-                        renderer = new RenderPunto();
+                        renderer = new RenderPractica();
                     }
                     if(optionSel ==  R.id.rbLineas){
                         renderer = new RenderLinea();
