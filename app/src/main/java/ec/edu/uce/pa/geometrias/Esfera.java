@@ -104,6 +104,9 @@ public class Esfera {
         bufferColores.position(0);
         gl.glColorPointer(comPorColor,gl.GL_FLOAT,0,bufferColores);
         gl.glEnableClientState(gl.GL_COLOR_ARRAY);
+
+
+
         gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, franjas * cortes * 2);
 
 

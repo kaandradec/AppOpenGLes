@@ -6,11 +6,13 @@ import android.opengl.GLU;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import ec.edu.uce.pa.geometrias.Circulo;
 import ec.edu.uce.pa.geometrias.Cubo;
 
 public class RenderPractica implements GLSurfaceView.Renderer {
     private float vIncremento;
     private Cubo cubo;
+    private Circulo circulo;
 
 
     @Override
@@ -18,6 +20,8 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
         cubo = new Cubo();
+        circulo = new Circulo( 3f,  0,  0,  30);
+
     }
 
     @Override
@@ -33,31 +37,7 @@ public class RenderPractica implements GLSurfaceView.Renderer {
 //                0,0 ,0,
 //                0,1,0
 //        );
-        //BACK
-//        GLU.gluLookAt(gl,
-//                0 , 0, -5,
-//                0,0 ,0,
-//                0,1,0
-//        );
 
-        //LEFT
-//        GLU.gluLookAt(gl,
-//                -5 , 0, 0,
-//                0,0 ,0,
-//                0,1,0
-//        );
-//        //TOP
-//        GLU.gluLookAt(gl,
-//                0 , 5, 0,
-//                0,0 ,0,
-//                1,0,0 //Mi camara enfoca al eje X
-//        );
-        //DONW
-//        GLU.gluLookAt(gl,
-//                0 , -5, 0,
-//                0,0 ,0,
-//                1,0,0 //Mi camara enfoca al eje X
-//        );
 
 
     }
@@ -78,12 +58,21 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
 
-        gl.glTranslatef(0,0,-9f);
-        gl.glRotatef(vIncremento, 0.2f,1,0.5f);
+        gl.glTranslatef(0,0,-9f);//AFECTA A TODOS LOS OBJETOS
+
+        gl.glPushMatrix();
+        gl.glTranslatef(0,-6,0f);
+        gl.glRotatef(90, 1,0,0);
+        circulo.dibujar(gl);
+        gl.glPopMatrix();
+
+
 
 
         gl.glPushMatrix();
         //========================================================================CUBO RUBIK
+        gl.glRotatef(vIncremento, 0.2f,1,0.5f);
+
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PRIMER CAPA
         //---------------------------------------Amarillo abajo (1,1)
@@ -306,6 +295,10 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         //================================================================================
 
         gl.glPopMatrix();
+
+
+
+
 
 
     }
