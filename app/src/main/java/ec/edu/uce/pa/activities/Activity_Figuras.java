@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderCubo;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
+import ec.edu.uce.pa.renderers.RenderFiguras;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderIcosfera;
 import ec.edu.uce.pa.renderers.RenderPractica;
@@ -199,6 +201,67 @@ public class Activity_Figuras extends AppCompatActivity {
     }
 
 
+
+    private float x1, x2, y1, y2;
+    private static final int MIN_DISTANCE = 150;
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                float deltaX = x2 - x1;
+                float deltaY = y2 - y1;
+
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (Math.abs(deltaX) > MIN_DISTANCE) {
+                        if (deltaX > 0) {
+                            // Deslizamiento hacia la derecha detectado
+                            //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
+                            RenderPractica.anguloSigno = 1;
+                            RenderPractica.rx = 0f;
+                            RenderPractica.ry = 1f;
+                            RenderPractica.rz = 0f;
+
+                        } else {
+                            // Deslizamiento hacia la izquierda detectado
+                            //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
+                            RenderPractica.anguloSigno = -1;
+                            RenderPractica.rx = 0f;
+                            RenderPractica.ry = 1f;
+                            RenderPractica.rz = 0f;
+
+                        }
+                    }
+                } else {
+                    if (Math.abs(deltaY) > MIN_DISTANCE) {
+                        if (deltaY > 0) {
+                            // Deslizamiento hacia abajo detectado
+                            //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
+                            RenderPractica.anguloSigno = 1;
+                            RenderPractica.rx = 1f;
+                            RenderPractica.ry = 0f;
+                            RenderPractica.rz = 0f;
+
+                        } else {
+                            // Deslizamiento hacia arriba detectado
+                            //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
+                            RenderPractica.anguloSigno = -1;
+                            RenderPractica.rx = 1f;
+                            RenderPractica.ry = 0f;
+                            RenderPractica.rz = 0f;
+
+                        }
+                    }
+                }
+                break;
+        }
+        return true;
+    }
 
 
 

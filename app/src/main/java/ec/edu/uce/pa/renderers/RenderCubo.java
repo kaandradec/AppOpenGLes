@@ -28,7 +28,7 @@ public class RenderCubo implements GLSurfaceView.Renderer {
         gl.glViewport(0, 0, ancho, alto);//origen "x=0" y "y=0" por defecto alto y ancho de la pantalla, es practicamente la ventana de copordenas donde se va a dibujar
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
-        gl.glFrustumf(-aspectRatio, aspectRatio, -3, 3, 2f, 15);// es la mas usada
+        gl.glFrustumf(-aspectRatio, aspectRatio, -aspectRatio*2, aspectRatio*2, 2f, 15);// es la mas usada
         //FRONTAL
 //        GLU.gluLookAt(gl,
 //                0 , 0, 5,
@@ -102,12 +102,6 @@ public class RenderCubo implements GLSurfaceView.Renderer {
 
         //gl.glTranslatef(0.0f, 0.0f, -4.0f);//Con GLU lookat no es necesadio transladar
         //gl.glRotatef(vIncremento, 0.0f, 1, 0.0f);
-
         cubo.dibujar(gl);
-        gl.glTranslatef(0, 0, 2);
-        gl.glScalef(.5f,.5f,.5f);
-        cubo.dibujar(gl);
-
-
     }
 }

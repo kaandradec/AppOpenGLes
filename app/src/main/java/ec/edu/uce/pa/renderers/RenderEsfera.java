@@ -22,8 +22,8 @@ public class RenderEsfera implements GLSurfaceView.Renderer {
         float aspectRatio = ((float) alto / (float) ancho);
         gl.glViewport(0,0,ancho,alto);
         gl.glMatrixMode(gl.GL_PROJECTION);
-        gl.glFrustumf(-aspectRatio,aspectRatio,-aspectRatio,aspectRatio,1,30);// left, right, bottom, top, Znear, Zfar
-
+        //gl.glFrustumf(-aspectRatio,aspectRatio,-aspectRatio,aspectRatio,1,30);// left, right, bottom, top, Znear, Zfar
+        gl.glFrustumf(-aspectRatio, aspectRatio, -aspectRatio*2, aspectRatio*2, 2f, 30);
     }
     @Override
     public void onDrawFrame(GL10 gl) {
@@ -35,8 +35,8 @@ public class RenderEsfera implements GLSurfaceView.Renderer {
 
         gl.glPushMatrix();
 
-            gl.glTranslatef(0,0,-3f);
-            gl.glScalef(1,0.5f,1);
+            gl.glTranslatef(0,0,-4f);
+            //gl.glScalef(1,0.5f,1);
             //PRIMERA ESFERA........................................................................
             gl.glPushMatrix();
 
