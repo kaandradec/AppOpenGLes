@@ -6,9 +6,7 @@ import android.opengl.GLU;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometrias.Circulo;
-import ec.edu.uce.pa.geometrias.Cubo;
-import ec.edu.uce.pa.geometrias.Plano;
+import ec.edu.uce.pa.geometrias.*;
 
 public class RenderPractica implements GLSurfaceView.Renderer {
     private float vIncremento;
@@ -17,6 +15,7 @@ public class RenderPractica implements GLSurfaceView.Renderer {
     private Cubo cubo;
     private Circulo circulo;
     private Plano plano;
+    private Cono conoPlano;
 
 
     @Override
@@ -24,9 +23,11 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
         cubo = new Cubo();
-        circulo = new Circulo( 3f,  0,  0,  30);
-
+        circulo = new Circulo( 3f,  30, new double[]{0,0,0,1});
+        conoPlano = new Cono(3f,  0,30, new double[]{0.1, 0.1 ,0.1, 1});
         plano = new Plano(new float[] {.88f, 0.88f, 0.88f, 1.0f});
+
+
 
     }
 
@@ -89,13 +90,23 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glPopMatrix();
         //......................................
 
-        //CIRCULO PLANO.........................
+        //CIRCULO.........................
         gl.glPushMatrix();
         gl.glTranslatef(0,-6,0f);
         gl.glRotatef(90, 1,0,0);
         circulo.dibujar(gl);
         gl.glPopMatrix();
         //......................................
+
+        //CONO PLANO.........................
+        gl.glPushMatrix();
+        gl.glTranslatef(0,-6,0f);
+        gl.glScalef(0.9f,0.9f,0.9f);
+        conoPlano.dibujar(gl);
+        gl.glPopMatrix();
+        //......................................
+
+
 
 
 

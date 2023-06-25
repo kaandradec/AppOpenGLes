@@ -6,12 +6,17 @@ import android.opengl.GLU;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometrias.Cubo;
-import ec.edu.uce.pa.geometrias.Triangulo;
+import ec.edu.uce.pa.geometrias.*;
+import ec.edu.uce.pa.utilidades.MisColores;
+
 
 public class RenderCubo implements GLSurfaceView.Renderer {
     private float vIncremento;
     private Cubo cubo;
+
+    private Cilindro cilindro;
+    private Cono cono, conoPlano, conoPlano2;
+    private Circulo circulo;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
@@ -20,6 +25,16 @@ public class RenderCubo implements GLSurfaceView.Renderer {
 //        gl.glEnable(gl.GL_CULL_FACE);
 //        gl.glCullFace(gl.GL_BACK);
         cubo = new Cubo();
+        cilindro = new Cilindro(1.0f, 1.0f,6, new double[]{1,1,0,1});
+        cono = new Cono(1.0f, 2.0f, 6 , new double[]{1,1,0,1});
+        conoPlano = new Cono(1.0f, 0.0f, 6,new double[]{1,1,0,1});
+        conoPlano2 = new Cono(1.0f, 0.0f, 21,new double[]{1,1,1,1});
+        //conoPlano2 = new Cono(1.0f, 0.0f, 21,null);
+
+        //circulo = new Circulo(1.0f,6, new double[]{1,0,0,1});
+        circulo = new Circulo(1.0f,6, MisColores.random(6));
+
+
     }
 
     @Override
@@ -82,7 +97,7 @@ public class RenderCubo implements GLSurfaceView.Renderer {
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
 
-
+        /*
         int puntosRueda = 100;
         float RADIUS = 6.0f;
 
@@ -99,9 +114,33 @@ public class RenderCubo implements GLSurfaceView.Renderer {
                 0,0 ,0,
                 0,1,0
         );
-
-        //gl.glTranslatef(0.0f, 0.0f, -4.0f);//Con GLU lookat no es necesadio transladar
-        //gl.glRotatef(vIncremento, 0.0f, 1, 0.0f);
+        gl.glTranslatef(0.0f, 0.0f, -4.0f);//Con GLU lookat no es necesadio transladar
         cubo.dibujar(gl);
+
+         */
+
+        gl.glTranslatef(0.0f, 0.0f, -4.5f);
+
+        gl.glPushMatrix();
+        gl.glRotatef(vIncremento*2, 0, 1,0);
+        cono.dibujar(gl);
+            gl.glPushMatrix();
+            gl.glTranslatef(0,-0.5f,0);
+            cilindro.dibujar(gl);
+            gl.glPopMatrix();
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(0,-1f,0);
+        gl.glScalef(2,2,2);
+        conoPlano2.dibujar(gl);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(0,-1f,0);
+        gl.glScalef(2.5f,2.5f,2.5f);
+        gl.glRotatef(90, 1,0,0);
+        circulo.dibujar(gl);
+        gl.glPopMatrix();
     }
 }
