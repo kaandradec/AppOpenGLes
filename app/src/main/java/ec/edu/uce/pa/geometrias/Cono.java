@@ -66,7 +66,7 @@ public class Cono {
             verticesAL.add(x + posInicialx);  verticesAL.add(0f);verticesAL.add(z + posInicialz);
         }
 
-         //Asignar ArrayList a vertices []
+        //Asignar ArrayList a vertices []
         float [] vertices = new float[verticesAL.size()];
         for (int i=0;i<verticesAL.size();i++) {
             vertices[i] =  verticesAL.get(i);
@@ -95,7 +95,6 @@ public class Cono {
 
     public Cono(float RADIUS, float height, int segmentos, float[] colorPorCara){
         this.colorPorCara = colorPorCara;
-
         this.segmentos = segmentos;
 
         float posInicialx =0;
@@ -169,11 +168,11 @@ public class Cono {
         if(colorPorCara != null){
 
             for (int i = 0; i < (colorPorCara.length)/4; i++) {//Por cada asigna el color { a, b, c, d }:
-                 gl.glColor4f(colorPorCara[poss], colorPorCara[poss+1], colorPorCara[poss+2],colorPorCara[poss+3]);
-                 gl.glDrawArrays(gl.GL_TRIANGLE_FAN,paso,  3);
+                gl.glColor4f(colorPorCara[poss], colorPorCara[poss+1], colorPorCara[poss+2],colorPorCara[poss+3]);
+                gl.glDrawArrays(gl.GL_TRIANGLE_FAN,paso,  3);
 
-                 poss +=4;
-                 paso +=3;
+                poss +=4;
+                paso +=3;
             }
 
         } else{

@@ -28,6 +28,7 @@ import ec.edu.uce.pa.renderers.RenderFiguras;
 import ec.edu.uce.pa.renderers.RenderLinea;
 import ec.edu.uce.pa.renderers.RenderIcosfera;
 import ec.edu.uce.pa.renderers.RenderPractica;
+import ec.edu.uce.pa.renderers.RenderPrueba;
 import ec.edu.uce.pa.renderers.RenderPunto;
 import ec.edu.uce.pa.renderers.RenderPushPop;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
@@ -75,7 +76,7 @@ public class Activity_Figuras extends AppCompatActivity {
                         renderer = new RenderPractica();
                     }
                     if(optionSel ==  R.id.rbLineas){
-                        renderer = new RenderLinea();
+                        renderer = new RenderPrueba();
                     }
                     if(optionSel ==  R.id.rbCarro){
                         renderer = new RenderCarro();
@@ -200,10 +201,68 @@ public class Activity_Figuras extends AppCompatActivity {
 
     }
 
+    //Metodo para detectar las teclas y manejar los movimientos de camara,mundo:
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //Tecla derecha:
+        if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+            //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
+            RenderPrueba.anguloSigno = 1;
+            RenderPrueba.rx = 0f;
+            RenderPrueba.ry = 1f;
+            RenderPrueba.rz = 0f;
 
+            RenderFiguras.ejex =1;
+            RenderFiguras.ejey =0;
+            RenderFiguras.ejez =1;
+            return true;
+        }
+        //Tecla izquierda:
+        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+            //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
+            RenderPrueba.anguloSigno = -1;
+            RenderPrueba.rx = 0f;
+            RenderPrueba.ry = 1f;
+            RenderPrueba.rz = 0f;
+
+            RenderFiguras.ejex =1;
+            RenderFiguras.ejey =0;
+            RenderFiguras.ejez =1;
+            return true;
+        }
+        //Tecla abajo:
+        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+            //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
+            RenderPrueba.anguloSigno = 1;
+            RenderPrueba.rx = 1f;
+            RenderPrueba.ry = 0f;
+            RenderPrueba.rz = 0f;
+
+            RenderFiguras.ejex =0;
+            RenderFiguras.ejey =1;
+            RenderFiguras.ejez =1;
+            return true;
+        }
+        //Tecla arriba:
+        if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+            //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
+            RenderPrueba.anguloSigno = -1;
+            RenderPrueba.rx = 1f;
+            RenderPrueba.ry = 0f;
+            RenderPrueba.rz = 0f;
+
+            RenderFiguras.ejex =0;
+            RenderFiguras.ejey =1;
+            RenderFiguras.ejez =1;
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 
     private float x1, x2, y1, y2;
     private static final int MIN_DISTANCE = 150;
+    //Metodo para detectar las GESTOS en pantalla y manejar los movimientos de camara,mundo:
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
@@ -222,18 +281,18 @@ public class Activity_Figuras extends AppCompatActivity {
                         if (deltaX > 0) {
                             // Deslizamiento hacia la derecha detectado
                             //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
-                            RenderPractica.anguloSigno = 1;
-                            RenderPractica.rx = 0f;
-                            RenderPractica.ry = 1f;
-                            RenderPractica.rz = 0f;
+                            RenderPrueba.anguloSigno = 1;
+                            RenderPrueba.rx = 0f;
+                            RenderPrueba.ry = 1f;
+                            RenderPrueba.rz = 0f;
 
                         } else {
                             // Deslizamiento hacia la izquierda detectado
                             //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
-                            RenderPractica.anguloSigno = -1;
-                            RenderPractica.rx = 0f;
-                            RenderPractica.ry = 1f;
-                            RenderPractica.rz = 0f;
+                            RenderPrueba.anguloSigno = -1;
+                            RenderPrueba.rx = 0f;
+                            RenderPrueba.ry = 1f;
+                            RenderPrueba.rz = 0f;
 
                         }
                     }
@@ -242,18 +301,18 @@ public class Activity_Figuras extends AppCompatActivity {
                         if (deltaY > 0) {
                             // Deslizamiento hacia abajo detectado
                             //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
-                            RenderPractica.anguloSigno = 1;
-                            RenderPractica.rx = 1f;
-                            RenderPractica.ry = 0f;
-                            RenderPractica.rz = 0f;
+                            RenderPrueba.anguloSigno = 1;
+                            RenderPrueba.rx = 1f;
+                            RenderPrueba.ry = 0f;
+                            RenderPrueba.rz = 0f;
 
                         } else {
                             // Deslizamiento hacia arriba detectado
                             //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
-                            RenderPractica.anguloSigno = -1;
-                            RenderPractica.rx = 1f;
-                            RenderPractica.ry = 0f;
-                            RenderPractica.rz = 0f;
+                            RenderPrueba.anguloSigno = -1;
+                            RenderPrueba.rx = 1f;
+                            RenderPrueba.ry = 0f;
+                            RenderPrueba.rz = 0f;
 
                         }
                     }
@@ -262,6 +321,7 @@ public class Activity_Figuras extends AppCompatActivity {
         }
         return true;
     }
+
 
 
 
