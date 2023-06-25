@@ -1,7 +1,6 @@
 package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
-import android.opengl.GLU;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -15,7 +14,7 @@ public class RenderCubo implements GLSurfaceView.Renderer {
     private Cubo cubo;
 
     private Cilindro cilindro;
-    private Cono cono, conoPlano, conoPlano2;
+    private Cono conoTecho, conoPlano, conoPlano2;
     private Circulo circulo;
 
     @Override
@@ -25,14 +24,17 @@ public class RenderCubo implements GLSurfaceView.Renderer {
 //        gl.glEnable(gl.GL_CULL_FACE);
 //        gl.glCullFace(gl.GL_BACK);
         cubo = new Cubo();
-        cilindro = new Cilindro(1.0f, 1.0f,6, new double[]{1,1,0,1});
-        cono = new Cono(1.0f, 2.0f, 6 , new double[]{1,1,0,1});
+        cilindro = new Cilindro(1.0f, 1.0f,6, new double[]{0.3,0.8,1,1});
+
+        //conoTecho = new Cono(1.0f, 2.0f, 6 , new double[]{1,1,0,1});
+        conoTecho = new Cono(1.0f, 2.0f, 40 , MisColores.random(40));
         conoPlano = new Cono(1.0f, 0.0f, 6,new double[]{1,1,0,1});
-        conoPlano2 = new Cono(1.0f, 0.0f, 21,new double[]{1,1,1,1});
+        //conoPlano2 = new Cono(1.0f, 0.0f, 21,new double[]{1,0,0,1});
+        conoPlano2 = new Cono(1.0f, 0.0f, 21,MisColores.blancoYnegro(21));
         //conoPlano2 = new Cono(1.0f, 0.0f, 21,null);
 
         //circulo = new Circulo(1.0f,6, new double[]{1,0,0,1});
-        circulo = new Circulo(1.0f,6, MisColores.random(6));
+        circulo = new Circulo(1.0f,25, MisColores.random(25));
 
 
     }
@@ -120,10 +122,11 @@ public class RenderCubo implements GLSurfaceView.Renderer {
          */
 
         gl.glTranslatef(0.0f, 0.0f, -4.5f);
+        gl.glRotatef(vIncremento*2,0,1,0);
 
         gl.glPushMatrix();
-        gl.glRotatef(vIncremento*2, 0, 1,0);
-        cono.dibujar(gl);
+        //gl.glRotatef(vIncremento*2, 0, 1,0);
+        conoTecho.dibujar(gl);
             gl.glPushMatrix();
             gl.glTranslatef(0,-0.5f,0);
             cilindro.dibujar(gl);

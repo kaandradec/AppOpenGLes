@@ -87,24 +87,8 @@ public class Circulo {
 
             System.out.println("X: "+ vertices[i]);
         }
-//---------------------------------------------------------------------------------------
-        //COLORES PARA CIRCULO
-//        for (int i = 0; i < segmentos; i++) {
-//            coloresAL.add((float)unicoColor[0]);coloresAL.add((float)unicoColor[1]);coloresAL.add((float)unicoColor[2]);coloresAL.add((float)unicoColor[3]);
-//        }
-        //
-//        for (float f: coloresPorCara){
-//            coloresAL.add(f);
-//        }
-
-        //Asignar TODOS los vertices de colores
-//        float[] colores = new float[coloresAL.size()];
-//        for (int i=0;i<colores.length;i++) {
-//            colores[i] =  coloresAL.get(i);
-//        }
         bufferVertices = Funciones.generarBuffer(vertices);
         bufferColores = Funciones.generarBuffer(coloresPorCara);
-
     }
 
 

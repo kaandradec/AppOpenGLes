@@ -20,8 +20,8 @@ public class Cono {
     private ArrayList<Float> verticesAL = new ArrayList<>();
     ArrayList<Float> coloresAL = new ArrayList<>();
 
-
     double[] unicoColor;
+    float[] colorPorCara;
 
 
     public Cono(float RADIUS, float height, int segmentos, double[] unicoColor){
@@ -48,13 +48,10 @@ public class Cono {
         verticesAL.add(0f); verticesAL.add(height);verticesAL.add(0f);
         // Cicunferencia
         for (int i = 0; i <= segmentos; i++) {
-
             if(paso ==2) aux =true;
             if(aux){
                 verticesAL.add(0f); verticesAL.add(height);verticesAL.add(0f);
-                System.out.print("CERO: " + 0);System.out.print(" "+2 );System.out.println(" "+ 0);
                 verticesAL.add(tmpx);  verticesAL.add(0f);verticesAL.add(tmpz);
-                System.out.print("Vertice: " + tmpx);System.out.print(" "+ 0f);System.out.println(" "+ tmpz);
                 paso =1;
                 aux =false;
             }
@@ -67,7 +64,6 @@ public class Cono {
 
             tmpx = x; tmpy = y; tmpz =z;
             verticesAL.add(x + posInicialx);  verticesAL.add(0f);verticesAL.add(z + posInicialz);
-            System.out.print("Vertice: " + x);System.out.print(" "+y);System.out.println(" "+ z);
         }
 
          //Asignar ArrayList a vertices []
@@ -79,11 +75,11 @@ public class Cono {
 
 //---------------------------------------------------------------------------------------
 
-        //COLORES PARA RUEDAS
-        for (int i = 0; i <= segmentos; i++) {
-
-            //coloresAL.add(1.0f);coloresAL.add(0.4f);coloresAL.add(0.0f);coloresAL.add(1.0f);//NARANJA
-            coloresAL.add(0.6f);coloresAL.add(0f);coloresAL.add(0.082f);coloresAL.add(1.0f);//Morado
+        //COLORES PARA CIRCULO
+        for (int i = 0; i < segmentos*3; i++) {
+            //coloresAL.add(0.08f);coloresAL.add(0.082f);coloresAL.add(0.082f);coloresAL.add(1.0f);//GRIS
+            //COLOR PARA T0DO EL CIRCULO
+            coloresAL.add((float)unicoColor[0]);coloresAL.add((float)unicoColor[1]);coloresAL.add((float)unicoColor[2]);coloresAL.add((float)unicoColor[3]);
         }
 
         //Asignar TODOS los vertices de colores
@@ -92,10 +88,65 @@ public class Cono {
             colores[i] =  coloresAL.get(i);
         }
 
-
-
         bufferVertices = Funciones.generarBuffer(vertices);
         bufferColores = Funciones.generarBuffer(colores);
+
+    }
+
+    public Cono(float RADIUS, float height, int segmentos, float[] colorPorCara){
+        this.colorPorCara = colorPorCara;
+
+        this.segmentos = segmentos;
+
+        float posInicialx =0;
+        float posInicialy =0;
+        float posInicialz =0;
+
+        //ALGORITMO RUEDA---------------------------------------------------------------
+        //DATOS DE VERTICES
+        float x = 0;
+        float z= 0;
+        float y= 0; //Altura del cono
+
+        float tmpx = 0, tmpy = 0, tmpz = 0;
+
+        boolean aux = false;
+        byte paso = 0;
+
+        // 1 PUNTO CENTRAL  (VERTICE)
+        verticesAL.add(0f); verticesAL.add(height);verticesAL.add(0f);
+        // Cicunferencia
+        for (int i = 0; i <= segmentos; i++) {
+            if(paso ==2) aux =true;
+            if(aux){
+                verticesAL.add(0f); verticesAL.add(height);verticesAL.add(0f);
+                verticesAL.add(tmpx);  verticesAL.add(0f);verticesAL.add(tmpz);
+                paso =1;
+                aux =false;
+            }
+            paso ++;
+
+            float theta = (float) ((2.0f * Math.PI * i )/ segmentos);
+            x = RADIUS * (float) Math.cos(theta);
+            y = 0;
+            z = RADIUS * (float) Math.sin(theta);
+
+            tmpx = x; tmpy = y; tmpz =z;
+            verticesAL.add(x + posInicialx);  verticesAL.add(0f);verticesAL.add(z + posInicialz);
+        }
+
+        //Asignar ArrayList a vertices []
+        float [] vertices = new float[verticesAL.size()];
+        for (int i=0;i<verticesAL.size();i++) {
+            vertices[i] =  verticesAL.get(i);
+
+        }
+
+//---------------------------------------------------------------------------------------
+
+        bufferVertices = Funciones.generarBuffer(vertices);
+        //bufferColores = Funciones.generarBuffer(colorPorCara);
+
 
     }
 
@@ -108,44 +159,29 @@ public class Cono {
         gl.glVertexPointer(comPorVertices,gl.GL_FLOAT,0,bufferVertices);
         gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
 
-
 //        bufferColores.position(0);
 //        gl.glColorPointer(comPorColor,gl.GL_FLOAT,0,bufferColores);
 //        gl.glEnableClientState(gl.GL_COLOR_ARRAY);
 
-//        //COLORES PARA CADA CARA
-        gl.glColor4f(0f, 1, 0f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,0,  3);
+        int paso =0;
+        int poss=0;
 
-        gl.glColor4f(1f, 0, 0f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,3,  3);
+        if(colorPorCara != null){
 
-        gl.glColor4f(0f, 0, 1f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,6,  3);
+            for (int i = 0; i < (colorPorCara.length)/4; i++) {//Por cada asigna el color { a, b, c, d }:
+                 gl.glColor4f(colorPorCara[poss], colorPorCara[poss+1], colorPorCara[poss+2],colorPorCara[poss+3]);
+                 gl.glDrawArrays(gl.GL_TRIANGLE_FAN,paso,  3);
 
-        gl.glColor4f(1f, 1, 0f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,9,  3);
+                 poss +=4;
+                 paso +=3;
+            }
 
-        gl.glColor4f(1f, 0, 1f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,12,  3);
+        } else{
 
-        gl.glColor4f(0f, 1f, 1f,1);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,15,  3);
-
-        //COLORES PARA T0DO EL CONO
-        gl.glColor4f((float)unicoColor[0], (float)unicoColor[1], (float)unicoColor[2],(float)unicoColor[3]);
-        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,0, segmentos*3 );
+            gl.glDrawArrays(gl.GL_TRIANGLE_FAN,0, segmentos*3 );
+        }
 
 
-
-//        gl.glColor4f(0.6f, 0, 1,1);
-//        gl.glDrawArrays(gl.GL_TRIANGLE_FAN,0,  verticesAL.size()/2 +1);//size()/2 Porque cada vertice tiene dos numeros float // +1 de vertice Central
-
-
-
-
-
-        gl.glFrontFace(gl.GL_CCW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
         gl.glDisableClientState(gl.GL_COLOR_ARRAY);
 

@@ -17,16 +17,38 @@ public class MisColores {
 
         return colores;
     }
-    public static float[] blancoYnegroSeis(){
-        float[] colores={
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-                (float)Math.random(),(float)Math.random(),(float)Math.random(),1f,
-        };
+    public static float[] blancoYnegro(int caras){
+        ArrayList<Float> tmp = new ArrayList<>();
+
+        for (int i = 0; i < caras/2; i++) {
+            tmp.add(0f);tmp.add(0f);tmp.add(0f);tmp.add(0f);//NEGRO
+            tmp.add(1f);tmp.add(1f);tmp.add(1f);tmp.add(1f);//BLANCO
+        }
+
+        if(caras%2 !=0) tmp.add(1f);tmp.add(1f);tmp.add(1f);tmp.add(1f);//para caras impares agrego un color mas
+
+
+
+
+        float[] colores = new float[tmp.size()];
+        for (int i = 0; i < tmp.size(); i++) {
+            colores[i] = tmp.get(i);
+        }
+
         return colores;
+    }
+
+
+    public static float[] seisColores(){
+
+        return new float[]{
+                1,0,0,1,
+                0,1,0,1,
+                0,0,1,1,
+                1,1,0,1,
+                1,0,1,1,
+                0,1,1,1,
+        };
     }
 
 }
