@@ -11,6 +11,7 @@ import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.Cubo;
 import ec.edu.uce.pa.geometrias.Plano;
 import ec.edu.uce.pa.geometrias.Prisma;
+import ec.edu.uce.pa.geometrias.Tablero;
 import ec.edu.uce.pa.utilidades.MisColores;
 
 public class RenderPrueba implements GLSurfaceView.Renderer {
@@ -21,8 +22,10 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
     private Circulo circulo;
     private Plano plano;
     private Cono conoPlano, conoPlano2,conoPlano8seg, conoPiso;
-    private Cilindro cilindro, cilindro2;
-    private Prisma prisma;
+    private Cilindro cilindro, cilindro2, cajaBlanca;
+    private Prisma prisma, prismaTablero;
+
+    private Tablero tablero;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
@@ -41,6 +44,11 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         prisma = new Prisma(1,2,3, new float[] {1, 0.5f, 0, 1});
 
         circulo = new Circulo(1,40,new double[]{1,1,1,1});
+
+
+        tablero = new Tablero(MisColores.blancoYnegro(16+8+1)); //Por cada fila 2 triangulos degenerados
+        cajaBlanca = new Cilindro(2.5f,0.5f,4,new double[]{0.65,0.58,0.35,1});
+        prismaTablero = new Prisma(3,0.5f,4, new float[]{0.65f,0.58f,0.35f,1});
 
     }
 
@@ -69,7 +77,7 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();
 
         //MOVIMIENTO PARA TODA LA ESCENA con TECLADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        gl.glTranslatef(0,-1f,-4.2f);//AFECTA A TODOS LOS OBJETOS
+        gl.glTranslatef(0,-1f,-4.5f);//AFECTA A TODOS LOS OBJETOS
         gl.glRotatef(vIncremento2, rx, ry, rz);
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -98,30 +106,30 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
 
 
         //CONOs + Cilindro---------------
-        gl.glPushMatrix();
-            gl.glPushMatrix();
-            gl.glTranslatef(0,0.5f,0);
-            conoPlano8seg.dibujar(gl);
-            gl.glPopMatrix();
-
-            gl.glPushMatrix();
-            cilindro2.dibujar(gl);
-            gl.glPopMatrix();
-
-            gl.glPushMatrix();
-            gl.glTranslatef(0,-0.5f,0);
-            gl.glScalef(2,1,2);
-            conoPlano2.dibujar(gl);
-            gl.glPopMatrix();
-
-            gl.glPushMatrix();
-            gl.glTranslatef(0,-0.5f,0);
-            gl.glScalef(2,1,2);
-            gl.glRotatef(180,1,0,0);
-            conoPiso.dibujar(gl);
-            gl.glPopMatrix();
-
-        gl.glPopMatrix();
+//        gl.glPushMatrix();
+//            gl.glPushMatrix();
+//            gl.glTranslatef(0,0.5f,0);
+//            conoPlano8seg.dibujar(gl);
+//            gl.glPopMatrix();
+//
+//            gl.glPushMatrix();
+//            cilindro2.dibujar(gl);
+//            gl.glPopMatrix();
+//
+//            gl.glPushMatrix();
+//            gl.glTranslatef(0,-0.5f,0);
+//            gl.glScalef(2,1,2);
+//            conoPlano2.dibujar(gl);
+//            gl.glPopMatrix();
+//
+//            gl.glPushMatrix();
+//            gl.glTranslatef(0,-0.5f,0);
+//            gl.glScalef(2,1,2);
+//            gl.glRotatef(180,1,0,0);
+//            conoPiso.dibujar(gl);
+//            gl.glPopMatrix();
+//
+//        gl.glPopMatrix();
 
         //-------------------------------------
         //CUBO---------------------------------
@@ -141,13 +149,55 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         gl.glPopMatrix();
         //-------------------------------------
         //CIRCULO---------------------------------
+//        gl.glPushMatrix();
+//        gl.glTranslatef(0,-0.5f,0);
+//        gl.glScalef(2.1f,1,2.1f);
+//        gl.glRotatef(90, 1,0,0);
+//        circulo.dibujar(gl);
+//        gl.glPopMatrix();
+        //-------------------------------------
+
+
+
+
+        //TABLERO ENTERO>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         gl.glPushMatrix();
-        gl.glTranslatef(0,-0.5f,0);
-        gl.glScalef(2.1f,1,2.1f);
-        gl.glRotatef(90, 1,0,0);
-        circulo.dibujar(gl);
+        gl.glScalef(0.4f,0.4f,0.4f);
+
+        gl.glPushMatrix();
+        gl.glTranslatef(-2,0,2);
+        tablero.dibujar(gl);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(2,0,2);
+        tablero.dibujar(gl);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(-2,0,-2);
+        tablero.dibujar(gl);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(2,0,-2);
+        tablero.dibujar(gl);
+        gl.glPopMatrix();
+
+        gl.glPopMatrix();
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        //BORDE de TABLERO-----------------------------
+        gl.glPushMatrix();
+        gl.glScalef(0.8f,0.5f,0.8f);
+        gl.glTranslatef(0,-.25f,0);
+        gl.glRotatef(45, 0,1,0);
+        prismaTablero.dibujar(gl);
         gl.glPopMatrix();
         //-------------------------------------
+
+
 
 
 

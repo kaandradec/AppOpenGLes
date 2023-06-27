@@ -20,12 +20,14 @@ public class MisColores {
     public static float[] blancoYnegro(int caras){
         ArrayList<Float> tmp = new ArrayList<>();
 
+
+        if(caras%2 !=0) tmp.add(1f);tmp.add(1f);tmp.add(1f);tmp.add(1f);//para caras impares agrego un color mas
+
         for (int i = 0; i < caras/2; i++) {
             tmp.add(0f);tmp.add(0f);tmp.add(0f);tmp.add(0f);//NEGRO
             tmp.add(1f);tmp.add(1f);tmp.add(1f);tmp.add(1f);//BLANCO
         }
 
-        if(caras%2 !=0) tmp.add(1f);tmp.add(1f);tmp.add(1f);tmp.add(1f);//para caras impares agrego un color mas
 
 
 
