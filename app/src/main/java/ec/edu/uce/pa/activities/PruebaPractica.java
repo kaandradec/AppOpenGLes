@@ -8,10 +8,9 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderPrueba;
 
-public class ColorPantallaActivity extends AppCompatActivity {
+public class PruebaPractica extends AppCompatActivity {
 
     private GLSurfaceView view;
     public static float red = 0f;
@@ -26,8 +25,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
 
         view = new GLSurfaceView(this);//Permite manejo de los renderes a utilizar
         view.setEGLContextClientVersion(1);
-//        view.setRenderer(new RenderColores());
-        view.setRenderer(new RenderPrueba());
+        view.setRenderer(new RenderPrueba());//DEFINIR RENDER DE PRUEBA
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
@@ -50,7 +48,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
     //Boton back de vista ColorPantalla
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ColorPantallaActivity.this, EjerciciosActivity.class );
+        Intent intent = new Intent(PruebaPractica.this, EjerciciosActivity.class );
         startActivity(intent);
         finish();
 
