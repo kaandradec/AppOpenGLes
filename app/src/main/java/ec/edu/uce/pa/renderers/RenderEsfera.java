@@ -10,12 +10,13 @@ import ec.edu.uce.pa.geometrias.Esfera;
 
 public class RenderEsfera implements GLSurfaceView.Renderer {
     private float vIncremento = 0f;
-    private Esfera esfera;
+    private Esfera esfera, esferaTierra;
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
-        esfera = new Esfera(30,30,1.5f,1.0f);
+        esfera = new Esfera(30,30,1.5f,1.0f, new float[]{1,0,0,1,  1,1,0,1});
+        esferaTierra = new Esfera(30,30,1.5f,1.0f, new float[]{0,0,1,1,  0.3f,1,1,1});
     }
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
@@ -51,7 +52,7 @@ public class RenderEsfera implements GLSurfaceView.Renderer {
                     gl.glTranslatef(0,2.2f, 0);
                     gl.glScalef(0.2f ,0.2f,0.2f);
                     gl.glRotatef(vIncremento*2, 0,1,1);
-                    esfera.dibujar(gl);
+                    esferaTierra.dibujar(gl);
 
                     //TERCERA ESFERA-------------
                     gl.glPushMatrix();

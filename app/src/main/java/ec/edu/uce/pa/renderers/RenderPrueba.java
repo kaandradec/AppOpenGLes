@@ -10,6 +10,7 @@ import ec.edu.uce.pa.geometrias.Circulo;
 import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.Cubo;
 import ec.edu.uce.pa.geometrias.Plano;
+import ec.edu.uce.pa.geometrias.Prisma;
 import ec.edu.uce.pa.utilidades.MisColores;
 
 public class RenderPrueba implements GLSurfaceView.Renderer {
@@ -21,14 +22,15 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
     private Plano plano;
     private Cono conoPlano, conoPlano2,conoPlano8seg, conoPiso;
     private Cilindro cilindro, cilindro2;
+    private Prisma prisma;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
         gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
 
-        cilindro = new Cilindro(1,1,100, MisColores.random(100));
-        conoPlano = new Cono(1,0,100, MisColores.random(100));
+        cilindro = new Cilindro(1,1,26, MisColores.random(26));
+        conoPlano = new Cono(1,0,26, MisColores.random(26));
 
         conoPlano8seg = new Cono(1,0,8, new double[]{0.8, 0.56, 0.84, 1});
         cilindro2 = new Cilindro(1,1,8, MisColores.random(8));
@@ -36,6 +38,7 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         conoPiso = new Cono(1,2.5f,20, MisColores.blancoYnegro(20));
 
         cubo = new Cubo();
+        prisma = new Prisma(1,2,3, new float[] {1, 0.5f, 0, 1});
 
         circulo = new Circulo(1,40,new double[]{1,1,1,1});
 
@@ -74,7 +77,7 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         //CILINDRO CON 2 TAPAS-----------------
         gl.glPushMatrix();
         gl.glTranslatef(0,4,0);
-        gl.glScalef(0.8f,0.8f,0.8f);
+        gl.glScalef(0.4f,0.4f,0.4f);
 
             gl.glPushMatrix();
                 cilindro.dibujar(gl);
@@ -127,6 +130,14 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
             gl.glRotatef(vIncremento, 1,0,0.5f);
             gl.glScalef(0.3f,0.3f,0.3f);
             cubo.dibujar(gl);
+        gl.glPopMatrix();
+        //-------------------------------------
+        //PRISMA---------------------------------
+        gl.glPushMatrix();
+        gl.glTranslatef(0,6,0);
+        gl.glRotatef(-vIncremento, 1,0,0.5f);
+        gl.glScalef(0.3f,0.3f,0.3f);
+        prisma.dibujar(gl);
         gl.glPopMatrix();
         //-------------------------------------
         //CIRCULO---------------------------------

@@ -16,7 +16,9 @@ public class Esfera {
 
     private int franjas, cortes;
 
-    public Esfera(int franjas, int cortes, float radio, float ejePolar){
+    private float [] colores2Franjas;
+    public Esfera(int franjas, int cortes, float radio, float ejePolar, float[] colores2Franjas){
+        this.colores2Franjas = colores2Franjas;
 
         this.franjas = franjas;
         this.cortes = cortes;
@@ -66,15 +68,19 @@ public class Esfera {
                 vertices[iVertice+4] = radio * (sinPhi1 * ejePolar);    //y'
                 vertices[iVertice+5] = radio * (cosPhi1 * sinTheta);        //z'
 
-                colores[iColor+0] = 1.0f;
-                colores[iColor+1] = 0.5f;
-                colores[iColor+2] = 0.25f;
-                colores[iColor+3] = 1.0f;
 
-                colores[iColor+4] = 0.25f;
-                colores[iColor+5] = 0.5f;
-                colores[iColor+6] = 1.0f;
-                colores[iColor+7] = 1.0f;
+//                colores[iColor+0] = 1.0f;colores[iColor+1] = 0.5f;colores[iColor+2] = 0.25f;colores[iColor+3] = 1.0f;
+//                colores[iColor+4] = 0.25f;colores[iColor+5] = 0.5f;colores[iColor+6] = 1.0f;colores[iColor+7] = 1.0f;
+                colores[iColor+0] = colores2Franjas[0];
+                colores[iColor+1] = colores2Franjas[1];
+                colores[iColor+2] = colores2Franjas[2];
+                colores[iColor+3] = colores2Franjas[3];
+
+                colores[iColor+4] = colores2Franjas[4];
+                colores[iColor+5] = colores2Franjas[5];
+                colores[iColor+6] = colores2Franjas[6];
+                colores[iColor+7] = colores2Franjas[7];
+
 
                 iColor += 2*4;
                 iVertice += 2*3;
