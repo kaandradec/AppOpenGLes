@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.renderers.RenderColores;
+import ec.edu.uce.pa.renderers.RenderIluminacion;
+import ec.edu.uce.pa.renderers.RenderIluminacion2;
 import ec.edu.uce.pa.renderers.RenderPrueba;
 
 public class ColorPantallaActivity extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
         view = new GLSurfaceView(this);//Permite manejo de los renderes a utilizar
         view.setEGLContextClientVersion(1);
 //        view.setRenderer(new RenderColores());
-        view.setRenderer(new RenderPrueba());
+        view.setRenderer(new RenderIluminacion2());
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
