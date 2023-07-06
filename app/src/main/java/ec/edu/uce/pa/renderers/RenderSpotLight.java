@@ -23,17 +23,9 @@ class RenderSpotLight implements GLSurfaceView.Renderer {
 
     private PlanoIluminacion planoIluminacion;
 
-    float[] posicionLuz0= {
-            //-0.8f,0.8f,-3.0f,1.0f
-            -0.8f, 2.5f,-1f,1.0f
-
-    };
-    float[] posicionLuz1= {
-            0f,0f,-3.0f,1.0f
-    };
-    float[] posicionLuz2= {
-            0f,0f,-3.0f,1.0f
-    };
+    float[] posicionLuz0= { -0.8f,1.8f,-3.0f,1.0f};
+    float[] posicionLuz1= {0f,0f,-3.0f,1.0f};
+    float[] posicionLuz2= {0f,0f,-3.0f,1.0f};
 
     float[] luzAmarilla = {
             0.9f,0.9f,0.0f, 1.0f
@@ -99,7 +91,7 @@ class RenderSpotLight implements GLSurfaceView.Renderer {
         gl.glPushMatrix();{//Plano1
             spotDir1 = new float[]{0,0,-1};//VERDE
             gl.glLightfv(LUZ1, gl.GL_SPOT_DIRECTION, FloatBuffer.wrap(spotDir1));
-            gl.glLightf(LUZ1, gl.GL_SPOT_CUTOFF, 20);
+            gl.glLightf(LUZ1, gl.GL_SPOT_CUTOFF, 10);
             gl.glLightf(LUZ1, gl.GL_SPOT_EXPONENT, 1);
 
             planoIluminacion.dibujar(gl);
@@ -108,8 +100,8 @@ class RenderSpotLight implements GLSurfaceView.Renderer {
         gl.glPushMatrix();{//Plano2
             spotDir2 = new float[] {0,-1,0};//ROJA
             gl.glLightfv(LUZ2, gl.GL_SPOT_DIRECTION, FloatBuffer.wrap(spotDir2));
-            gl.glLightf(LUZ2, gl.GL_SPOT_CUTOFF, 12);
-            gl.glLightf(LUZ2, gl.GL_SPOT_EXPONENT, 2);
+            gl.glLightf(LUZ2, gl.GL_SPOT_CUTOFF, 50);
+            gl.glLightf(LUZ2, gl.GL_SPOT_EXPONENT, 10);
 
             gl.glRotatef(180,0,0,1);
             gl.glRotatef(90,1,0,0);
