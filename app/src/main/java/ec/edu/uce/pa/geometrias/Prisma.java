@@ -3,10 +3,9 @@ package ec.edu.uce.pa.geometrias;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import java.nio.ShortBuffer;
 
 public class Prisma {
     private static float[] vertices;

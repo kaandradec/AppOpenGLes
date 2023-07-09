@@ -123,7 +123,6 @@ public class Cubo {
 
         //1------------------------------------------------------------------
         bufferIndices= ByteBuffer.allocateDirect(indices.length);
-        //bufferIndices= ByteBuffer.allocateDirect(indices.length*4);////Ya no tengo que multiplicar por 4 porque ya es byte
         bufferIndices.order(ByteOrder.nativeOrder());
         bufferIndices.put(indices);
         bufferIndices.position(0);

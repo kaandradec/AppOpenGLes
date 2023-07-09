@@ -1,14 +1,9 @@
 package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
-import android.widget.Toast;
-
-import java.util.List;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import ec.edu.uce.pa.activities.ColorPantallaActivity;
 
 public class RenderColores implements GLSurfaceView.Renderer {
     private float vIncremento= 0f;

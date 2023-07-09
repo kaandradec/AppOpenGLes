@@ -1,12 +1,14 @@
 package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
-import android.opengl.GLU;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometrias.*;
+import ec.edu.uce.pa.geometrias.Circulo;
+import ec.edu.uce.pa.geometrias.Cono;
+import ec.edu.uce.pa.geometrias.Cubo;
+import ec.edu.uce.pa.geometrias.Plano;
 
 public class RenderPractica implements GLSurfaceView.Renderer {
     private float vIncremento;

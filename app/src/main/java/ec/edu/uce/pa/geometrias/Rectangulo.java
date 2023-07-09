@@ -3,8 +3,6 @@ package ec.edu.uce.pa.geometrias;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.microedition.khronos.opengles.GL10;
 

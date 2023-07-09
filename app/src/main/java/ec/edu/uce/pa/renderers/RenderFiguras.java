@@ -1,20 +1,11 @@
 package ec.edu.uce.pa.renderers;
 
-import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.R;
-import ec.edu.uce.pa.activities.TrabajoFiguras;
-import ec.edu.uce.pa.geometrias.Cubo;
 import ec.edu.uce.pa.geometrias.Icosfera;
 import ec.edu.uce.pa.geometrias.Rectangulo;
 

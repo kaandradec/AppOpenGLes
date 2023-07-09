@@ -2,7 +2,6 @@ package ec.edu.uce.pa.geometrias;
 
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.microedition.khronos.opengles.GL10;
 

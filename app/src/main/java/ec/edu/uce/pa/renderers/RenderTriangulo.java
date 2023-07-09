@@ -1,12 +1,10 @@
 package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
-import android.view.VerifiedInputEvent;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometrias.Linea;
 import ec.edu.uce.pa.geometrias.Triangulo;
 
 public class RenderTriangulo implements GLSurfaceView.Renderer {

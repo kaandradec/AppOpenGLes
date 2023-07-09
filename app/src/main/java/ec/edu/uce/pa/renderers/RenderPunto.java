@@ -1,7 +1,6 @@
 package ec.edu.uce.pa.renderers;
 
 import android.opengl.GLSurfaceView;
-import android.widget.Toast;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

@@ -6,7 +6,6 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.geometrias.Linea;
-import ec.edu.uce.pa.geometrias.Punto;
 
 public class RenderLinea implements GLSurfaceView.Renderer {
     private float vIncremento = 0f;

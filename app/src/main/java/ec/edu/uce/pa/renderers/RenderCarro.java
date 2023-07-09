@@ -1,17 +1,13 @@
 package ec.edu.uce.pa.renderers;
 
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+
+import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.geometrias.Carro;
-import ec.edu.uce.pa.geometrias.Punto;
-
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import java.nio.ByteOrder;
 
 public class RenderCarro implements GLSurfaceView.Renderer {
 

@@ -6,8 +6,6 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.activities.Activity_Figuras;
-
 public class Triangulo {
     private FloatBuffer bufferVertices;
     private FloatBuffer bufferColores;

@@ -7,7 +7,6 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.activities.Activity_Figuras;
-import ec.edu.uce.pa.renderers.RenderPunto;
 
 public class Punto {
     private FloatBuffer bufferVertices;

@@ -3,7 +3,6 @@ package ec.edu.uce.pa.activities;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -15,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
-
 import ec.edu.uce.pa.renderers.RenderFiguras;
 
 

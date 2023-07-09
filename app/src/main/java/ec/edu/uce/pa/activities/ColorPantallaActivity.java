@@ -8,10 +8,9 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.DemoRendererView;
+import ec.edu.uce.pa.renderers.RenderBlender;
 
 public class ColorPantallaActivity extends AppCompatActivity {
-
     private GLSurfaceView view;
     public static float red = 0f;
     public static float green = 0f;
@@ -26,7 +25,10 @@ public class ColorPantallaActivity extends AppCompatActivity {
         view = new GLSurfaceView(this);//Permite manejo de los renderes a utilizar
         view.setEGLContextClientVersion(1);
 //        view.setRenderer(new RenderColores());
-        view.setRenderer(new DemoRendererView());
+
+
+        //view.setRenderer(new RenderBlender());
+        view.setRenderer(new RenderBlender(getApplicationContext()));
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
@@ -54,4 +56,8 @@ public class ColorPantallaActivity extends AppCompatActivity {
         finish();
 
     }
+
+
+
+
 }

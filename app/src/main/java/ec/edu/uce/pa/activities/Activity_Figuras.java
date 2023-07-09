@@ -10,27 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderCarro;
-import ec.edu.uce.pa.renderers.RenderColores;
 import ec.edu.uce.pa.renderers.RenderCubo;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
 import ec.edu.uce.pa.renderers.RenderFiguras;
-import ec.edu.uce.pa.renderers.RenderLinea;
-import ec.edu.uce.pa.renderers.RenderIcosfera;
 import ec.edu.uce.pa.renderers.RenderPractica;
 import ec.edu.uce.pa.renderers.RenderPrueba;
-import ec.edu.uce.pa.renderers.RenderPunto;
-import ec.edu.uce.pa.renderers.RenderPushPop;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
 
 public class Activity_Figuras extends AppCompatActivity {
