@@ -70,7 +70,6 @@ public class ObjFileReader{
             vertices = new float[verticesList.size()];
             for (int i=0;i<vertices.length;i++) {
                 vertices[i] =  verticesList.get(i);
-                System.out.println(vertices[i]+ " ");
             }
 
             indices = new short[indicesList.size()];
