@@ -8,7 +8,8 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.RenderBlender;
+import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
+import ec.edu.uce.pa.renderers.RenderSistemaSOOLAAR;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -27,8 +28,8 @@ public class ColorPantallaActivity extends AppCompatActivity {
 //        view.setRenderer(new RenderColores());
 
 
-        //view.setRenderer(new RenderBlender());
-        view.setRenderer(new RenderBlender(getApplicationContext()));
+        view.setRenderer(new RenderSistemaSolar());
+        //view.setRenderer(new RenderBlender(getApplicationContext()));
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
