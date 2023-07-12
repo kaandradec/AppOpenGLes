@@ -13,9 +13,11 @@ public class EstrellasFondo {
     private final static int byteFlotante = 4;
     private final static int comPorVertices = 2;
     private final static int comPorColor = 4;
-    private float rango = 100.0f; // Rango para dispersar las estrellas
+    private float rango; // Rango para dispersar las estrellas
 
-    public EstrellasFondo(int numEstrellas) {
+    public EstrellasFondo(int numEstrellas, float dispersion) {
+        this.rango = dispersion;
+
         float[] vertices = generarVerticesAleatorios(numEstrellas);
         float[] colores = generarColores(numEstrellas);
 
@@ -69,7 +71,7 @@ public class EstrellasFondo {
         bufferColores.position(0);
         gl.glColorPointer(comPorColor, GL10.GL_FLOAT, 0, bufferColores);
         gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
-        gl.glPointSize(25);
+        gl.glPointSize(5);
         gl.glDrawArrays(GL10.GL_POINTS, 0, bufferVertices.capacity() / 2);
         gl.glFrontFace(GL10.GL_CW);
         gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);

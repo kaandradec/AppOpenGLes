@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
+import ec.edu.uce.pa.renderers.RenderCuadradoTextura;
 import ec.edu.uce.pa.renderers.RenderSistemaSOOLAAR;
 
 public class ColorPantallaActivity extends AppCompatActivity {
@@ -27,8 +28,8 @@ public class ColorPantallaActivity extends AppCompatActivity {
         view.setEGLContextClientVersion(1);
 //        view.setRenderer(new RenderColores());
 
-
         view.setRenderer(new RenderSistemaSolar());
+        //view.setRenderer(new RenderCuadradoTextura(getApplicationContext()));
         //view.setRenderer(new RenderBlender(getApplicationContext()));
 
         //Para ahorrar recursos cuando solo la geometria cambia
