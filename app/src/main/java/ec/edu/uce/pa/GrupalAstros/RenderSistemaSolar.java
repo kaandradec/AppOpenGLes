@@ -87,16 +87,15 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
         gl.glClearColor(0f,0f,0f,1.0f);
         textRenderer = new TextRenderer(gl);
         planetas = new Planetas(50,50,1f,1f);
-        estrellas = new EstrellasFondo(1100, 6250);//NO MOVER DISPERSIONES//25000
-        estrellas2 = new EstrellasFondo(600, 20000);//NO MOVER DISPERSIONES
+        estrellas = new EstrellasFondo(1300, 8000);//NO MOVER DISPERSIONES 1100 625
+        estrellas2 = new EstrellasFondo(1200, 35000);//NO MOVER DISPERSIONES 25K 1100
         anillosUrano = new AnillosPluton(50, 1.36f, 1.5f);
-        anillosSturno = new AnillosPluton(50,1.15f,1.5f);
+        anillosSturno = new AnillosPluton(50,1.15f,1.8f);
         gl.glEnable(gl.GL_LIGHTING);
         gl.glEnable(gl.GL_DEPTH_TEST);
         gl.glEnable(LUZ0);
     }
 
-    float l, r, b, t, n ,f;
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
         float aspectRatio = (float) ancho / alto;
@@ -106,15 +105,13 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
         float bottom = -1.0f / aspectRatio;
         float top = 1.0f / aspectRatio;
         float near = 1.0f;
-        float far = 8000.0f;
+        float far = 9000.0f;
         // Calcular la relación de aspect
         // Definir las dimensiones del frustrum
         gl.glViewport(0, 0, ancho, alto);
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
         gl.glFrustumf(left, right, bottom, top, near, far);
-
-        l=left; r =right; b = bottom; t = top; n = near; f =far;
 
     }
 
@@ -144,7 +141,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
 //        gl.glLightf(LUZ2, gl.GL_SPOT_EXPONENT, 0);
 
 
-        //MOVIMIENTO CAMARA---------------------------------------------------
+        //MOVIMIENTO CAMARA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         cameraX += velocidadEnX ; // Mover la cámara en el eje X
         cameraZ += velocidadEnZ; // Mover la cámara en el eje Z
         GLU.gluLookAt(gl,
@@ -152,97 +149,69 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 cameraX,0 ,-1,
                 0,1,0
         );
-        if(cameraX>6){//a 6 unidades
-            velocidadEnX=0.018f;
-            velocidadEnZ=0.015f;
-        }
-        if(cameraX>20){//a 6 unidades
-            velocidadEnX=0.03f;
-            velocidadEnZ=0.015f;
-        }
-        if(cameraX>48){//a 48 unidades
-            velocidadEnX=0.05f;
-            velocidadEnZ=0.005f;
-        }
-
-        if(cameraX>107){//a 48 unidades
-            velocidadEnX=0.1f;
-            velocidadEnZ=0.05f;
-        }
-        if(cameraX>187){//a 48 unidades
-            velocidadEnX=0.1f;
-            velocidadEnZ=0f;
-        }
-        if(cameraX>257){//a 48 unidades
-            velocidadEnX=0.4f;
-            velocidadEnZ=0.5f;
-        }
-        if(cameraX>637){//a 48 unidades
-            velocidadEnX=0.6f;
-            velocidadEnZ=0f;
-        }
-        if(cameraX>950){//a 937 Unidades
-            velocidadEnX=1f;
-            velocidadEnZ=0.8f;
-        }
-        if(cameraX>1837){//a 937 Unidades
-            velocidadEnX=1.5f;
-            velocidadEnZ=0f;
-        }
-        if(cameraX>3037){//a 937 Unidades
-            velocidadEnX=4f;
-            velocidadEnZ=7f;
-
-        }
-        if(cameraX>9037){//a 937 Unidades //SOL
-            velocidadEnX=10f;
-            velocidadEnZ=0f;
-        }
-        //--------------------------------------------------------------------
+        if(cameraX>6){velocidadEnX=0.018f;velocidadEnZ=0.015f;}//a 6 unidades cambia de velocidad de movimiento en X y Z ...
+        if(cameraX>20){velocidadEnX=0.03f;velocidadEnZ=0.015f;}
+        if(cameraX>48){velocidadEnX=0.05f;velocidadEnZ=0.005f;}
+        if(cameraX>107){velocidadEnX=0.1f; velocidadEnZ=0.05f;}
+        if(cameraX>187){velocidadEnX=0.1f;velocidadEnZ=0f; }
+        if(cameraX>257){velocidadEnX=0.4f;velocidadEnZ=0.5f;}
+        if(cameraX>637){velocidadEnX=0.6f;velocidadEnZ=0f;}
+        if(cameraX>950){velocidadEnX=1f;velocidadEnZ=0.8f;}
+        if(cameraX>1837){velocidadEnX=1.5f;velocidadEnZ=0f;}
+        if(cameraX>3037){velocidadEnX=5f;velocidadEnZ=9f;}
+        if(cameraX>9037){velocidadEnX=15;velocidadEnZ=1.2f;}//a 9037 Unidades //SOL
+        if(cameraX>20000){velocidadEnX=1.5f;velocidadEnZ=0.8f;}//SIRIUS A
+        if(cameraX>21200){velocidadEnX=3.5f;velocidadEnZ=2f;}
+        if(cameraX>23200){velocidadEnX=4f;velocidadEnZ=3.5f;}
+        if(cameraX>28200){velocidadEnX=0;velocidadEnZ=0;}//ARCTURUS
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-
-
-
-        //ESTRELLAS:
+        //ESTRELLAS:********************************************************************************
         gl.glPushMatrix();{
-            gl.glTranslatef(0, 0, -600);
-            gl.glTranslatef(cameraX, 0, 0);
-            //gl.glScalef(0.25f, 0.25f, 0.25f);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
-            if(cameraX<3800){
-                estrellas.dibujar(gl);
-            }
-        }gl.glPopMatrix();
-
-        //ESTRELLAS INTERMEDIAS
-        gl.glPushMatrix();{
-            if(cameraX>3800){//Cuando llegue a un punto x empieza a moverse
+            gl.glPushMatrix();{
+                gl.glTranslatef(0, 0, -600);
                 gl.glTranslatef(cameraX, 0, 0);
-            }
-            gl.glTranslatef(1300, 0, 1800);
-            //gl.glScalef(0.25f, 0.25f, 0.25f);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
-            estrellas2.dibujar(gl);
-        }gl.glPopMatrix();
+                //gl.glScalef(0.25f, 0.25f, 0.25f);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
+                if(cameraX<3800){
+                    estrellas.dibujar(gl);
+                }
+            }gl.glPopMatrix();
 
-        //ESTRELLAS DISTANCIA 1837
-        gl.glPushMatrix();{
-            if(cameraX>6000){//Cuando llegue a un punto x empieza a moverse
-                gl.glTranslatef(cameraX, 0, 0);
-            }
-            gl.glTranslatef(1500, 0, 4000);
-            //gl.glScalef(0.25f, 0.25f, 0.25f);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
-            gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
-            estrellas2.dibujar(gl);
-        }gl.glPopMatrix();
+            //ESTRELLAS INTERMEDIAS
+            gl.glPushMatrix();{
+                if(cameraX>3800){//Cuando llegue a un punto x empieza a moverse
+                    gl.glTranslatef(cameraX, 0, 0);
+                }
+                gl.glTranslatef(1300, 0, 3500);
+                //gl.glScalef(0.25f, 0.25f, 0.25f);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
+                estrellas2.dibujar(gl);
+            }gl.glPopMatrix();
+
+            //ESTRELLAS DISTANCIA en posicion del SOL
+            gl.glPushMatrix();{
+                if(cameraX>6000){//Cuando llegue a un punto x empieza a moverse
+                    gl.glTranslatef(cameraX, 0, 0);
+                }
+                gl.glTranslatef(1500, 0, 10500);
+                //gl.glScalef(0.25f, 0.25f, 0.25f);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialEstrellas, 0);
+                gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION,luzEstrellas , 0);
+                estrellas2.dibujar(gl);
+            }gl.glPopMatrix();
+
+        }gl.glPopMatrix();//************************************************************************
 
 
 
-        //PARA TODOS LOS PLANETAS
+
+
+
+        //PARA TODOS LOS PLANETAS===================================================================
         gl.glPushMatrix();{
             gl.glTranslatef(0f, 0, -8);//TODA LA ESCENA
 
@@ -407,7 +376,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
             //URANO:
             gl.glPushMatrix();
             {
-                gl.glTranslatef(937.0f,0.0f,-137.23f);
+                gl.glTranslatef(937.0f+80f,0.0f,-137.23f);
                 gl.glScalef(137.23f,137.23f,137.23f);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialUrano,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzUrano,0);
@@ -417,6 +386,9 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 {
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialAnillosUrano, 0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION, luzAnillosUrano, 0);
+                    gl.glRotatef(-120, 0,1,0);
+
+                    gl.glRotatef(-6, 0,0,1);
                     anillosUrano.dibujar(gl);
 
                 }gl.glPopMatrix();
@@ -435,6 +407,11 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 {
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_AMBIENT, materialAnillosSaturno, 0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK, gl.GL_EMISSION, luzAnillosSaturno, 0);
+//                    gl.glRotatef(-200,1,0,0);
+//                    gl.glRotatef(-26, 0,0,1);
+//                    gl.glRotatef(-185, 0,1,0);
+                    gl.glRotatef(-10,0,0,1);
+                    gl.glRotatef(-80,1,0,0);
                     anillosSturno.dibujar(gl);
 
                 }gl.glPopMatrix();
@@ -452,42 +429,17 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
             }gl.glPopMatrix();
 
 
-
-            //ESCALAR SOLES segun su posición>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            gl.glPushMatrix();{
-//                if(cameraX>9037){
-//                    gl.glScalef(0.6f,0.6f,0.6f);
-//                    aux =false;
-//                }
-//                if(cameraX>23037){
-//                    gl.glScalef(0.4f,0.4f,0.4f);
-//                }
-//                if(cameraX>53000){
-//                    gl.glScalef(0.5f,0.5f,0.5f);
-//                    aux3 =false;
-//                }
-//                if(cameraX>123000){
-//                    gl.glScalef(0.3f,0.3f,0.3f);
-//                    aux4 =false;
-//                }
-//                if(cameraX>303000){
-//                    gl.glScalef(0.3f,0.3f,0.4f);
-//                }
-                if(cameraX>9037){//a 937 Unidades //SOL
-//                    velocidadEnX=10f;
-//                    velocidadEnZ=0f;
-                    moverZ += velocidadEnX/10 ; // Mover la cámara en el eje X
-                    gl.glTranslatef(0,0,-moverZ);
-                }
-
                 //SOL:
                 gl.glPushMatrix();
+
                 {
+                    if(cameraX>25000) {gl.glTranslatef(0,0,-10000);}
                     //gl.glTranslatef(9037.0f,0.0f,-4460.27f);
                     gl.glTranslatef(9037.0f,0.0f,+0f);
                     gl.glScalef(4460.27f,4460.27f,4460.27f);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialSol,0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzSol,0);
+
                     planetas.dibujar(gl);
 
                 } gl.glPopMatrix();
@@ -496,8 +448,12 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glPushMatrix();
                 {
                     //gl.glTranslatef(23037.0f,0.0f,-7582.45f);
-                    gl.glTranslatef(23037.0f,0.0f,+0f);
-                    gl.glScalef(7582.45f,7582.45f,7582.45f);
+//                    gl.glTranslatef(23037.0f,0.0f,+0f);
+//                    gl.glScalef(7582.45f,7582.45f,7582.45f);
+                    //11765
+
+                    gl.glTranslatef(20000,0.0f,12500);
+                    gl.glScalef(400f/2,400f/2,400f/2);//NUEVA ESCALA APLICADA
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialSiriusA,0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzSiriusA,0);
                     planetas.dibujar(gl);
@@ -508,8 +464,10 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glPushMatrix();
                 {
                     //gl.glTranslatef(53037.0f,0.0f,-19714.39f);
-                    gl.glTranslatef(53037.0f,0.0f,+0f);
-                    gl.glScalef(19714.39f,19714.39f,19714.39f);
+//                    gl.glTranslatef(53037.0f,0.0f,+0f);
+//                    gl.glScalef(19714.39f,19714.39f,19714.39f);
+                    gl.glTranslatef(21200, 0 , 12000);
+                    gl.glScalef(1000/2,1000/2,1000/2 );
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialElnathAzul,0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzElnathAzul,0);
                     planetas.dibujar(gl);
@@ -520,8 +478,10 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glPushMatrix();
                 {
                     //gl.glTranslatef(123037.0f,0.0f,-39428.79f);
-                    gl.glTranslatef(123037.0f,0.0f,+0f);
-                    gl.glScalef(39428.79f,39428.79f,39428.79f);
+//                    gl.glTranslatef(123037.0f,0.0f,+0f);
+//                    gl.glScalef(39428.79f,39428.79f,39428.79f);
+                    gl.glTranslatef(23200, 0 , 12000);
+                    gl.glScalef(2000/2,2000/2,2000/2 );
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialPollux,0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzPollux,0);
                     planetas.dibujar(gl);
@@ -531,23 +491,19 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 //ARCTURUS:
                 gl.glPushMatrix();
                 {
-                    //gl.glTranslatef(303037.0f,0.0f,-118286.37f);
-                    gl.glTranslatef(303037.0f,0.0f,+0f);
-                    gl.glScalef(118286.37f,118286.37f,118286.37f);
+//                    //gl.glTranslatef(303037.0f,0.0f,-118286.37f);
+//                    gl.glTranslatef(303037.0f,0.0f,+0f);
+//                    gl.glScalef(118286.37f,118286.37f,118286.37f);
+                    gl.glTranslatef(28200, 0 , 12000);
+                    gl.glScalef(5000/2,5000/2,5000/2 );
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialArcturus,0);
                     gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzArcturus,0);
                     planetas.dibujar(gl);
 
                 }gl.glPopMatrix();
 
-            }gl.glPopMatrix();//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-
-        }gl.glPopMatrix();
+        }gl.glPopMatrix();//========================================================================
 
         vIncremento+=0.65f;
     }
-    boolean aux =true , aux2 = true, aux3 = true, aux4 = true;
 }
