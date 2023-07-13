@@ -13,7 +13,6 @@ import ec.edu.uce.pa.utilidades.ObjFileReader;
 
 public class ObjetoBlender {
     private FloatBuffer bufferVertices;
-    //private ByteBuffer bufferIndices;
     private ShortBuffer bufferIndices;
     private final static int byteFlotante =4;
     private final static int compPorVertice=3;
@@ -29,7 +28,6 @@ public class ObjetoBlender {
             this.vertices = cubo.getVertices();
             this.indices = cubo.getIndices();
 
-
         ByteBuffer buffer = ByteBuffer.allocateDirect(vertices.length*byteFlotante);
         buffer.order(ByteOrder.nativeOrder());
         bufferVertices = buffer.asFloatBuffer();
@@ -38,7 +36,6 @@ public class ObjetoBlender {
         bufferIndices = ShortBuffer.allocate(indices.length);
         bufferIndices.put(indices);
         bufferIndices.position(0);
-
     }
 
     public void dibujar (GL10 gl){

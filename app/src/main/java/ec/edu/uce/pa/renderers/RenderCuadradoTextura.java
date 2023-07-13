@@ -22,7 +22,7 @@ public class RenderCuadradoTextura implements GLSurfaceView.Renderer {
     private float vIncremento;
     private CuadradoTextura cuadrado;
 
-    private int[] arrayTexturas = new int[1];//Textura
+    private int[] arrayTexturas = new int[1];//Se utilizará para almacenar las identificaciones de textura generadas por OpenGL.
     private Context context;
 
     public RenderCuadradoTextura(Context context){
@@ -37,13 +37,14 @@ public class RenderCuadradoTextura implements GLSurfaceView.Renderer {
 
         gl.glEnable(gl.GL_TEXTURE_2D);
         cuadrado = new CuadradoTextura();
-        gl.glGenTextures(1,arrayTexturas,0);
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.cubo_textura);
-        gl.glBindTexture(gl.GL_TEXTURE_2D, arrayTexturas[0]);
-        GLUtils.texImage2D(gl.GL_TEXTURE_2D, 0, bitmap, 0);
-        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR);
-        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR);
-        bitmap.recycle();
+
+        gl.glGenTextures(1,arrayTexturas,0);//Genera una textura en OpenGL y guarda su identificación en el array arrayTexturas.
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.cubo_textura);//Decodifica un recurso de imagen en forma de Bitmap.
+        gl.glBindTexture(gl.GL_TEXTURE_2D, arrayTexturas[0]);//Vincula la textura generada anteriormente para su uso en OpenGL.
+        GLUtils.texImage2D(gl.GL_TEXTURE_2D, 0, bitmap, 0);//Carga la imagen en la textura vinculada.
+        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR);//Configura el filtro de ampliación de la textura.
+        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR);//Configura el filtro de reducción de la textura.
+        bitmap.recycle();//Libera la memoria utilizada por el Bitmap ya que la imagen ya está cargada en OpenGL.
 
     }
 
@@ -61,7 +62,7 @@ public class RenderCuadradoTextura implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();//
         gl.glFrustumf(left, right, bottom, top, near, far);
 
-        gl.glTexEnvf(gl.GL_TEXTURE_ENV, gl.GL_TEXTURE_ENV_MODE, gl.GL_REPLACE);
+        gl.glTexEnvf(gl.GL_TEXTURE_ENV, gl.GL_TEXTURE_ENV_MODE, gl.GL_REPLACE);//Configura el modo de mezcla de textura. Aqui usado para que no se mezcle con los colores definidos en la geometria.
     }
 
 

@@ -81,7 +81,6 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
     private float[] luzPollux = {0.8f, 0.4f, 0.2f, 1.0f};
     private float[] luzArcturus = {1.0f, 0.6f, 0.2f, 1.0f};
 
-    private float [] spotDir1, spotDir2;
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         gl.glClearColor(0f,0f,0f,1.0f);
@@ -99,20 +98,16 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
         float aspectRatio = (float) ancho / alto;
-        // Definir las dimensiones del frustrum
         float left = -1.0f;
         float right = 1.0f;
         float bottom = -1.0f / aspectRatio;
         float top = 1.0f / aspectRatio;
         float near = 1.0f;
         float far = 9000.0f;
-        // Calcular la relación de aspect
-        // Definir las dimensiones del frustrum
         gl.glViewport(0, 0, ancho, alto);
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
         gl.glFrustumf(left, right, bottom, top, near, far);
-
     }
 
     private float cameraX = 0.0f; // Posición inicial de la cámara en el eje X
@@ -132,14 +127,6 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
 
         gl.glLightfv(LUZ0, gl.GL_POSITION, Funciones.generarBuffer(posicionLuz0));
         gl.glLightfv(LUZ0, gl.GL_SPECULAR, Funciones.generarBuffer(luzAmarilla));
-
-
-//ESTO LO COMENTE YO: K Andrade
-//        spotDir2 = new float[]{0, 0, -1};
-//        gl.glLightfv(LUZ2, gl.GL_SPOT_DIRECTION, FloatBuffer.wrap(spotDir2));
-//        gl.glLightf(LUZ2, gl.GL_SPOT_CUTOFF, 15);
-//        gl.glLightf(LUZ2, gl.GL_SPOT_EXPONENT, 0);
-
 
         //MOVIMIENTO CAMARA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         cameraX += velocidadEnX ; // Mover la cámara en el eje X
