@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
 import ec.edu.uce.pa.renderers.RenderCuadradoTextura;
 import ec.edu.uce.pa.renderers.RenderSistemaSOOLAAR;
+import ec.edu.uce.pa.renderers.RenderPiramideTextura;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -28,7 +29,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
         view.setEGLContextClientVersion(1);
 //        view.setRenderer(new RenderColores());
 
-        view.setRenderer(new RenderSistemaSolar());
+        view.setRenderer(new RenderPiramideTextura(getApplicationContext()));
         //view.setRenderer(new RenderCuadradoTextura(getApplicationContext()));
         //view.setRenderer(new RenderBlender(getApplicationContext()));
 
