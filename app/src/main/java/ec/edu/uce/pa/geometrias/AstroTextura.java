@@ -1,4 +1,4 @@
-package ec.edu.uce.pa.GrupalAstros;
+package ec.edu.uce.pa.geometrias;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,9 +9,10 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.utilidades.Funciones;
 
-public class Planetas implements Cloneable{
+public class AstroTextura {
     private FloatBuffer bufferVertices;
     private FloatBuffer bufferColores;
     private FloatBuffer bufferNormales;
@@ -20,23 +21,9 @@ public class Planetas implements Cloneable{
     private final static int comPorColor = 4;
 
     private int franjas, cortes;
+    private int arrayTexturas[];
 
-    private Context context;
-    private int [] arrayTexturas;
-
-    public Planetas clone ()throws CloneNotSupportedException{
-        try {
-            Planetas clonedPlaneta = (Planetas) super.clone();
-            // Si hay propiedades mutables, clónalas también aquí
-            // clonedPlaneta.setAlgunaPropiedadMutables(algunaPropiedadMutables.clone());
-            return clonedPlaneta;
-        } catch (CloneNotSupportedException e) {
-            // No debería ocurrir, ya que implementamos Cloneable
-            throw new AssertionError();
-        }
-    }
-
-    public Planetas(int franjas, int cortes, float radio, float ejePolar){
+    public AstroTextura(int franjas, int cortes, float radio, float ejePolar){
 
         this.franjas = franjas;
         this.cortes = cortes;
@@ -51,10 +38,11 @@ public class Planetas implements Cloneable{
         int iNormal = 0;
         int iTextura = 0;
 
+
         vertices = new float[3 * ((cortes * 2 + 2) * franjas)];// *2 porque son dos triangulos para cada cuadrado y +2 de los vertices duplicados para los triangulos degenerados
         colores = new float[4 * ((cortes * 2 + 2) * franjas)];
         normales = new float[3 * ((cortes * 2 + 2) * franjas)];
-        texturas = new float[3 * ((cortes * 2 + 2) * franjas)];
+        texturas = new float[2 * ((cortes * 2 + 2) * franjas)];
         int i, j;
 
         // Bucle para construir las franjas de la esfera
@@ -98,18 +86,16 @@ public class Planetas implements Cloneable{
                 normales[iVertice+3] = cosPhi0 * cosTheta;          //x'
                 normales[iVertice+4] = sinPhi0;    //y'
                 normales[iVertice+5] = cosPhi0 * sinTheta;        //z'
-
-//------------------------------------------------------
-
-                texturas[iTextura+0] = j * 1.0f/(cortes-1);         //s
-                texturas[iTextura+1] = (i+0) * 1.0f/(franjas-1)*-1;    //t
-
-                texturas[iTextura+2] = j * 1.0f/(cortes-1);        //s'
-                texturas[iTextura+3] = (i+1) * 1.0f/(franjas-1)*-1;   //t'
-
-
-
 //-------------------------------------------------------
+                texturas[iTextura+0] = j * 1.0f/(cortes-1);          //s
+                texturas[iTextura+1] = (i+0) * 1.0f/(franjas-1)*-1;//t
+                texturas[iTextura+2] = j * 1.0f/(cortes-1);        //s´
+                texturas[iTextura+3] = (i+1) * 1.0f/(franjas-1)*-1;//t'
+
+//--------------------------------------------------------
+
+
+
                 colores[iColor+0] = 1.0f;
                 colores[iColor+1] = 0.5f;
                 colores[iColor+2] = 0.25f;
@@ -123,7 +109,7 @@ public class Planetas implements Cloneable{
                 iColor += 2*4;
                 iVertice += 2*3;
                 iNormal+=2*3;
-                iTextura += 2*2;
+                iTextura+=2*2;
             }
 
             vertices[iVertice+0] = vertices[iVertice+3];
@@ -138,15 +124,16 @@ public class Planetas implements Cloneable{
         bufferNormales = Funciones.generarBuffer(normales);
         bufferTexturas = Funciones.generarBuffer(texturas);
 
+
     }
-    public void dibujar(GL10 gl, int indiceTextura) {
+    public void dibujar(GL10 gl, int indiceTextura){
         gl.glFrontFace(gl.GL_CW);
 
         bufferVertices.position(0);
-        gl.glVertexPointer(comPorVertices, gl.GL_FLOAT, 0, bufferVertices);
-        gl.glColorPointer(comPorColor, gl.GL_FLOAT, 0, bufferColores);
-        gl.glNormalPointer(gl.GL_FLOAT, 0, bufferNormales);
-        gl.glTexCoordPointer(2, gl.GL_FLOAT, 0, bufferTexturas);
+        gl.glVertexPointer(comPorVertices,gl.GL_FLOAT,0,bufferVertices);
+        gl.glColorPointer(comPorColor,gl.GL_FLOAT,0,bufferColores);
+        gl.glNormalPointer(gl.GL_FLOAT,0,bufferNormales);
+        gl.glTexCoordPointer(2, gl.GL_FLOAT, 0 , bufferTexturas);
 
 
         gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
@@ -158,28 +145,24 @@ public class Planetas implements Cloneable{
 
         gl.glEnableClientState(gl.GL_COLOR_ARRAY);
 
-        gl.glBindTexture(gl.GL_TEXTURE_2D, arrayTexturas[indiceTextura]);
 
-        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, franjas * cortes * 2);
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, franjas * cortes *2);
 
 
         gl.glFrontFace(gl.GL_CCW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
         gl.glDisableClientState(gl.GL_COLOR_ARRAY);
         gl.glDisableClientState(gl.GL_NORMAL_ARRAY);
-        gl.glDisableClientState(gl.GL_TEXTURE_COORD_ARRAY);
-
-
-
     }
-    public void habilitarTexturas (GL10 gl,int numeroTexturas){
+
+    public void habilitarTexturas (GL10 gl, int numeroTexturas){
         gl.glEnable(gl.GL_TEXTURE_2D);
         arrayTexturas = new int[numeroTexturas];
-        gl.glGenTextures(1, arrayTexturas,0);
-
+        gl.glGenTextures(1,arrayTexturas,0);//Genera una textura en OpenGL y guarda su identificación en el array arrayTexturas.
     }
+    public void cargarImagenesTextura (GL10 gl, Context context, int idImagen, int indice){
+        gl.glEnable(gl.GL_TEXTURE_2D);
 
-    public void cargarImagenesTextura (GL10 gl, Context context,int idImagen, int indice){
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), idImagen);
         gl.glBindTexture(gl.GL_TEXTURE_2D, arrayTexturas[indice]);
         GLUtils.texImage2D(gl.GL_TEXTURE_2D, 0, bitmap, 0);
