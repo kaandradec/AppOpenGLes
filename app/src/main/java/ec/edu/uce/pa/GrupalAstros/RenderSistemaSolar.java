@@ -54,7 +54,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
     float[] posicionLuz0= {0.0f, -10.0f,-4f,1.0f};
     float [] sinLuz = {0,0,0,1};
     float[] luzAmarilla = {1f,1f,0.0f, 1.0f};
-    float[] luzEstrellas = {0.8f,0.8f,0.8f, 1.0f};
+    float[] luzEstrellas = {1f,1f,1f, 1.0f};
     float[] luzCeres = {0.5f*0.2f, 0.5f*0.2f, 0.5f*0.2f, 1.0f};
     private float[] luzPluto = {0.800f*0.5f, 0.405f*0.5f, 0.066f*0.5f, 1.0f};
     private float[] luzMakeMake = {0.800f*0.5f, 0.488f*0.5f, 0.234f*0.5f, 1.0f};
@@ -93,11 +93,11 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
         gl.glEnable(gl.GL_TEXTURE_2D);
         gl.glEnable(gl.GL_DEPTH_TEST);
 
-        planetas[0] = new Planetas(50,50,1f,1f);
         estrellas = new EstrellasFondo(1100, 6250);
         estrellas2 = new EstrellasFondo(1100, 25000);
         anillosUrano = new AnillosPluton(50, 1.36f, 1.5f);
         anillosSturno = new AnillosPluton(50,1.15f,1.8f);
+        planetas[0] = new Planetas(50,50,1f,1f);
 
         //CLONAR INSTACIAS (22 planetas)
         try {
@@ -138,17 +138,21 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
         planetas[21].cargarImagenesTextura(gl, this.context, R.drawable.arcturus, 0);
     }
 
-    //Obtener un mejor frustrum o una mejor apreciacion de los objetos en escena:
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
         float aspectRatio = (float) ancho / alto;
+        float left = -1.0f;
+        float right = 1.0f;
         float bottom = -1.0f / aspectRatio;
         float top = 1.0f / aspectRatio;
+        float near = 1.0f;
+        float far = 9000.0f;
         gl.glViewport(0, 0, ancho, alto);
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();
-        gl.glFrustumf(-1, 1, bottom, top, 1, 10);
+        gl.glFrustumf(left, right, bottom, top, near, far);
         gl.glTexEnvf(gl.GL_TEXTURE_ENV, gl.GL_TEXTURE_ENV_MODE, gl.GL_REPLACE);
+
     }
 
     private float cameraX = 0.0f; // Posición inicial camara eje x
@@ -445,7 +449,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glScalef(4460.27f,4460.27f,4460.27f);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialSol,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzSol,0);
-                gl.glRotatef(vIncremento,0,1,0);
+                gl.glRotatef(vIncremento/2,0,1,0);
                 planetas[17].dibujar(gl,0);
             } gl.glPopMatrix();
 
@@ -456,7 +460,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glScalef(400f/2,400f/2,400f/2);//NUEVA ESCALA APLICADA
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialSiriusA,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzSiriusA,0);
-                gl.glRotatef(vIncremento,0,1,0);
+                gl.glRotatef(vIncremento/3,0,1,0);
                 planetas[18].dibujar(gl,0);
             } gl.glPopMatrix();
 
@@ -467,7 +471,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glScalef(1000/2,1000/2,1000/2 );
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialElnathAzul,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzElnathAzul,0);
-                gl.glRotatef(vIncremento,0,1,0);
+                gl.glRotatef(vIncremento/4,0,1,0);
                 planetas[19].dibujar(gl,0);
             }gl.glPopMatrix();
 
@@ -478,7 +482,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glScalef(2000/2,2000/2,2000/2 );
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialPollux,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzPollux,0);
-                gl.glRotatef(vIncremento,0,1,0);
+                gl.glRotatef(vIncremento/5,0,1,0);
                 planetas[20].dibujar(gl,0);
             }gl.glPopMatrix();
 
@@ -489,10 +493,10 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
                 gl.glScalef(5000/2,5000/2,5000/2 );
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_AMBIENT,materialArcturus,0);
                 gl.glMaterialfv(gl.GL_FRONT_AND_BACK,gl.GL_EMISSION,luzArcturus,0);
-                gl.glRotatef(vIncremento,0,1,0);
+                gl.glRotatef(vIncremento/6,0,1,0);
                 planetas[21].dibujar(gl,0);
             }gl.glPopMatrix();
         }gl.glPopMatrix();
-        vIncremento+=0.65f;
+        vIncremento+=0.3f;
     }
 }
