@@ -7,7 +7,6 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.geometrias.ObjetoBlender;
-import ec.edu.uce.pa.geometrias.Rectangulo;
 import ec.edu.uce.pa.utilidades.MisColores;
 
 

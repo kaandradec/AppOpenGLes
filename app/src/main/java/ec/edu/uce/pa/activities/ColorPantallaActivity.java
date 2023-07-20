@@ -9,10 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
-import ec.edu.uce.pa.renderers.RenderAstroLuces;
-import ec.edu.uce.pa.renderers.RenderCuadradoTextura;
-import ec.edu.uce.pa.renderers.RenderSistemaSOOLAAR;
-import ec.edu.uce.pa.renderers.RenderPiramideTextura;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;

@@ -12,7 +12,6 @@ import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.geometrias.AstroTextura;
-import ec.edu.uce.pa.geometriasIluminacion.PlanoMaterial;
 import ec.edu.uce.pa.utilidades.Funciones;
 
 public class RenderAstroLuces implements GLSurfaceView.Renderer {

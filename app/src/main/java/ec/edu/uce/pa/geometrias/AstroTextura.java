@@ -9,7 +9,6 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.utilidades.Funciones;
 
 public class AstroTextura {

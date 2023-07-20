@@ -10,12 +10,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.R;
-import ec.edu.uce.pa.geometrias.Cilindro;
-import ec.edu.uce.pa.geometrias.Circulo;
-import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.CuadradoTextura;
-import ec.edu.uce.pa.geometrias.Cubo;
-import ec.edu.uce.pa.utilidades.MisColores;
 
 
 public class RenderCuadradoTextura implements GLSurfaceView.Renderer {
