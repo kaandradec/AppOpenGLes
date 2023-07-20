@@ -1,0 +1,57 @@
+package ec.edu.uce.pa.GrupalAstros;
+
+public class LuzColor {
+    public static float[] materialEstrellas ={1.0f,1.0f,1.0f,1.0f};
+    public static  float[] materialCere = {0.5f, 0.5f, 0.5f, 1.0f};
+    public static  float[] materialMakeMake = {0.800f, 0.488f, 0.234f, 1.0f};
+    public static  float[] materialPluto = {0.800f, 0.405f, 0.066f, 1.0f};
+    public static  float[] materialEuropa = {0.487f, 0.482f, 0.467f, 1.0f};
+    public static  float[] materialLuna = {0.260f, 0.260f, 0.260f, 1.0f};
+    public static  float[] materialCallisto = {0.099f, 0.039f, 0.018f, 1.0f};
+    public static  float[] materialMercurio = {0.260f, 0.260f, 0.260f, 1.0f};
+    public static float[] materialTitan = {0.448f, 0.235f, 0.057f, 1.0f};
+    public static float[] materialGanymede = {0.240f, 0.159f, 0.062f, 1.0f};
+    public static float[] materialMarte = {0.296f, 0.067f, 0.008f, 1.0f};
+    public static float[] materialVenus = {0.334f, 0.117f, 0.008f, 1.0f};
+    public static float[] materialTierra = {0.045f, 0.170f, 0.638f, 1.0f};
+    public static float[] materialKepler22b = {0.127f, 0.444f, 0.604f, 1.0f};
+    public static float[] materialNeptuno = {0.005f, 0.042f, 0.662f, 1.0f};
+    public static float[] materialUrano = {0.185f, 0.276f, 0.439f, 1.0f};
+    public static float[] materialAnillosUrano = {0.753f, 0.753f, 0.753f, 1.0f};
+    public static float[] materialSaturno = {0.549f, 0.364f, 0.145f, 1.0f};
+    public static float[] materialAnillosSaturno = {0.753f, 0.753f, 0.753f, 1.0f};
+    public static float[] materialJupiter = {0.800f, 0.425f, 0.117f, 1.0f};
+    public static float[] materialSol = {1.0f, 0.098f, 0.0f, 1.0f};
+    public static float[] materialSiriusA = {0.123f, 1.0f, 0.943f, 1.0f};
+    public static float[] materialElnathAzul = {0.024f, 0.549f, 0.800f, 1.0f};
+    public static float[] materialPollux = {1.0f, 0.047f, 0.014f, 1.0f};
+    public static float[] materialArcturus = {0.800f, 0.49f, 0.009f, 1.0f};
+
+    public static float[] luzAmarilla = {1f,1f,0.0f, 1.0f};
+    public static float[] luzEstrellas = {1f,1f,1f, 1.0f};
+    public static float[] luzCeres = {0.5f*0.2f, 0.5f*0.2f, 0.5f*0.2f, 1.0f};
+    public static float[] luzPluto = {0.800f*0.5f, 0.405f*0.5f, 0.066f*0.5f, 1.0f};
+    public static float[] luzMakeMake = {0.800f*0.5f, 0.488f*0.5f, 0.234f*0.5f, 1.0f};
+    public static float[] luzEuropa = {0.487f*0.5f, 0.482f*0.5f, 0.467f*0.5f, 1.0f};
+    public static float[] luzCallisto = {0.099f*0.5f, 0.039f*0.5f, 0.018f*0.5f, 1.0f};
+    public static float[] luzLuna = {0.260f*0.5f, 0.260f*0.5f, 0.260f*0.5f, 1.0f};
+    public static float[] luzMercurio = {0.260f*0.5f, 0.260f*0.5f, 0.260f*0.5f, 1.0f};
+    public static float[] luzTitan = {0.448f*0.5f, 0.235f*0.5f, 0.057f*0.5f, 1.0f};
+    public static float[] luzGanymede = {0.240f*0.5f, 0.159f*0.5f, 0.062f*0.5f, 1.0f};
+    public static float[] luzMarte = {0.296f*0.5f, 0.067f*0.5f, 0.008f*0.5f, 1.0f};
+    public static float[] luzVenus = {0.334f*0.5f, 0.117f*0.5f, 0.008f*0.5f, 1.0f};
+    public static float[] luzTierra = {0.045f*0.2f, 0.170f*0.2f, 0.638f*0.2f, 1.0f};
+    public static float[] luzNeptuno = {0.005f*0.5f, 0.042f*0.5f, 0.662f*0.5f, 1.0f};
+    public static float[] luzKepler22b = {0.127f*0.5f, 0.444f*0.5f, 0.604f*0.5f, 1.0f};
+    public static float[] luzUrano = {0.185f*0.5f, 0.276f*0.5f, 0.439f*0.5f, 1.0f};
+    public static float[] luzAnillosUrano = {0.753f, 0.753f, 0.753f, 1.0f};
+    public static float[] luzSaturno = {0.549f*0.2f, 0.364f*0.2f, 0.145f*0.2f, 1.0f};
+    public static float[] luzAnillosSaturno = {0.753f, 0.753f, 0.753f, 1.0f};
+    public static float[] luzJupiter = {0.800f*0.5f, 0.425f*0.5f, 0.117f*0.5f, 1.0f};
+    public static float[] luzSol = {1.0f, 1.0f, 0.0f, 1.0f};
+    public static float[] luzElnathAzul = {0.4f, 0.6f, 1.0f, 1.0f};
+    public static float[] luzElnathNaranja = {1.0f, 0.6f, 0.4f, 1.0f};
+    public static float[] luzSiriusA = {0.9f, 0.9f, 0.95f, 1.0f};
+    public static float[] luzPollux = {0.8f, 0.4f, 0.2f, 1.0f};
+    public static float[] luzArcturus = {1.0f, 0.6f, 0.2f, 1.0f};
+}
