@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
+import ec.edu.uce.pa.renderers.RenderLuzLampara;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -27,13 +28,14 @@ public class ColorPantallaActivity extends AppCompatActivity {
 //        view.setRenderer(new RenderColores());
 
 //        view.setRenderer(new RenderPiramideTextura(getApplicationContext()));
-        view.setRenderer(new RenderSistemaSolar(getApplicationContext()));
+        //view.setRenderer(new RenderSistemaSolar(getApplicationContext()));
         //view.setRenderer(new RenderCuadradoTextura(getApplicationContext()));
         //view.setRenderer(new RenderBlender(getApplicationContext()));
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         //view.setRenderer(new RenderAstroLuces(getApplicationContext()));
+        view.setRenderer(new RenderLuzLampara(getApplicationContext()));
         setContentView(view);
     }
 

@@ -94,6 +94,7 @@ class RenderSpotLight implements GLSurfaceView.Renderer {
             gl.glLightf(LUZ1, gl.GL_SPOT_CUTOFF, 10);
             gl.glLightf(LUZ1, gl.GL_SPOT_EXPONENT, 1);
 
+
             planoIluminacion.dibujar(gl);
         }gl.glPopMatrix();
 
