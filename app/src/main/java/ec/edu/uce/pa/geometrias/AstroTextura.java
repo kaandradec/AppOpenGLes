@@ -13,12 +13,8 @@ import ec.edu.uce.pa.utilidades.Funciones;
 
 public class AstroTextura {
     private FloatBuffer bufferVertices;
-    private FloatBuffer bufferColores;
-    private FloatBuffer bufferNormales;
     private FloatBuffer bufferTexturas;
     private final static int comPorVertices = 3;
-    private final static int comPorColor = 4;
-
     private int franjas, cortes;
     private int arrayTexturas[];
 
@@ -28,24 +24,16 @@ public class AstroTextura {
         this.cortes = cortes;
 
         float [] vertices ;
-        float [] colores;
-        float [] normales;
         float [] texturas;
 
         int iVertice = 0;
-        int iColor = 0;
-        int iNormal = 0;
         int iTextura = 0;
 
 
         vertices = new float[3 * ((cortes * 2 + 2) * franjas)];// *2 porque son dos triangulos para cada cuadrado y +2 de los vertices duplicados para los triangulos degenerados
-        colores = new float[4 * ((cortes * 2 + 2) * franjas)];
-        normales = new float[3 * ((cortes * 2 + 2) * franjas)];
         texturas = new float[2 * ((cortes * 2 + 2) * franjas)];
         int i, j;
 
-        // Bucle para construir las franjas de la esfera
-        // Latitudes
         for(i = 0; i < franjas; i++)  {
             //empieza en -90 grados (-1.57 radianes) incrementa hasta +90 grados  (o +1.57 radianes)
             //Phi   --> angulo de latitud
@@ -77,14 +65,7 @@ public class AstroTextura {
                 vertices[iVertice+3] = radio * cosPhi1 * cosTheta;          //x'
                 vertices[iVertice+4] = radio * (sinPhi1 * ejePolar);    //y'
                 vertices[iVertice+5] = radio * (cosPhi1 * sinTheta);        //z'
-//------------------------------------------------------
-                normales[iVertice+0] = cosPhi0 * cosTheta;          //x
-                normales[iVertice+1] = sinPhi0 ;   //y
-                normales[iVertice+2] = cosPhi0 * sinTheta;        //z
 
-                normales[iVertice+3] = cosPhi0 * cosTheta;          //x'
-                normales[iVertice+4] = sinPhi0;    //y'
-                normales[iVertice+5] = cosPhi0 * sinTheta;        //z'
 //-------------------------------------------------------
                 texturas[iTextura+0] = j * 1.0f/(cortes-1);          //s
                 texturas[iTextura+1] = (i+0) * 1.0f/(franjas-1)*-1;//t
@@ -92,22 +73,7 @@ public class AstroTextura {
                 texturas[iTextura+3] = (i+1) * 1.0f/(franjas-1)*-1;//t'
 
 //--------------------------------------------------------
-
-
-
-                colores[iColor+0] = 1.0f;
-                colores[iColor+1] = 0.5f;
-                colores[iColor+2] = 0.25f;
-                colores[iColor+3] = 1.0f;
-
-                colores[iColor+4] = 0.25f;
-                colores[iColor+5] = 0.5f;
-                colores[iColor+6] = 1.0f;
-                colores[iColor+7] = 1.0f;
-
-                iColor += 2*4;
                 iVertice += 2*3;
-                iNormal+=2*3;
                 iTextura+=2*2;
             }
 
@@ -118,40 +84,26 @@ public class AstroTextura {
             vertices[iVertice+2] = vertices[iVertice+5];
             vertices[iVertice+5] = vertices[iVertice-1];
         }
+
         bufferVertices = Funciones.generarBuffer(vertices);
-        bufferColores = Funciones.generarBuffer(colores);
-        bufferNormales = Funciones.generarBuffer(normales);
         bufferTexturas = Funciones.generarBuffer(texturas);
-
-
     }
-    public void dibujar(GL10 gl, int indiceTextura){
+    public void dibujar(GL10 gl, int indiceTextura) {
         gl.glFrontFace(gl.GL_CW);
 
         bufferVertices.position(0);
-        gl.glVertexPointer(comPorVertices,gl.GL_FLOAT,0,bufferVertices);
-        gl.glColorPointer(comPorColor,gl.GL_FLOAT,0,bufferColores);
-        gl.glNormalPointer(gl.GL_FLOAT,0,bufferNormales);
-        gl.glTexCoordPointer(2, gl.GL_FLOAT, 0 , bufferTexturas);
-
+        gl.glVertexPointer(comPorVertices, gl.GL_FLOAT, 0, bufferVertices);
+        gl.glTexCoordPointer(2, gl.GL_FLOAT, 0, bufferTexturas);
 
         gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
-        gl.glEnableClientState(gl.GL_COLOR_ARRAY);
-        gl.glEnableClientState(gl.GL_NORMAL_ARRAY);
         gl.glEnableClientState(gl.GL_TEXTURE_COORD_ARRAY);
 
-        bufferColores.position(0);
-
-        gl.glEnableClientState(gl.GL_COLOR_ARRAY);
-
-
-        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, franjas * cortes *2);
-
+        gl.glBindTexture(gl.GL_TEXTURE_2D, arrayTexturas[indiceTextura]);
+        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, franjas * cortes * 2);
 
         gl.glFrontFace(gl.GL_CCW);
         gl.glDisableClientState(gl.GL_VERTEX_ARRAY);
-        gl.glDisableClientState(gl.GL_COLOR_ARRAY);
-        gl.glDisableClientState(gl.GL_NORMAL_ARRAY);
+        gl.glDisableClientState(gl.GL_TEXTURE_COORD_ARRAY);
     }
 
     public void habilitarTexturas (GL10 gl, int numeroTexturas){

@@ -15,17 +15,29 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
 import ec.edu.uce.pa.R;
+import ec.edu.uce.pa.renderers.RenderAstroLuces;
 import ec.edu.uce.pa.renderers.RenderCarro;
+import ec.edu.uce.pa.renderers.RenderCirculo;
+import ec.edu.uce.pa.renderers.RenderColores;
+import ec.edu.uce.pa.renderers.RenderCuadradoBlend;
+import ec.edu.uce.pa.renderers.RenderCuadradoMipMap;
 import ec.edu.uce.pa.renderers.RenderCubo;
+import ec.edu.uce.pa.renderers.RenderCuboNeblina;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
 import ec.edu.uce.pa.renderers.RenderFigurasAntiguo;
-import ec.edu.uce.pa.renderers.RenderPractica;
+import ec.edu.uce.pa.renderers.RenderLuzLampara;
+import ec.edu.uce.pa.renderers.RenderPiramideTextura;
+import ec.edu.uce.pa.renderers.RenderPlanoMaterial;
 import ec.edu.uce.pa.renderers.RenderPrueba;
+import ec.edu.uce.pa.renderers.RenderPunto;
+import ec.edu.uce.pa.renderers.RenderPushPop;
+import ec.edu.uce.pa.renderers.RenderSpotLight;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
 
-public class Activity_Figuras extends AppCompatActivity {
+public class OpenGL10Activity extends AppCompatActivity {
     private GLSurfaceView view;
     private GLSurfaceView.Renderer renderer;
 
@@ -35,7 +47,7 @@ public class Activity_Figuras extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_figuras);
+        setContentView(R.layout.layout_opengl_10);
 
         view = new GLSurfaceView(this);
         view.setEGLContextClientVersion(1);
@@ -62,40 +74,89 @@ public class Activity_Figuras extends AppCompatActivity {
                 if(optionSel>0){
 
                     if(optionSel ==  R.id.rbHexagonoColorFijo){
-                        renderer = new RenderEsfera();
+                        renderer = new RenderColores();
                     }
                     if(optionSel ==  R.id.rbHexagonoColorStride){
-                        renderer = new RenderPractica();
+                        renderer = new RenderPunto();//REVISAR
                     }
                     if(optionSel ==  R.id.rbHexagonoProyeccion){
-                        renderer = new RenderPrueba();
+                        renderer = new RenderTriangulo();//REVISAR
                     }
                     if(optionSel ==  R.id.rbHexagonoTextura){
-                        renderer = new RenderCarro();
+                        renderer = new RenderCirculo();//REVISAR
                     }
                     if(optionSel ==  R.id.rbCarro){
-                        renderer = new RenderTriangulo();
+                        renderer = new RenderCarro();
+                    }
+                    if(optionSel ==  R.id.rbPushPop){
+                        renderer = new RenderPushPop();
                     }
                     if(optionSel ==  R.id.rbCubo){
                         renderer = new RenderCubo();
                     }
-                    if(optionSel ==  R.id.rbSpotLightAnimada){
+                    if(optionSel ==  R.id.rbDeptTest){
                         renderer = new RenderDepthTest();
                     }
-                    if(optionSel ==  R.id.rbUniversoEscalaMateriales){
-                        //renderer = new RenderIcosfera();
+                    if(optionSel ==  R.id.rbCuboMovTeclado){
+                        //renderer = new RenderFiguras();//FALTAA!!!
                         Intent intent = new Intent(view.getContext(), TrabajoFiguras.class);
                         startActivity(intent);
                         finish();
                         return;
-
                     }
+                    if(optionSel ==  R.id.rbEsfera){
+                        renderer = new RenderEsfera();
+                    }
+                    if(optionSel ==  R.id.rbPlanosIluminacion){
+                        renderer = new RenderPlanoMaterial();//REVISAR
+                    }
+                    if(optionSel ==  R.id.rbFiguras3d){//12
+                        renderer = new RenderPrueba();//FALTA
+                    }
+                    if(optionSel ==  R.id.rbSpotLightAnimada){//13
+                        renderer = new RenderSpotLight();
+                    }
+                    if(optionSel ==  R.id.rbUniversoEscalaMateriales){//14
+                        renderer = new RenderAstroLuces(getApplicationContext());//REVISAR
+                    }
+                    if(optionSel ==  R.id.rbUniversoEscalaTexturas){//15
+                        renderer = new RenderSistemaSolar(getApplicationContext());//REVISAR
+                    }
+                    if(optionSel ==  R.id.rbBlending){//16
+                        renderer = new RenderCuadradoBlend(getApplicationContext());
+                    }
+                    if(optionSel ==  R.id.rbPiramideTextura){//17
+                        renderer = new RenderPiramideTextura(getApplicationContext());
+                    }
+                    if(optionSel ==  R.id.rbMipMap){//18
+                        renderer = new RenderCuadradoMipMap(getApplicationContext());
+                    }
+                    if(optionSel ==  R.id.rbNeblina){//19
+                        renderer = new RenderCuboNeblina();//REVISAR
+                    }
+                    if(optionSel ==  R.id.rbLinternaPlano){//20
+                        renderer = new RenderLuzLampara(getApplicationContext());
+                    }
+
+
+
+//                    if(optionSel ==  R.id.rbSpotLightAnimada){
+//                        renderer = new RenderDepthTest();
+//                    }
+//                    if(optionSel ==  R.id.rbUniversoEscalaMateriales){
+//                        //renderer = new RenderIcosfera();
+//                        Intent intent = new Intent(view.getContext(), TrabajoFiguras.class);
+//                        startActivity(intent);
+//                        finish();
+//                        return;
+//
+//                    }
 
                     view.setRenderer(renderer);
                     setContentView(view);
 
                 }else {
-                    Toast.makeText(Activity_Figuras.this, "Seleccione una figura", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OpenGL10Activity.this, "Seleccione una figura", Toast.LENGTH_SHORT).show();
                 }
 
                 //input numero de primitivas a dibujar -> int
@@ -135,18 +196,18 @@ public class Activity_Figuras extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                inputNumPrimitivas.setHint("Cantidad a dibujar");
+                inputNumPrimitivas.setHint("Puntos a dibujar| Max:12");
                 findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
             }
         });
 
-        RadioButton rbLinea = findViewById(R.id.rbHexagonoProyeccion);
-        rbLinea.setOnClickListener(new View.OnClickListener() {
+        RadioButton rbCasa = findViewById(R.id.rbHexagonoProyeccion);
+        rbCasa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                inputNumPrimitivas.setHint("Cantidad a dibujar");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+                //inputNumPrimitivas.setHint("Cantidad a dibujar");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
             }
         });
 
@@ -156,8 +217,8 @@ public class Activity_Figuras extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+                //inputNumPrimitivas.setHint("Segmentos para el circulo");
+                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
             }
         });
 
@@ -320,7 +381,7 @@ public class Activity_Figuras extends AppCompatActivity {
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Activity_Figuras.this, Activity_Figuras.class );
+        Intent intent = new Intent(OpenGL10Activity.this, OpenGL10Activity.class );
         startActivity(intent);
         finish();
     }

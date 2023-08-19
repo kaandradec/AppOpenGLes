@@ -59,8 +59,8 @@ public class RenderColores implements GLSurfaceView.Renderer {
 //                ColorPantallaActivity.alpha);
 
         //gl.glClearColor(arrColor[0], arrColor[1],arrColor[2],arrColor[3]);
-
-        gl.glClearColor(vIncremento, 0, vIncremento, 0.5f);
+        gl.glClearColor((float) Math.cos(2*vIncremento), (float) Math.cos(vIncremento), (float) Math.cos(vIncremento/5), 0.1f);
+        //gl.glClearColor(vIncremento, 0, vIncremento, 0.5f);
 
     }
 }

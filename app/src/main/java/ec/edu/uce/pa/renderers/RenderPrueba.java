@@ -9,6 +9,7 @@ import ec.edu.uce.pa.geometrias.Cilindro;
 import ec.edu.uce.pa.geometrias.Circulo;
 import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.Cubo;
+import ec.edu.uce.pa.geometrias.Elipse;
 import ec.edu.uce.pa.geometrias.Plano;
 import ec.edu.uce.pa.geometrias.Prisma;
 import ec.edu.uce.pa.geometrias.Tablero;
@@ -24,6 +25,7 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
     private Cono conoPlano, conoPlano2,conoPlano8seg, conoPiso;
     private Cilindro cilindro, cilindro2, cajaBlanca;
     private Prisma prisma, prismaTablero;
+    private Elipse elipse;
 
     private Tablero tablero;
 
@@ -41,7 +43,7 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         conoPiso = new Cono(1,2.5f,20, MisColores.blancoYnegro(20));
 
         cubo = new Cubo();
-        prisma = new Prisma(1,2,3, new float[] {1, 0.5f, 0, 1});
+        prisma = new Prisma(1,2,5, new float[] {1, 0.5f, 0, 1});
 
         circulo = new Circulo(1,40,new double[]{1,1,1,1});
 
@@ -49,6 +51,8 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         tablero = new Tablero(MisColores.blancoYnegro(16+8+1)); //Por cada fila 2 triangulos degenerados
         cajaBlanca = new Cilindro(2.5f,0.5f,4,new double[]{0.65,0.58,0.35,1});
         prismaTablero = new Prisma(3,0.5f,4, new float[]{0.65f,0.58f,0.35f,1});
+
+        elipse = new Elipse(0,0,0.5f,0.25f,30);
 
     }
 
@@ -106,30 +110,30 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
 
 
         //CONOs + Cilindro---------------
-//        gl.glPushMatrix();
-//            gl.glPushMatrix();
-//            gl.glTranslatef(0,0.5f,0);
-//            conoPlano8seg.dibujar(gl);
-//            gl.glPopMatrix();
-//
-//            gl.glPushMatrix();
-//            cilindro2.dibujar(gl);
-//            gl.glPopMatrix();
-//
-//            gl.glPushMatrix();
-//            gl.glTranslatef(0,-0.5f,0);
-//            gl.glScalef(2,1,2);
-//            conoPlano2.dibujar(gl);
-//            gl.glPopMatrix();
-//
-//            gl.glPushMatrix();
-//            gl.glTranslatef(0,-0.5f,0);
-//            gl.glScalef(2,1,2);
-//            gl.glRotatef(180,1,0,0);
-//            conoPiso.dibujar(gl);
-//            gl.glPopMatrix();
-//
-//        gl.glPopMatrix();
+        gl.glPushMatrix();
+            gl.glPushMatrix();
+            gl.glTranslatef(0,0.5f,0);
+            conoPlano8seg.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            cilindro2.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            gl.glTranslatef(0,-0.5f,0);
+            gl.glScalef(2,1,2);
+            conoPlano2.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            gl.glTranslatef(0,-0.5f,0);
+            gl.glScalef(2,1,2);
+            gl.glRotatef(180,1,0,0);
+            conoPiso.dibujar(gl);
+            gl.glPopMatrix();
+
+        gl.glPopMatrix();
 
         //-------------------------------------
         //CUBO---------------------------------
@@ -149,53 +153,64 @@ public class RenderPrueba implements GLSurfaceView.Renderer {
         gl.glPopMatrix();
         //-------------------------------------
         //CIRCULO---------------------------------
-//        gl.glPushMatrix();
-//        gl.glTranslatef(0,-0.5f,0);
-//        gl.glScalef(2.1f,1,2.1f);
-//        gl.glRotatef(90, 1,0,0);
-//        circulo.dibujar(gl);
-//        gl.glPopMatrix();
+        gl.glPushMatrix();
+        gl.glTranslatef(0,-0.5f,0);
+        gl.glScalef(2.1f,1,2.1f);
+        gl.glRotatef(90, 1,0,0);
+        circulo.dibujar(gl);
+        gl.glPopMatrix();
+        //-------------------------------------
+        //ELIPSE---------------------------------
+        gl.glPushMatrix();
+        gl.glTranslatef(0,8f,0);
+        gl.glRotatef(vIncremento, 1,1,1);
+        elipse.dibujar(gl);
+        gl.glPopMatrix();
         //-------------------------------------
 
 
+        gl.glPushMatrix();{
+            gl.glTranslatef(0,-4,0);
+            //TABLERO ENTERO>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            gl.glPushMatrix();
+            gl.glScalef(0.4f,0.4f,0.4f);
+
+            gl.glPushMatrix();
+            gl.glTranslatef(-2,0,2);
+            tablero.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            gl.glTranslatef(2,0,2);
+            tablero.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            gl.glTranslatef(-2,0,-2);
+            tablero.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPushMatrix();
+            gl.glTranslatef(2,0,-2);
+            tablero.dibujar(gl);
+            gl.glPopMatrix();
+
+            gl.glPopMatrix();
+
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+            //BORDE de TABLERO-----------------------------
+            gl.glPushMatrix();
+            gl.glScalef(0.8f,0.5f,0.8f);
+            gl.glTranslatef(0,-.25f,0);
+            gl.glRotatef(45, 0,1,0);
+            prismaTablero.dibujar(gl);
+            gl.glPopMatrix();
+            //--------------------------------------------
+
+        }gl.glPopMatrix();
 
 
-        //TABLERO ENTERO>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        gl.glPushMatrix();
-        gl.glScalef(0.4f,0.4f,0.4f);
-
-        gl.glPushMatrix();
-        gl.glTranslatef(-2,0,2);
-        tablero.dibujar(gl);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glTranslatef(2,0,2);
-        tablero.dibujar(gl);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glTranslatef(-2,0,-2);
-        tablero.dibujar(gl);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glTranslatef(2,0,-2);
-        tablero.dibujar(gl);
-        gl.glPopMatrix();
-
-        gl.glPopMatrix();
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        //BORDE de TABLERO-----------------------------
-        gl.glPushMatrix();
-        gl.glScalef(0.8f,0.5f,0.8f);
-        gl.glTranslatef(0,-.25f,0);
-        gl.glRotatef(45, 0,1,0);
-        prismaTablero.dibujar(gl);
-        gl.glPopMatrix();
-        //-------------------------------------
 
 
 

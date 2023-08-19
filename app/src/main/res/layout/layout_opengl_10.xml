@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/kanit"
+        android:lineSpacingExtra="-35dp"
+        android:text="EJERCICIOS OPENGLES 1.0"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn"
+        android:text="Salir"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cajaDibujar"
+        app:layout_constraintVertical_bias="0.459" />
+
+    <LinearLayout
+        android:id="@+id/cajaDibujar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="140dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+        <EditText
+            android:id="@+id/inputNumPrimitivas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:ems="10"
+            android:hint="Cantidad a dibujar"
+            android:inputType="number"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnDibujar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:text="Dibujar"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="291dp"
+        android:layout_height="432dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="79dp"
+        app:layout_constraintBottom_toTopOf="@+id/cajaDibujar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:id="@+id/rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/rgOpciones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoColorFijo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pantalla Colores"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoColorStride"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Puntos Varios"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoProyeccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Casa"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoTextura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Circulo"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbCarro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carro"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbPushPop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push Pop"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbCubo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cubo"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbDeptTest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Func Dept Test"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbCuboMovTeclado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cubo Mov Teclado"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbEsfera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Esfera"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbPlanosIluminacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Planos Iluminacion"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbFiguras3d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Figuras 3D"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbSpotLightAnimada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Spot Light Animada"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbUniversoEscalaMateriales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Universo Escala Materiales"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbUniversoEscalaTexturas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Universo Escala Texturas"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbBlending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Blending"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbPiramideTextura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Piramide Textura"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbMipMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MipMap"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbNeblina"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Neblina"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbLinternaPlano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Linterna Plano"
+                    android:textSize="16dp" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

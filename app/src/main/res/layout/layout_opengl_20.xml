@@ -13,77 +13,11 @@
 
         android:fontFamily="@font/kanit"
         android:lineSpacingExtra="-35dp"
-        android:text="EJERCICIOS OPENGLES"
+        android:text="EJERCICIOS OPENGLES 2.0"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
-
-    <RadioGroup
-        android:id="@+id/rgOpciones"
-        android:layout_width="353dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="47dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <RadioButton
-            android:id="@+id/rbHexagonoColorFijo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pintar Pantalla"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbHexagonoColorStride"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Puntos"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbHexagonoProyeccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lineas"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbHexagonoTextura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Carro"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbCarro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Triangulos"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbCubo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cubo"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbSpotLightAnimada"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Poligonos"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/rbUniversoEscalaMateriales"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Objeto Blender"
-            android:textSize="16dp"/>
-    </RadioGroup>
 
     <Button
         android:id="@+id/btnSalir"
@@ -104,13 +38,14 @@
         android:id="@+id/cajaDibujar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="140dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgOpciones"
-        app:layout_constraintVertical_bias="0.272">
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
 
         <EditText
             android:id="@+id/inputNumPrimitivas"
@@ -131,5 +66,62 @@
             android:textSize="18dp" />
 
     </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="308dp"
+        android:layout_height="318dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="79dp"
+        app:layout_constraintBottom_toTopOf="@+id/cajaDibujar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:id="@+id/rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/rgOpciones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoColorFijo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hexagono Color Fijo"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoColorStride"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hexagono Color Stride"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoProyeccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hexagono Proyeccion"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbHexagonoTextura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hexagono Textura"
+                    android:textSize="16dp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

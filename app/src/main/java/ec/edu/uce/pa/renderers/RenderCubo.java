@@ -102,7 +102,7 @@ public class RenderCubo implements GLSurfaceView.Renderer {
     float gamma = 0;
     @Override
     public void onDrawFrame(GL10 gl) {
-        vIncremento += 0.22f;
+        vIncremento += 0.02f;
 
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(gl.GL_MODELVIEW);
@@ -135,7 +135,7 @@ public class RenderCubo implements GLSurfaceView.Renderer {
 
         gl.glPushMatrix();
 
-        ALGULO360+=5;//VELOCIDAD con la que gira en la trayectoria de elipse
+        ALGULO360+=1;//VELOCIDAD con la que gira en la trayectoria de elipse
         if (ALGULO360 ==360) ALGULO360=0;
         alfa=(float)(ALGULO360*(Math.PI/180));
         // Aplica la rotación alrededor del eje Z

@@ -14,8 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
-import ec.edu.uce.pa.renderers.RenderFiguras;
-
+import ec.edu.uce.pa.renderers.RenderFigurasAntiguo;
+import ec.edu.uce.pa.renders.RenderFiguras;
 
 
 public class TrabajoFiguras extends AppCompatActivity {
@@ -35,12 +35,12 @@ public class TrabajoFiguras extends AppCompatActivity {
             public void onClick(View v) {
 
                 renderer = null;
-                renderer = new RenderFiguras();
+                renderer = new RenderFigurasAntiguo();
                 view.setRenderer(renderer);
                 setContentView(view);
 
                 //Controlador: nos dice si gira o no nuestro mundo.
-                RenderFiguras.giraMundo = true;
+                RenderFigurasAntiguo.giraMundo = true;
 
                 Toast toast = Toast.makeText(TrabajoFiguras.this , "MOVIENDO EL MUNDO", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -55,15 +55,18 @@ public class TrabajoFiguras extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 renderer = null;
-                renderer = new RenderFiguras();
+                renderer = new RenderFigurasAntiguo();
                 view.setRenderer(renderer);
                 setContentView(view);
 
-                RenderFiguras.giraMundo = false;
+                RenderFigurasAntiguo.giraMundo = false;
 
                 Toast toast = Toast.makeText(TrabajoFiguras.this , "MOVIENDO LA CAMARA", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
+                Toast toast2 = Toast.makeText(TrabajoFiguras.this , "PRESIONE UNA FLECHA PARA GIRAR", Toast.LENGTH_LONG);
+                toast2.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_VERTICAL, 0, 0);
+                toast2.show();
 
             }
         });
@@ -77,53 +80,53 @@ public class TrabajoFiguras extends AppCompatActivity {
         //Tecla derecha:
         if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
             Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = 1;
-            RenderFiguras.rx = 0f;
-            RenderFiguras.ry = 1f;
-            RenderFiguras.rz = 0f;
+            RenderFigurasAntiguo.anguloSigno = 1;
+            RenderFigurasAntiguo.rx = 0f;
+            RenderFigurasAntiguo.ry = 1f;
+            RenderFigurasAntiguo.rz = 0f;
 
-            RenderFiguras.ejex =1;
-            RenderFiguras.ejey =0;
-            RenderFiguras.ejez =1;
+            RenderFigurasAntiguo.ejex =1;
+            RenderFigurasAntiguo.ejey =0;
+            RenderFigurasAntiguo.ejez =1;
             return true;
         }
         //Tecla izquierda:
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
             Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = -1;
-            RenderFiguras.rx = 0f;
-            RenderFiguras.ry = 1f;
-            RenderFiguras.rz = 0f;
+            RenderFigurasAntiguo.anguloSigno = -1;
+            RenderFigurasAntiguo.rx = 0f;
+            RenderFigurasAntiguo.ry = 1f;
+            RenderFigurasAntiguo.rz = 0f;
 
-            RenderFiguras.ejex =1;
-            RenderFiguras.ejey =0;
-            RenderFiguras.ejez =1;
+            RenderFigurasAntiguo.ejex =1;
+            RenderFigurasAntiguo.ejey =0;
+            RenderFigurasAntiguo.ejez =1;
             return true;
         }
         //Tecla abajo:
         if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = 1;
-            RenderFiguras.rx = 1f;
-            RenderFiguras.ry = 0f;
-            RenderFiguras.rz = 0f;
+            RenderFigurasAntiguo.anguloSigno = 1;
+            RenderFigurasAntiguo.rx = 1f;
+            RenderFigurasAntiguo.ry = 0f;
+            RenderFigurasAntiguo.rz = 0f;
 
-            RenderFiguras.ejex =0;
-            RenderFiguras.ejey =1;
-            RenderFiguras.ejez =1;
+            RenderFigurasAntiguo.ejex =0;
+            RenderFigurasAntiguo.ejey =1;
+            RenderFigurasAntiguo.ejez =1;
             return true;
         }
         //Tecla arriba:
         if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
             Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = -1;
-            RenderFiguras.rx = 1f;
-            RenderFiguras.ry = 0f;
-            RenderFiguras.rz = 0f;
+            RenderFigurasAntiguo.anguloSigno = -1;
+            RenderFigurasAntiguo.rx = 1f;
+            RenderFigurasAntiguo.ry = 0f;
+            RenderFigurasAntiguo.rz = 0f;
 
-            RenderFiguras.ejex =0;
-            RenderFiguras.ejey =1;
-            RenderFiguras.ejez =1;
+            RenderFigurasAntiguo.ejex =0;
+            RenderFigurasAntiguo.ejey =1;
+            RenderFigurasAntiguo.ejez =1;
             return true;
         }
 
@@ -150,25 +153,25 @@ public class TrabajoFiguras extends AppCompatActivity {
                         if (deltaX > 0) {
                             // Deslizamiento hacia la derecha detectado
                             //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
-                            RenderFiguras.anguloSigno = 1;
-                            RenderFiguras.rx = 0f;
-                            RenderFiguras.ry = 1f;
-                            RenderFiguras.rz = 0f;
+                            RenderFigurasAntiguo.anguloSigno = 1;
+                            RenderFigurasAntiguo.rx = 0f;
+                            RenderFigurasAntiguo.ry = 1f;
+                            RenderFigurasAntiguo.rz = 0f;
 
-                            RenderFiguras.ejex =1;
-                            RenderFiguras.ejey =0;
-                            RenderFiguras.ejez =1;
+                            RenderFigurasAntiguo.ejex =1;
+                            RenderFigurasAntiguo.ejey =0;
+                            RenderFigurasAntiguo.ejez =1;
                         } else {
                             // Deslizamiento hacia la izquierda detectado
                             //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
-                            RenderFiguras.anguloSigno = -1;
-                            RenderFiguras.rx = 0f;
-                            RenderFiguras.ry = 1f;
-                            RenderFiguras.rz = 0f;
+                            RenderFigurasAntiguo.anguloSigno = -1;
+                            RenderFigurasAntiguo.rx = 0f;
+                            RenderFigurasAntiguo.ry = 1f;
+                            RenderFigurasAntiguo.rz = 0f;
 
-                            RenderFiguras.ejex =1;
-                            RenderFiguras.ejey =0;
-                            RenderFiguras.ejez =1;
+                            RenderFigurasAntiguo.ejex =1;
+                            RenderFigurasAntiguo.ejey =0;
+                            RenderFigurasAntiguo.ejez =1;
                         }
                     }
                 } else {
@@ -176,25 +179,25 @@ public class TrabajoFiguras extends AppCompatActivity {
                         if (deltaY > 0) {
                             // Deslizamiento hacia abajo detectado
                             //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
-                            RenderFiguras.anguloSigno = 1;
-                            RenderFiguras.rx = 1f;
-                            RenderFiguras.ry = 0f;
-                            RenderFiguras.rz = 0f;
+                            RenderFigurasAntiguo.anguloSigno = 1;
+                            RenderFigurasAntiguo.rx = 1f;
+                            RenderFigurasAntiguo.ry = 0f;
+                            RenderFigurasAntiguo.rz = 0f;
 
-                            RenderFiguras.ejex =0;
-                            RenderFiguras.ejey =1;
-                            RenderFiguras.ejez =1;
+                            RenderFigurasAntiguo.ejex =0;
+                            RenderFigurasAntiguo.ejey =1;
+                            RenderFigurasAntiguo.ejez =1;
                         } else {
                             // Deslizamiento hacia arriba detectado
                             //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
-                            RenderFiguras.anguloSigno = -1;
-                            RenderFiguras.rx = 1f;
-                            RenderFiguras.ry = 0f;
-                            RenderFiguras.rz = 0f;
+                            RenderFigurasAntiguo.anguloSigno = -1;
+                            RenderFigurasAntiguo.rx = 1f;
+                            RenderFigurasAntiguo.ry = 0f;
+                            RenderFigurasAntiguo.rz = 0f;
 
-                            RenderFiguras.ejex =0;
-                            RenderFiguras.ejey =1;
-                            RenderFiguras.ejez =1;
+                            RenderFigurasAntiguo.ejex =0;
+                            RenderFigurasAntiguo.ejey =1;
+                            RenderFigurasAntiguo.ejez =1;
                         }
                     }
                 }
@@ -206,7 +209,7 @@ public class TrabajoFiguras extends AppCompatActivity {
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(TrabajoFiguras.this, Activity_Figuras.class );
+        Intent intent = new Intent(TrabajoFiguras.this, OpenGL10Activity.class );
         startActivity(intent);
         finish();
     }

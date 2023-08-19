@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.activities.Activity_Figuras;
+import ec.edu.uce.pa.activities.OpenGL10Activity;
 
 public class Carro {
 
@@ -18,7 +18,8 @@ public class Carro {
     private final static int comPorColor = 4;
 
 
-    private int puntosRueda = Activity_Figuras.numPrimitivas;//input Numero de primitavas
+    //private int puntosRueda = OpenGL10Activity.numPrimitivas;//input Numero de primitavas
+    private int puntosRueda = 15;
     private int verticesTotales = 0;
     //int NUM_VERTICES = 20;
 

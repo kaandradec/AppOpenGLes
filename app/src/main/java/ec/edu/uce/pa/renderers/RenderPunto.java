@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 import ec.edu.uce.pa.geometrias.Punto;
 
 public class RenderPunto implements GLSurfaceView.Renderer {
-//    public static int numPuntos;
+    public static int numPuntos;
 //    public RenderPunto(int numPuntos){
 //        this.numPuntos = numPuntos;
 //    }

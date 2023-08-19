@@ -37,8 +37,6 @@ public class RenderSistemaSOOLAAR implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();//
         gl.glFrustumf(left, right, bottom, top, near, far);
 
-
-
     }
     private float cameraX = 0.0f; // Posición inicial de la cámara en el eje X
     private float cameraZ = 0.0f; // Posición inicial de la cámara en el eje Z

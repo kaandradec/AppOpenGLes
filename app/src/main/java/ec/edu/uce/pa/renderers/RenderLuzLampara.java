@@ -119,7 +119,7 @@ public class RenderLuzLampara implements GLSurfaceView.Renderer {
             gl.glPushMatrix();{//Plano pared atras
                 gl.glTranslatef(0,0.5f,0);
                 gl.glScalef(1,1.5f,1);
-                gl.glRotatef(90,1,0,0);
+                gl.glRotatef(180,1,0,0);
                 planoIluminacion.dibujar(gl);
             }gl.glPopMatrix();
             gl.glPushMatrix();{//Plano pared der

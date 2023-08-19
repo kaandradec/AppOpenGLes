@@ -26,7 +26,7 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glEnable(GL10.GL_DEPTH_TEST);
         cubo = new Cubo();
         circulo = new Circulo( 3f,  30, new double[]{0,0,0,1});
-        //conoPlano = new Cono(3f,  0,30, new double[]{0.1, 0.1 ,0.1, 1});
+        conoPlano = new Cono(3f,  0,30, new double[]{0.1, 0.1 ,0.1, 1});
         plano = new Plano(new float[] {.88f, 0.88f, 0.88f, 1.0f});
 
 
@@ -104,7 +104,7 @@ public class RenderPractica implements GLSurfaceView.Renderer {
         gl.glPushMatrix();
         gl.glTranslatef(0,-6,0f);
         gl.glScalef(0.9f,0.9f,0.9f);
-        //conoPlano.dibujar(gl);
+        conoPlano.dibujar(gl);
         gl.glPopMatrix();
         //......................................
 

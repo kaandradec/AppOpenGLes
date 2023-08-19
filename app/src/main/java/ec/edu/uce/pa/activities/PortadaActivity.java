@@ -11,18 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PortadaActivity extends AppCompatActivity {
 
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_principal);
+        setContentView(R.layout.layout_opengl_10);
 
 
-        Button btnEjercicios = findViewById(R.id.btnMenu);
-        btnEjercicios.setOnClickListener(new View.OnClickListener() {
+        Button btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), EjerciciosActivity.class);
@@ -31,7 +31,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
-//        Toast.makeText(this, "Hola Mundo", Toast.LENGTH_SHORT).show();
 
         Button btnSalir = findViewById(R.id.btnSalir);
         btnSalir.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +50,5 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-//        Toast.makeText(this, "Voy a dormir", Toast.LENGTH_SHORT).show();
     }
 }

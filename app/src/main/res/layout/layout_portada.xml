@@ -15,7 +15,7 @@
 
         android:fontFamily="@font/kanit"
         android:lineSpacingExtra="-35dp"
-        android:text="Programacion Avanzada"
+        android:text="Programacion Avanzada I"
         android:textAlignment="center"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn"
 
-        android:text="Ejercicios"
+        android:text="Menú"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/btnSalir"
         app:layout_constraintEnd_toEndOf="parent"

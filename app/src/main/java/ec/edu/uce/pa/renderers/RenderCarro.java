@@ -51,9 +51,6 @@ public class RenderCarro implements GLSurfaceView.Renderer {
         gl.glScalef(1,0.5f,1);//Escalar un punto en X,Y,Z
 
 
-
-
-
         carro.dibujar(gl);
 
     }

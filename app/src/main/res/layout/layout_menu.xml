@@ -1,67 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="313dp"
+        android:layout_height="36dp"
 
         android:fontFamily="@font/kanit"
         android:lineSpacingExtra="-35dp"
-        android:text="Programacion Avanzada"
+        android:text="OpenGLes"
         android:textAlignment="center"
-        android:textSize="50sp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnColorPantalla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="333dp"
-        android:layout_height="300dp"
-        android:src="@drawable/objetoszoom1"
-        app:layout_constraintBottom_toTopOf="@+id/btnMenu"
+    <Button
+        android:id="@+id/btnColorPantalla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/btn"
+        android:text="OpenGLes 1.0"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        tools:layout_editor_absoluteY="321dp" />
 
     <Button
-        android:id="@+id/btnMenu"
+        android:id="@+id/btnFiguras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
         android:background="@drawable/btn"
-
-        android:text="Ejercicios"
+        android:text="OpenGLes 2.0"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSalir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="420dp" />
 
-    <Button
-        android:id="@+id/btnSalir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/btn"
-        android:text="Salir"
-
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
