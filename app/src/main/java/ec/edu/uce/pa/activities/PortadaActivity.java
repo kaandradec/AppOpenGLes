@@ -18,14 +18,14 @@ public class PortadaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_opengl_10);
+        setContentView(R.layout.layout_portada);
 
 
         Button btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EjerciciosActivity.class);
+                Intent intent = new Intent(view.getContext(), MenuActivity.class);
                 startActivity(intent);
                 finish();
 

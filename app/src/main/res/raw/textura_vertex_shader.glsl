@@ -1,17 +1,11 @@
 attribute vec4 posVertexShader;
 attribute vec2 texturaVertex;
-varying vec2 fragTexturaVertex;
+varying vec2 fragTexturavertex;
+uniform mat4 matrizProyeccion;
 
-uniform mat4 matrizModel;      // Matriz de transformación del modelo
-uniform mat4 matrizView;       // Matriz de vista (cámara)
-uniform mat4 matrizProjection; // Matriz de proyección
-void main(){
-    // Calcula la matriz MVP
-    mat4 mvp = matrizProjection * matrizView * matrizModel;
+void main() {
+    //gl_Position = vec4(posVertexShader,0.0,1.0); //La componente w  se encarga de la proyeccion
 
-    // Transforma la posición del vértice utilizando la matriz MVP
-    gl_Position = mvp * posVertexShader;
-
-    gl_PointSize = 80.0;
-    fragTexturaVertex = texturaVertex;
+    gl_Position = matrizProyeccion * posVertexShader;
+    fragTexturavertex = texturaVertex;
 }

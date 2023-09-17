@@ -9,11 +9,9 @@ import ec.edu.uce.pa.geometrias.Punto;
 
 public class RenderPunto implements GLSurfaceView.Renderer {
     public static int numPuntos;
-//    public RenderPunto(int numPuntos){
-//        this.numPuntos = numPuntos;
-//    }
     private float vIncremento = 0f;
     private Punto punto;
+
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         gl.glClearColor(0.234f,0.247f,0.255f,1.0f);

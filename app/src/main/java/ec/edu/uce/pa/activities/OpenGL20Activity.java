@@ -36,6 +36,10 @@ import ec.edu.uce.pa.renderers.RenderPunto;
 import ec.edu.uce.pa.renderers.RenderPushPop;
 import ec.edu.uce.pa.renderers.RenderSpotLight;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
+import ec.edu.uce.pa.renderers20.RenderHexagonoColor;
+import ec.edu.uce.pa.renderers20.RenderHexagonoProyFP;
+import ec.edu.uce.pa.renderers20.RenderHexagonoStride;
+import ec.edu.uce.pa.renderers20.RenderHexagonoTextura;
 
 public class OpenGL20Activity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -50,7 +54,7 @@ public class OpenGL20Activity extends AppCompatActivity {
         setContentView(R.layout.layout_opengl_20);
 
         view = new GLSurfaceView(this);
-        view.setEGLContextClientVersion(1);
+        view.setEGLContextClientVersion(2);
 
         renderer = null;
 
@@ -74,16 +78,16 @@ public class OpenGL20Activity extends AppCompatActivity {
                 if (optionSel > 0) {
 
                     if (optionSel == R.id.rbHexagonoColorFijo) {
-                        renderer = new RenderColores();
+                        renderer = new RenderHexagonoColor(getApplicationContext());
                     }
                     if (optionSel == R.id.rbHexagonoColorStride) {
-                        renderer = new RenderPunto();//REVISAR
+                        renderer = new RenderHexagonoStride(getApplicationContext());
                     }
                     if (optionSel == R.id.rbHexagonoProyeccion) {
-                        renderer = new RenderTriangulo();//REVISAR
+                        renderer = new RenderHexagonoProyFP(getApplicationContext());
                     }
                     if (optionSel == R.id.rbHexagonoTextura) {
-                        renderer = new RenderCirculo();//REVISAR
+                        renderer = new RenderHexagonoTextura(getApplicationContext());
                     }
 
                     view.setRenderer(renderer);
@@ -108,7 +112,7 @@ public class OpenGL20Activity extends AppCompatActivity {
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EjerciciosActivity.class);
+                Intent intent = new Intent(view.getContext(), MenuActivity.class);
                 startActivity(intent);
                 finish();
 

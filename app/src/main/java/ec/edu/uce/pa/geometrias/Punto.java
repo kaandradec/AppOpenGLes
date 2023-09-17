@@ -21,6 +21,11 @@ public class Punto {
 
 
     public Punto(){
+        if(numPuntos ==0 ){
+            numPuntos = 12;
+        }
+
+
         float[] vertices ={
                 4.0f, 4.0f,  //0
                 4.0f, -4.0f, //1
@@ -38,22 +43,6 @@ public class Punto {
                 -1.0f, 1.0f,
 
                 0,0
-
-
-//            4.0f,4.0f, //0
-//            4.0f,-4.0f, //1
-//            -4.0f,-4.0f, //2
-//            -4.0f,4.0f //3
-//                1.0f,1.0f,
-//                4.0f,4.0f,
-//                2.0f,2.0f,
-//                4.0f,-4.0f,
-//                2.0f,-2.0f,
-//                -4.0f,-4.0f,
-//                -2.0f,-2.0f,
-//                -4.0f,4.0f,
-//                -2.0f,2.0f,
-
 
         };
 
@@ -90,6 +79,9 @@ public class Punto {
         gl.glFrontFace(gl.GL_CW);
         gl.glVertexPointer(comPorVertices,gl.GL_FLOAT,0,bufferVertices);
         gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
+
+        System.out.println(numPuntos);
+
 
 
         bufferColores.position(0);

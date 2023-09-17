@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageFilterView2">
 
         <Button
-            android:id="@+id/btnColorPantalla"
+            android:id="@+id/btnOpenGL10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -55,7 +55,7 @@
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/btnFiguras"
+            android:id="@+id/btnOpenGL20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 

@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
+import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolarMaterial;
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderAstroLuces;
 import ec.edu.uce.pa.renderers.RenderCarro;
@@ -117,7 +118,7 @@ public class OpenGL10Activity extends AppCompatActivity {
                         renderer = new RenderSpotLight();
                     }
                     if(optionSel ==  R.id.rbUniversoEscalaMateriales){//14
-                        renderer = new RenderAstroLuces(getApplicationContext());//REVISAR
+                        renderer = new RenderSistemaSolarMaterial();//REVISAR
                     }
                     if(optionSel ==  R.id.rbUniversoEscalaTexturas){//15
                         renderer = new RenderSistemaSolar(getApplicationContext());//REVISAR
@@ -174,7 +175,7 @@ public class OpenGL10Activity extends AppCompatActivity {
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EjerciciosActivity.class);
+                Intent intent = new Intent(view.getContext(), MenuActivity.class);
                 startActivity(intent);
                 finish();
 

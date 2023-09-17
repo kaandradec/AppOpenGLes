@@ -10,18 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
 
-public class EjerciciosActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_ejercicios);
+        setContentView(R.layout.layout_menu);
 
         Button btnColorPantalla = findViewById(R.id.btnOpenGL10);
         btnColorPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), ColorPantallaActivity.class);
+                Intent intent = new Intent(view.getContext(), OpenGL10Activity.class);
                 startActivity(intent);
                 finish();
             }
@@ -32,29 +32,18 @@ public class EjerciciosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), Activity_Figuras.class);
+                Intent intent = new Intent(view.getContext(), OpenGL20Activity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-
-        Button btnRegresar = findViewById(R.id.btnRegresar);
-        btnRegresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("CAMBIO\n");
-                Intent intent = new Intent(view.getContext(), PrincipalActivity.class );
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(EjerciciosActivity.this, EjerciciosActivity.class );
+        Intent intent = new Intent(MenuActivity.this, PortadaActivity.class );
         startActivity(intent);
         finish();
 
