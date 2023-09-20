@@ -29,28 +29,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <RadioButton
-            android:id="@+id/rbHexagonoColorFijo"
+            android:id="@+id/rbColorFijo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pintar Pantalla"
             android:textSize="16dp" />
 
         <RadioButton
-            android:id="@+id/rbHexagonoColorStride"
+            android:id="@+id/rbPuntos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Puntos"
             android:textSize="16dp" />
 
         <RadioButton
-            android:id="@+id/rbHexagonoProyeccion"
+            android:id="@+id/rbCasa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lineas"
             android:textSize="16dp" />
 
         <RadioButton
-            android:id="@+id/rbHexagonoTextura"
+            android:id="@+id/rbCirculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Carro"

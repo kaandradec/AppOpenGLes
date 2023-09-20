@@ -3,4 +3,33 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorBoton">#3F51B5</color>
+
+    <!-- Colores primarios -->
+    <color name="colorPrimary">#8a79a0</color> <!-- Verde/Azul turquesa -->
+    <color name="colorPrimaryDark">#10120d</color> <!-- Verde/Azul turquesa oscuro -->
+    <color name="colorAccent">#736189</color> <!-- Rosa/Acento -->
+
+
+    <!-- Colores de texto -->
+    <color name="colorTextPrimary">#e6eae1</color> <!-- Blanco para texto principal -->
+    <color name="colorTextPrimaryBlack">#121212</color> <!-- Blanco para texto principal -->
+    <color name="colorTextPrimaryPurpleBlack">#361d78</color> <!-- Blanco para texto principal -->
+    <color name="colorTextSecondary">#B3B3B3</color> <!-- Gris claro para texto secundario -->
+    <color name="colorTextAccent">#FF4081</color> <!-- Rosa (puede ser un color de resaltado de texto) -->
+
+    <!-- Colores de fondo -->
+    <color name="colorBackground">#121212</color> <!-- Negro azabache para fondo -->
+    <color name="colorBackgroundDark">#000000</color> <!-- Negro sólido para fondo oscuro -->
+    <color name="colorBackgroundAccent">#FF4081</color> <!-- Rosa (puede ser un fondo de resaltado) -->
+
+    <!-- Colores de estado -->
+    <color name="colorSuccess">#4CAF50</color> <!-- Verde para indicar éxito -->
+    <color name="colorError">#FF5722</color> <!-- Rojo para indicar error -->
+    <color name="colorWarning">#FFC107</color> <!-- Amarillo para indicar advertencia -->
+
+    <!-- Otros colores personalizados -->
+    <color name="colorCustom1">#6200EA</color> <!-- Púrpura -->
+    <color name="colorCustom2">#00BFA5</color> <!-- Verde azulado -->
+    <color name="colorCustom3">#FFAB40</color> <!-- Naranja claro -->
+
 </resources>

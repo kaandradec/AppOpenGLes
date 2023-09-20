@@ -13,19 +13,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
-import ec.edu.uce.pa.renders.RenderFiguras;
+import ec.edu.uce.pa.renderers.RenderGrupalCamarasAntiguo;
 
 public class Trabajo_Figuras extends AppCompatActivity {
     private GLSurfaceView view;
     private GLSurfaceView.Renderer renderer;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_trabajo_pagina);
         view = new GLSurfaceView(this);
         view.setEGLContextClientVersion(1);
-
-
 
 
         //Boton para girar mundo (gl.glRotate)
@@ -35,15 +34,15 @@ public class Trabajo_Figuras extends AppCompatActivity {
             public void onClick(View v) {
 
                 renderer = null;
-                renderer = new RenderFiguras();
+                renderer = new RenderGrupalCamarasAntiguo();
                 view.setRenderer(renderer);
                 setContentView(view);
 
 
-                RenderFiguras.giraMundo = true;//util para saber con que 'modo debe girar'
+                RenderGrupalCamarasAntiguo.giraMundo = true;//util para saber con que 'modo debe girar'
 
-                Toast toast = Toast.makeText(Trabajo_Figuras.this , "MOVIENDO EL MUNDO", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                Toast toast = Toast.makeText(Trabajo_Figuras.this, "MOVIENDO EL MUNDO", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
 
             }
@@ -55,26 +54,23 @@ public class Trabajo_Figuras extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 renderer = null;
-                renderer = new RenderFiguras();
+                renderer = new RenderGrupalCamarasAntiguo();
                 view.setRenderer(renderer);
                 setContentView(view);
 
-                RenderFiguras.giraMundo = false;//util para saber con que 'modo debe girar'
+                RenderGrupalCamarasAntiguo.giraMundo = false;//util para saber con que 'modo debe girar'
 
-                Toast toast = Toast.makeText(Trabajo_Figuras.this , "MOVIENDO LA CAMARA", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                Toast toast = Toast.makeText(Trabajo_Figuras.this, "MOVIENDO LA CAMARA", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
-
             }
         });
-
-
     }
 
     //Boton Back de Android
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Trabajo_Figuras.this, Trabajo_Figuras.class );
+        Intent intent = new Intent(Trabajo_Figuras.this, Trabajo_Figuras.class);
         startActivity(intent);
         finish();
 
@@ -83,37 +79,35 @@ public class Trabajo_Figuras extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-
-
             Toast.makeText(this, "DERECHA ", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = 1;
-            RenderFiguras.rx = 0f;
-            RenderFiguras.ry = 1f;
-            RenderFiguras.rz = 0f;
+            RenderGrupalCamarasAntiguo.anguloSigno = 1;
+            RenderGrupalCamarasAntiguo.rx = 0f;
+            RenderGrupalCamarasAntiguo.ry = 1f;
+            RenderGrupalCamarasAntiguo.rz = 0f;
             return true; // consume el evento
         }
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
             Toast.makeText(this, "IZQUIERDA ", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = -1;
-            RenderFiguras.rx = 0f;
-            RenderFiguras.ry = 1f;
-            RenderFiguras.rz = 0f;
+            RenderGrupalCamarasAntiguo.anguloSigno = -1;
+            RenderGrupalCamarasAntiguo.rx = 0f;
+            RenderGrupalCamarasAntiguo.ry = 1f;
+            RenderGrupalCamarasAntiguo.rz = 0f;
             return true; // consume el evento
         }
         if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             Toast.makeText(this, "ABAJO ", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = 1;
-            RenderFiguras.rx = 1f;
-            RenderFiguras.ry = 0f;
-            RenderFiguras.rz = 0f;
+            RenderGrupalCamarasAntiguo.anguloSigno = 1;
+            RenderGrupalCamarasAntiguo.rx = 1f;
+            RenderGrupalCamarasAntiguo.ry = 0f;
+            RenderGrupalCamarasAntiguo.rz = 0f;
             return true; // consume el evento
         }
         if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
             Toast.makeText(this, "ARRIBA ", Toast.LENGTH_SHORT).show();
-            RenderFiguras.anguloSigno = -1;
-            RenderFiguras.rx = 1f;
-            RenderFiguras.ry = 0f;
-            RenderFiguras.rz = 0f;
+            RenderGrupalCamarasAntiguo.anguloSigno = -1;
+            RenderGrupalCamarasAntiguo.rx = 1f;
+            RenderGrupalCamarasAntiguo.ry = 0f;
+            RenderGrupalCamarasAntiguo.rz = 0f;
             return true; // consume el evento
         }
 

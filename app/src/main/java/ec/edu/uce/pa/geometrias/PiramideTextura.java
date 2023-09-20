@@ -60,9 +60,9 @@ public class PiramideTextura {
                 0.0f, 1.0f,
                 1.0f, 1.0f
         };
-        float[] texturas1 = {//ninio
-                0.15f, 0.0f,
-                0.5f, 1f,
+        float[] texturas1 = {//Iluminati
+                0.5f, 0.0f,
+                1f, 1f,
                 0f, 1f,
         };
         float[] texturas2 = {//luna
@@ -71,17 +71,17 @@ public class PiramideTextura {
                 0.5f, 1.0f
         };
 
-        float[] texturas3 = {//facebook
-                0.7f, 0.0f,
+        float[] texturas3 = {//Gato PIZZA
                 0.5f, 1.0f,
-                0.9f, 1f,
+                0.0f, 0.0f,
+                1.0f, 0.0f,
         };
 
-        float[] texturas4 = {//Mario
+        float[] texturas4 = {//Companion Cube
                 1.0f, 0.0f,
-                1.0f, 0.5f,
+                1.0f, 1.0f,
                 0f, 0f,
-                0f, 0.5f,
+                0f, 1,0f,
 
         };
 

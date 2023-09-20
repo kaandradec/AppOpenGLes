@@ -3,82 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
 
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/kanit"
         android:lineSpacingExtra="-35dp"
         android:text="EJERCICIOS OPENGLES 1.0"
         android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
         android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btnSalir"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/btn"
-        android:text="Salir"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cajaDibujar"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/cajaDibujar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:layout_marginBottom="140dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="70dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Scroll"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
-
-        <EditText
-            android:id="@+id/inputNumPrimitivas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:ems="10"
-            android:hint="Cantidad a dibujar"
-            android:inputType="number"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/btnDibujar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn"
-            android:text="Dibujar"
-            android:textSize="18dp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="294dp"
-        android:layout_height="363dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="79dp"
-        app:layout_constraintBottom_toTopOf="@+id/cajaDibujar"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20px"
+        android:paddingRight="20px"
+        android:paddingBottom="20px"
+        app:layout_constraintBottom_toTopOf="@+id/inputNumPrimitivas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <LinearLayout
             android:id="@+id/rg"
@@ -92,161 +67,256 @@
                 android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/rbHexagonoColorFijo"
+                    android:id="@+id/rbColorFijo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Pantalla Colores"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
-                    android:id="@+id/rbHexagonoColorStride"
+                    android:id="@+id/rbPuntos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Puntos Varios"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
-                    android:id="@+id/rbHexagonoProyeccion"
+                    android:id="@+id/rbCasa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Casa"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
-                    android:id="@+id/rbHexagonoTextura"
+                    android:id="@+id/rbCirculo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Circulo"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbCarro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Carro"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbPushPop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Push Pop"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbCubo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Cubo"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbCuboRubik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Cubo Rubik"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbDeptTest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Func Dept Test"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbCuboMovTeclado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Cubo Mov Teclado"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbEsfera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Esfera"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbPlanosIluminacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Planos Iluminacion"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbFiguras3d"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Figuras 3D"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbSpotLightAnimada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Spot Light Animada"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbUniversoEscalaMateriales"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Universo Escala Materiales"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbUniversoEscalaTexturas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Universo Escala Texturas"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbBlending"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Blending"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbPiramideTextura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Piramide Textura"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbMipMap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="MipMap"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbNeblina"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Neblina"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
                 <RadioButton
                     android:id="@+id/rbLinternaPlano"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Linterna Plano"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
             </RadioGroup>
 
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/inputNumPrimitivas"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="313dp"
-        android:layout_marginBottom="5dp"
-        android:text="Scroll"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Cantidad a dibujar"
+        android:inputType="number"
+        android:textColor="@color/colorTextPrimary"
+        android:textColorHint="@color/colorTextSecondary"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/cajaDibujar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/cajaDibujar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="40px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/btn"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Salir"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextPrimaryPurpleBlack"
+            android:textSize="18dp" />
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/btnDibujar"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Dibujar"
+            android:textColor="@color/colorTextPrimaryPurpleBlack"
+            android:textSize="18dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

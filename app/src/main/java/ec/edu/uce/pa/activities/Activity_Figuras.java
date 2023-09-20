@@ -17,12 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderCarro;
-import ec.edu.uce.pa.renderers.RenderCubo;
+import ec.edu.uce.pa.renderers.RenderCuboLookAtCamera;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
-import ec.edu.uce.pa.renderers.RenderFigurasAntiguo;
-import ec.edu.uce.pa.renderers.RenderPractica;
-import ec.edu.uce.pa.renderers.RenderPrueba;
+import ec.edu.uce.pa.renderers.RenderGrupalCamarasAntiguo;
+import ec.edu.uce.pa.renderers.RenderCuboRubik;
+import ec.edu.uce.pa.renderers.RenderFiguras;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
 
 public class Activity_Figuras extends AppCompatActivity {
@@ -61,23 +61,23 @@ public class Activity_Figuras extends AppCompatActivity {
 
                 if(optionSel>0){
 
-                    if(optionSel ==  R.id.rbHexagonoColorFijo){
+                    if(optionSel ==  R.id.rbColorFijo){
                         renderer = new RenderEsfera();
                     }
-                    if(optionSel ==  R.id.rbHexagonoColorStride){
-                        renderer = new RenderPractica();
+                    if(optionSel ==  R.id.rbPuntos){
+                        renderer = new RenderCuboRubik();
                     }
-                    if(optionSel ==  R.id.rbHexagonoProyeccion){
-                        renderer = new RenderPrueba();
+                    if(optionSel ==  R.id.rbCasa){
+                        renderer = new RenderFiguras();
                     }
-                    if(optionSel ==  R.id.rbHexagonoTextura){
+                    if(optionSel ==  R.id.rbCirculo){
                         renderer = new RenderCarro();
                     }
                     if(optionSel ==  R.id.rbCarro){
                         renderer = new RenderTriangulo();
                     }
                     if(optionSel ==  R.id.rbCubo){
-                        renderer = new RenderCubo();
+                        renderer = new RenderCuboLookAtCamera();
                     }
                     if(optionSel ==  R.id.rbSpotLightAnimada){
                         renderer = new RenderDepthTest();
@@ -120,7 +120,7 @@ public class Activity_Figuras extends AppCompatActivity {
             }
         });
 
-        RadioButton rbPantalla = findViewById(R.id.rbHexagonoColorFijo);
+        RadioButton rbPantalla = findViewById(R.id.rbColorFijo);
         rbPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +130,7 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
 
-        RadioButton rbPunto = findViewById(R.id.rbHexagonoColorStride);
+        RadioButton rbPunto = findViewById(R.id.rbPuntos);
         rbPunto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +140,7 @@ public class Activity_Figuras extends AppCompatActivity {
             }
         });
 
-        RadioButton rbLinea = findViewById(R.id.rbHexagonoProyeccion);
+        RadioButton rbLinea = findViewById(R.id.rbCasa);
         rbLinea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +151,7 @@ public class Activity_Figuras extends AppCompatActivity {
         });
 
 
-        RadioButton rbCarro = findViewById(R.id.rbHexagonoTextura);
+        RadioButton rbCarro = findViewById(R.id.rbCirculo);
         rbCarro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,53 +199,53 @@ public class Activity_Figuras extends AppCompatActivity {
         //Tecla derecha:
         if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
             //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
-            RenderPrueba.anguloSigno = 1;
-            RenderPrueba.rx = 0f;
-            RenderPrueba.ry = 1f;
-            RenderPrueba.rz = 0f;
+            RenderFiguras.anguloSigno = 1;
+            RenderFiguras.rx = 0f;
+            RenderFiguras.ry = 1f;
+            RenderFiguras.rz = 0f;
 
-            RenderFigurasAntiguo.ejex =1;
-            RenderFigurasAntiguo.ejey =0;
-            RenderFigurasAntiguo.ejez =1;
+            RenderGrupalCamarasAntiguo.ejex =1;
+            RenderGrupalCamarasAntiguo.ejey =0;
+            RenderGrupalCamarasAntiguo.ejez =1;
             return true;
         }
         //Tecla izquierda:
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
             //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
-            RenderPrueba.anguloSigno = -1;
-            RenderPrueba.rx = 0f;
-            RenderPrueba.ry = 1f;
-            RenderPrueba.rz = 0f;
+            RenderFiguras.anguloSigno = -1;
+            RenderFiguras.rx = 0f;
+            RenderFiguras.ry = 1f;
+            RenderFiguras.rz = 0f;
 
-            RenderFigurasAntiguo.ejex =1;
-            RenderFigurasAntiguo.ejey =0;
-            RenderFigurasAntiguo.ejez =1;
+            RenderGrupalCamarasAntiguo.ejex =1;
+            RenderGrupalCamarasAntiguo.ejey =0;
+            RenderGrupalCamarasAntiguo.ejez =1;
             return true;
         }
         //Tecla abajo:
         if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
-            RenderPrueba.anguloSigno = 1;
-            RenderPrueba.rx = 1f;
-            RenderPrueba.ry = 0f;
-            RenderPrueba.rz = 0f;
+            RenderFiguras.anguloSigno = 1;
+            RenderFiguras.rx = 1f;
+            RenderFiguras.ry = 0f;
+            RenderFiguras.rz = 0f;
 
-            RenderFigurasAntiguo.ejex =0;
-            RenderFigurasAntiguo.ejey =1;
-            RenderFigurasAntiguo.ejez =1;
+            RenderGrupalCamarasAntiguo.ejex =0;
+            RenderGrupalCamarasAntiguo.ejey =1;
+            RenderGrupalCamarasAntiguo.ejez =1;
             return true;
         }
         //Tecla arriba:
         if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
             //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
-            RenderPrueba.anguloSigno = -1;
-            RenderPrueba.rx = 1f;
-            RenderPrueba.ry = 0f;
-            RenderPrueba.rz = 0f;
+            RenderFiguras.anguloSigno = -1;
+            RenderFiguras.rx = 1f;
+            RenderFiguras.ry = 0f;
+            RenderFiguras.rz = 0f;
 
-            RenderFigurasAntiguo.ejex =0;
-            RenderFigurasAntiguo.ejey =1;
-            RenderFigurasAntiguo.ejez =1;
+            RenderGrupalCamarasAntiguo.ejex =0;
+            RenderGrupalCamarasAntiguo.ejey =1;
+            RenderGrupalCamarasAntiguo.ejez =1;
             return true;
         }
 
@@ -273,18 +273,18 @@ public class Activity_Figuras extends AppCompatActivity {
                         if (deltaX > 0) {
                             // Deslizamiento hacia la derecha detectado
                             //Toast.makeText(this, "[Girando derecha]", Toast.LENGTH_SHORT).show();
-                            RenderPrueba.anguloSigno = 1;
-                            RenderPrueba.rx = 0f;
-                            RenderPrueba.ry = 1f;
-                            RenderPrueba.rz = 0f;
+                            RenderFiguras.anguloSigno = 1;
+                            RenderFiguras.rx = 0f;
+                            RenderFiguras.ry = 1f;
+                            RenderFiguras.rz = 0f;
 
                         } else {
                             // Deslizamiento hacia la izquierda detectado
                             //Toast.makeText(this, "[Girando izquierda]", Toast.LENGTH_SHORT).show();
-                            RenderPrueba.anguloSigno = -1;
-                            RenderPrueba.rx = 0f;
-                            RenderPrueba.ry = 1f;
-                            RenderPrueba.rz = 0f;
+                            RenderFiguras.anguloSigno = -1;
+                            RenderFiguras.rx = 0f;
+                            RenderFiguras.ry = 1f;
+                            RenderFiguras.rz = 0f;
 
                         }
                     }
@@ -293,18 +293,18 @@ public class Activity_Figuras extends AppCompatActivity {
                         if (deltaY > 0) {
                             // Deslizamiento hacia abajo detectado
                             //Toast.makeText(this, "[Girando abajo]", Toast.LENGTH_SHORT).show();
-                            RenderPrueba.anguloSigno = 1;
-                            RenderPrueba.rx = 1f;
-                            RenderPrueba.ry = 0f;
-                            RenderPrueba.rz = 0f;
+                            RenderFiguras.anguloSigno = 1;
+                            RenderFiguras.rx = 1f;
+                            RenderFiguras.ry = 0f;
+                            RenderFiguras.rz = 0f;
 
                         } else {
                             // Deslizamiento hacia arriba detectado
                             //Toast.makeText(this, "[Girando arriba]", Toast.LENGTH_SHORT).show();
-                            RenderPrueba.anguloSigno = -1;
-                            RenderPrueba.rx = 1f;
-                            RenderPrueba.ry = 0f;
-                            RenderPrueba.rz = 0f;
+                            RenderFiguras.anguloSigno = -1;
+                            RenderFiguras.rx = 1f;
+                            RenderFiguras.ry = 0f;
+                            RenderFiguras.rz = 0f;
 
                         }
                     }

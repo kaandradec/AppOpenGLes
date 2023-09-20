@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.RenderAstroTextura;
+import ec.edu.uce.pa.renderers.RenderCuboRubik;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -35,33 +35,32 @@ public class ColorPantallaActivity extends AppCompatActivity {
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         //view.setRenderer(new RenderAstroLuces(getApplicationContext()));
         //view.setRenderer(new RenderLuzLampara(getApplicationContext()));
-        view.setRenderer(new RenderAstroTextura(getApplicationContext()));
+//        view.setRenderer(new RenderAstroTextura(getApplicationContext()));
+
+
+        view.setRenderer(new RenderCuboRubik());
         setContentView(view);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
 
-        switch (e.getAction()){
+        switch (e.getAction()) {
             case MotionEvent.ACTION_UP:
-                red = (float)Math.random();
-                green = (float)Math.random();
-                blue = (float)Math.random();
-                alpha = (float)Math.random();
+                red = (float) Math.random();
+                green = (float) Math.random();
+                blue = (float) Math.random();
+                alpha = (float) Math.random();
         }
         return super.onTouchEvent(e);
     }
-
     //Boton back de vista ColorPantalla
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ColorPantallaActivity.this, EjerciciosActivity.class );
+        Intent intent = new Intent(ColorPantallaActivity.this, EjerciciosActivity.class);
         startActivity(intent);
         finish();
 
     }
-
-
-
 
 }

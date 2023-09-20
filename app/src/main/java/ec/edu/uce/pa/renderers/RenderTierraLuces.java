@@ -14,7 +14,7 @@ import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.geometrias.AstroTextura;
 import ec.edu.uce.pa.utilidades.Funciones;
 
-public class RenderAstroLuces implements GLSurfaceView.Renderer {
+public class RenderTierraLuces implements GLSurfaceView.Renderer {
     private float vIncremento = 0f;
     private AstroTextura astro;
     private Context context;
@@ -55,7 +55,7 @@ public class RenderAstroLuces implements GLSurfaceView.Renderer {
     float[] luzAzulMed = {0.0f,0.0f,0.5f, 1.0f};
 
 
-    public RenderAstroLuces(Context context){
+    public RenderTierraLuces(Context context){
         this.context = context;
         astro = new AstroTextura(30,30,1,1);
 

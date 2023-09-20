@@ -15,7 +15,7 @@ public class RenderCuboNeblina implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
-        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
+        gl.glClearColor(0.07059f, 0.07059f, 0.07059f, 1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
         prisma = new CuboNeblina();
 

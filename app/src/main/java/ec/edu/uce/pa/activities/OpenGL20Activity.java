@@ -3,8 +3,6 @@ package ec.edu.uce.pa.activities;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,27 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
 import ec.edu.uce.pa.R;
-import ec.edu.uce.pa.renderers.RenderAstroLuces;
-import ec.edu.uce.pa.renderers.RenderCarro;
-import ec.edu.uce.pa.renderers.RenderCirculo;
-import ec.edu.uce.pa.renderers.RenderColores;
-import ec.edu.uce.pa.renderers.RenderCuadradoBlend;
-import ec.edu.uce.pa.renderers.RenderCuadradoMipMap;
-import ec.edu.uce.pa.renderers.RenderCubo;
-import ec.edu.uce.pa.renderers.RenderCuboNeblina;
-import ec.edu.uce.pa.renderers.RenderDepthTest;
-import ec.edu.uce.pa.renderers.RenderEsfera;
-import ec.edu.uce.pa.renderers.RenderFigurasAntiguo;
-import ec.edu.uce.pa.renderers.RenderLuzLampara;
-import ec.edu.uce.pa.renderers.RenderPiramideTextura;
-import ec.edu.uce.pa.renderers.RenderPlanoMaterial;
-import ec.edu.uce.pa.renderers.RenderPrueba;
-import ec.edu.uce.pa.renderers.RenderPunto;
-import ec.edu.uce.pa.renderers.RenderPushPop;
-import ec.edu.uce.pa.renderers.RenderSpotLight;
-import ec.edu.uce.pa.renderers.RenderTriangulo;
 import ec.edu.uce.pa.renderers20.RenderHexagonoColor;
 import ec.edu.uce.pa.renderers20.RenderHexagonoProyFP;
 import ec.edu.uce.pa.renderers20.RenderHexagonoStride;
@@ -77,16 +55,16 @@ public class OpenGL20Activity extends AppCompatActivity {
 
                 if (optionSel > 0) {
 
-                    if (optionSel == R.id.rbHexagonoColorFijo) {
+                    if (optionSel == R.id.rbColorFijo) {
                         renderer = new RenderHexagonoColor(getApplicationContext());
                     }
-                    if (optionSel == R.id.rbHexagonoColorStride) {
+                    if (optionSel == R.id.rbPuntos) {
                         renderer = new RenderHexagonoStride(getApplicationContext());
                     }
-                    if (optionSel == R.id.rbHexagonoProyeccion) {
+                    if (optionSel == R.id.rbCasa) {
                         renderer = new RenderHexagonoProyFP(getApplicationContext());
                     }
-                    if (optionSel == R.id.rbHexagonoTextura) {
+                    if (optionSel == R.id.rbCirculo) {
                         renderer = new RenderHexagonoTextura(getApplicationContext());
                     }
 
@@ -119,7 +97,7 @@ public class OpenGL20Activity extends AppCompatActivity {
             }
         });
 
-        RadioButton rbPantalla = findViewById(R.id.rbHexagonoColorFijo);
+        RadioButton rbPantalla = findViewById(R.id.rbColorFijo);
         rbPantalla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

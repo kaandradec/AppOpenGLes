@@ -24,7 +24,7 @@ public class RenderCuadradoMipMap implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
-        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
+        gl.glClearColor(0.07059f, 0.07059f, 0.07059f, 1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
 
         gl.glEnable(gl.GL_TEXTURE_2D);
@@ -65,17 +65,16 @@ public class RenderCuadradoMipMap implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        vIncremento += 0.5f;
+        vIncremento += 5f;
 
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
-        if(deltaZ<-80.0f|| deltaZ>-2)
+        if(deltaZ<-20.0f|| deltaZ>-2)
             vIntervalo*=-1;
         deltaZ +=vIntervalo;
 
         gl.glTranslatef(0.0f, 0.0f, deltaZ);
-        //gl.glRotatef(vIncremento,0,1,0);
         cuadrado.dibujar(gl);
 
     }

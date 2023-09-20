@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.RenderPrueba;
+import ec.edu.uce.pa.renderers.RenderFiguras;
 
 public class PruebaPractica extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class PruebaPractica extends AppCompatActivity {
 
         view = new GLSurfaceView(this);//Permite manejo de los renderes a utilizar
         view.setEGLContextClientVersion(1);
-        view.setRenderer(new RenderPrueba());//DEFINIR RENDER DE PRUEBA
+        view.setRenderer(new RenderFiguras());//DEFINIR RENDER DE PRUEBA
 
         //Para ahorrar recursos cuando solo la geometria cambia
         //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);

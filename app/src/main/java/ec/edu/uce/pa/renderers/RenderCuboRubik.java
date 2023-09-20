@@ -5,65 +5,44 @@ import android.opengl.GLSurfaceView;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometrias.Circulo;
-import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.Cubo;
-import ec.edu.uce.pa.geometrias.Plano;
 
-public class RenderPractica implements GLSurfaceView.Renderer {
+public class RenderCuboRubik implements GLSurfaceView.Renderer {
     private float vIncremento;
     private float vIncremento2;
     public static float anguloSigno = 1, rx = 0 ,ry = 1,rz = 0;
     private Cubo cubo;
-    private Circulo circulo;
-    private Plano plano;
-    private Cono conoPlano;
-
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
-        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
+        gl.glClearColor(0.07059f, 0.07059f, 0.07059f, 1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
         cubo = new Cubo();
-        circulo = new Circulo( 3f,  30, new double[]{0,0,0,1});
-        conoPlano = new Cono(3f,  0,30, new double[]{0.1, 0.1 ,0.1, 1});
-        plano = new Plano(new float[] {.88f, 0.88f, 0.88f, 1.0f});
-
-
-
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
-        float aspectRatio = ((float) alto / (float) ancho);
-
-
+        float aspectRatio = (float) ancho / alto;
+        float bottom = -1.0f / aspectRatio;
+        float top = 1.0f / aspectRatio;
         gl.glViewport(0, 0, ancho, alto);//origen "x=0" y "y=0" por defecto alto y ancho de la pantalla, es practicamente la ventana de copordenas donde se va a dibujar
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
-        //gl.glFrustumf(-aspectRatio, aspectRatio, -3, 3, 2f, 15);
-        gl.glFrustumf(-aspectRatio, aspectRatio, -aspectRatio*2, aspectRatio*2, 2f, 15*2);
-
+        gl.glFrustumf(-1, 1, bottom, top, 1, 10);
         //FRONTAL
 //        GLU.gluLookAt(gl,
 //                0 , 0, 5,
 //                0,0 ,0,
 //                0,1,0
 //        );
-
-
-
     }
 
-    //Frontal ROJO
+    //UP ROJO
     //Top VERDE
-    //Izquierda AZUL
-    //Atras MORADO
-    //Derecha BLANCO
-    //Abajo AMARILLO
-
-
-
+    //LEFT AZUL
+    //BACK MORADO
+    //RIGHT BLANCO
+    //BOTTON AMARILLO
     @Override
     public void onDrawFrame(GL10 gl) {
         vIncremento += 0.5f;
@@ -82,35 +61,6 @@ public class RenderPractica implements GLSurfaceView.Renderer {
 
         gl.glRotatef(vIncremento2, rx, ry, rz);
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        //PLANO.................................
-        gl.glPushMatrix();
-        gl.glTranslatef(0,-6.01f,0f);
-        gl.glRotatef(90, 1,0,0);
-        gl.glScalef(6,6,1);
-        plano.dibujar(gl);
-        gl.glPopMatrix();
-        //......................................
-
-        //CIRCULO.........................
-        gl.glPushMatrix();
-        gl.glTranslatef(0,-6,0f);
-        gl.glRotatef(90, 1,0,0);
-        circulo.dibujar(gl);
-        gl.glPopMatrix();
-        //......................................
-
-        //CONO PLANO.........................
-        gl.glPushMatrix();
-        gl.glTranslatef(0,-6,0f);
-        gl.glScalef(0.9f,0.9f,0.9f);
-        conoPlano.dibujar(gl);
-        gl.glPopMatrix();
-        //......................................
-
-
-
-
 
         //========================================================================CUBO RUBIK
 

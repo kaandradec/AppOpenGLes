@@ -28,7 +28,7 @@ public class RenderHexagonoProyFP implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
-        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
+        gl.glClearColor(0.07059f, 0.07059f, 0.07059f, 1.0f);
         hexagono = new HexagonoProyO(contexto, matrizProyeccion);
     }
 

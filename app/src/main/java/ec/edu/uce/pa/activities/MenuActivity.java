@@ -38,7 +38,20 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button btnSalir = findViewById(R.id.btnSalir);
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), PortadaActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
     }
+
+
 
     //Boton Back de Android
     @Override

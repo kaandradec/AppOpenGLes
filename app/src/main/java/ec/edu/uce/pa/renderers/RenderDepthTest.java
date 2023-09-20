@@ -15,7 +15,7 @@ public class RenderDepthTest implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
-        gl.glClearColor(0.234f,0.247f,0.255f,1.0f);
+        gl.glClearColor(0.07059f,0.07059f,0.07059f,1.0f);
         gl.glEnable(GL10.GL_DEPTH_TEST);
         //gl.glDisable(GL10.GL_DEPTH_TEST);
         cubo = new Cubo();
@@ -24,11 +24,13 @@ public class RenderDepthTest implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int ancho, int alto) {
-        float aspectRatio = ((float) alto / (float) ancho);
+        float aspectRatio = (float) ancho / alto;
+        float bottom = -1.0f / aspectRatio;
+        float top = 1.0f / aspectRatio;
         gl.glViewport(0, 0, ancho, alto);//origen "x=0" y "y=0" por defecto alto y ancho de la pantalla, es practicamente la ventana de copordenas donde se va a dibujar
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
-        gl.glFrustumf(-aspectRatio, aspectRatio, -3, 3, 2f, 15);// es la mas usada
+        gl.glFrustumf(-1.0f, 1.0f, bottom, top, 1.5f, 30f);
 
     }
     @Override
@@ -39,25 +41,9 @@ public class RenderDepthTest implements GLSurfaceView.Renderer {
         gl.glMatrixMode(gl.GL_MODELVIEW);
         gl.glLoadIdentity();
 
+        //transladar toda la escena atrás
+        gl.glTranslatef(0,0,-6f);
 
-//        int puntosRueda = 100;
-//        float RADIUS = 6.0f;
-//
-//        float x = 0;
-//        float y= 0;
-//
-//        theta += 0.05;
-
-//        x = RADIUS * (float) Math.cos(theta);
-//        y = RADIUS * (float) Math.sin(theta);
-//
-//        GLU.gluLookAt(gl,
-//                y , 0, x,
-//                0,0 ,0,
-//                0,1,0
-//        );
-
-        gl.glTranslatef(0,0,-5f);
         gl.glRotatef(vIncremento, 1, 0 ,0);
         gl.glPushMatrix();
         gl.glRotatef(vIncremento, 0, 1 ,0);
