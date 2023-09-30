@@ -6,15 +6,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.activities.OpenGL10Activity;
-import ec.edu.uce.pa.geometrias.Cilindro;
 import ec.edu.uce.pa.geometrias.Circulo;
-import ec.edu.uce.pa.geometrias.Cono;
-import ec.edu.uce.pa.geometrias.Cubo;
-import ec.edu.uce.pa.geometrias.Elipse;
-import ec.edu.uce.pa.geometrias.Plano;
-import ec.edu.uce.pa.geometrias.Prisma;
-import ec.edu.uce.pa.geometrias.Tablero;
-import ec.edu.uce.pa.utilidades.MisColores;
 
 public class RenderCirculo implements GLSurfaceView.Renderer {
     private float vIncremento;

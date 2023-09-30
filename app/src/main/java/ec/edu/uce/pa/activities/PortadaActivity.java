@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import ec.edu.uce.pa.R;
 
 public class PortadaActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -41,10 +39,11 @@ public class PortadaActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "Bienvenido nuevamente", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Bienvenido nuevamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override

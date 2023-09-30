@@ -10,7 +10,6 @@ import ec.edu.uce.pa.geometrias.Circulo;
 import ec.edu.uce.pa.geometrias.Cono;
 import ec.edu.uce.pa.geometrias.Cubo;
 import ec.edu.uce.pa.geometrias.Elipse;
-import ec.edu.uce.pa.geometrias.Plano;
 import ec.edu.uce.pa.geometrias.Prisma;
 import ec.edu.uce.pa.geometrias.Tablero;
 import ec.edu.uce.pa.utilidades.MisColores;
@@ -79,7 +78,7 @@ public class RenderFiguras implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();
 
         //MOVIMIENTO PARA TODA LA ESCENA con TECLADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        gl.glTranslatef(0,-1f,-8f);//AFECTA A TODOS LOS OBJETOS
+        gl.glTranslatef(0,-1f,-7f);//AFECTA A TODOS LOS OBJETOS
         gl.glRotatef(vIncremento2, rx, ry, rz);
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -16,20 +16,12 @@
         android:testOnly="false"
         android:theme="@style/Theme.AppIntro"
         tools:targetApi="24">
-        <!--        <activity-->
-        <!--            android:name=".MainActivity"-->
-        <!--            android:exported="true">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
 
-        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
         <activity
-            android:name=".activities.ColorPantallaActivity"
+            android:name=".activities.TestActivity"
             android:exported="true">
             <intent-filter>
-                <!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,7 +29,7 @@
             android:name=".activities.PortadaActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,6 +39,14 @@
             <intent-filter>
                 <!--                <action android:name="android.intent.action.MAIN" />-->
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ColorPantallaActivity"
+            android:exported="true">
+            <intent-filter>
+                <!--                <action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -110,14 +110,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.PruebaPractica"
-            android:exported="true">
-            <intent-filter>
-                <!--                                <action android:name="android.intent.action.MAIN" />-->
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
     </application>
 
 </manifest>

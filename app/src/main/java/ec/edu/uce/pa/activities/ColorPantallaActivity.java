@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.renderers.RenderCuboRubik;
+import ec.edu.uce.pa.renderers.RenderColores;
 
 public class ColorPantallaActivity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -24,21 +24,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
 
         view = new GLSurfaceView(this);//Permite manejo de los renderes a utilizar
         view.setEGLContextClientVersion(1);
-//        view.setRenderer(new RenderColores());
-
-//        view.setRenderer(new RenderPiramideTextura(getApplicationContext()));
-        //view.setRenderer(new RenderSistemaSolar(getApplicationContext()));
-        //view.setRenderer(new RenderCuadradoTextura(getApplicationContext()));
-        //view.setRenderer(new RenderBlender(getApplicationContext()));
-
-        //Para ahorrar recursos cuando solo la geometria cambia
-        //view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
-        //view.setRenderer(new RenderAstroLuces(getApplicationContext()));
-        //view.setRenderer(new RenderLuzLampara(getApplicationContext()));
-//        view.setRenderer(new RenderAstroTextura(getApplicationContext()));
-
-
-        view.setRenderer(new RenderCuboRubik());
+        view.setRenderer(new RenderColores());
         setContentView(view);
     }
 
@@ -54,6 +40,7 @@ public class ColorPantallaActivity extends AppCompatActivity {
         }
         return super.onTouchEvent(e);
     }
+
     //Boton back de vista ColorPantalla
     @Override
     public void onBackPressed() {

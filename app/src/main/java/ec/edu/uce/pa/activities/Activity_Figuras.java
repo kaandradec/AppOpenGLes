@@ -18,11 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderCuboLookAtCamera;
+import ec.edu.uce.pa.renderers.RenderCuboRubik;
 import ec.edu.uce.pa.renderers.RenderDepthTest;
 import ec.edu.uce.pa.renderers.RenderEsfera;
-import ec.edu.uce.pa.renderers.RenderGrupalCamarasAntiguo;
-import ec.edu.uce.pa.renderers.RenderCuboRubik;
 import ec.edu.uce.pa.renderers.RenderFiguras;
+import ec.edu.uce.pa.renderers.RenderGrupalCamarasAntiguo;
 import ec.edu.uce.pa.renderers.RenderTriangulo;
 
 public class Activity_Figuras extends AppCompatActivity {

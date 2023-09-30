@@ -28,7 +28,7 @@ public class RenderCuboRubik implements GLSurfaceView.Renderer {
         gl.glViewport(0, 0, ancho, alto);//origen "x=0" y "y=0" por defecto alto y ancho de la pantalla, es practicamente la ventana de copordenas donde se va a dibujar
         gl.glMatrixMode(gl.GL_PROJECTION);
         gl.glLoadIdentity();//
-        gl.glFrustumf(-1, 1, bottom, top, 1, 10);
+        gl.glFrustumf(-1, 1, bottom, top, 1, 15);
         //FRONTAL
 //        GLU.gluLookAt(gl,
 //                0 , 0, 5,

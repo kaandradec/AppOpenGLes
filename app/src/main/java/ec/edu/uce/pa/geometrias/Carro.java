@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.activities.OpenGL10Activity;
-
 public class Carro {
 
     private FloatBuffer bufferVertices;
