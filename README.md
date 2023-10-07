@@ -114,6 +114,17 @@ Pasos para crear un renderizador en OpenGL ES:
   </tr>
 </table>
 
+### Load .obj models
+
+Para cargar archivos .obj, es necesario que al exportarlos desde el software de modelado 3D, se especifique que se exportarán como triangulados.
+
+Los archivos .obj deber ser guardados en la carpeta "assets" del proyecto.
+
+Para cargar la geometría, proporciona el nombre del archivo .obj como parámetro en el constructor de la clase ObjModel, como se muestra a continuación:
+  
+```java
+ObjModel monkey = new ObjModel("monaBlender.obj", MisColores.random(967), this.context);
+```
 
 
 ## Screenshots
@@ -153,7 +164,25 @@ Pasos para crear un renderizador en OpenGL ES:
 </td>
 </table>
 
+**.obj Loader**
 
+<table style="width:100%">
+<td width="50%">
+<img src="https://github.com/kevoaac/assets/blob/main/img/AppOpenGLes/monkeyBlender540.jpg">
+<img src="https://github.com/kevoaac/assets/blob/main/img/AppOpenGLes/monkey540.jpg">
+</td>
+<td>
+<img src="https://github.com/kevoaac/assets/blob/main/img/AppOpenGLes/blenderObjets540x840.jpg">
+</td>
+</table>
+
+**OpenGL 2.0**
+
+<table style="width:100%">
+<td>
+<img src="https://github.com/kevoaac/assets/blob/main/img/AppOpenGLes/SistemaSolar1200x740.jpg">
+</td>
+</table>
 
 ## Licencia
 Este código está disponible bajo la [Licencia MIT](https://opensource.org/licenses/MIT), lo que significa que es completamente libre y puedes utilizarlo, modificarlo, distribuirlo y utilizarlo sin restricciones.
