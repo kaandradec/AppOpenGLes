@@ -12,7 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.utilidades.Funciones;
 
-public class RenderSistemaSolarMaterial implements GLSurfaceView.Renderer {
+public class RenderAstrosMaterial implements GLSurfaceView.Renderer {
     private float vIncremento = 0f;
     private final static int LUZ0 = GL_LIGHT0;
     private final static int LUZ1 = GL_LIGHT1;

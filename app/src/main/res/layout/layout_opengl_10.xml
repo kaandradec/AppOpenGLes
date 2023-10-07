@@ -183,6 +183,15 @@
                     android:textSize="16dp" />
 
                 <RadioButton
+                    android:id="@+id/rbObjModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Obj Loader"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16dp" />
+
+                <RadioButton
                     android:id="@+id/rbSpotLightAnimada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -80,9 +80,6 @@ public class Punto {
         gl.glVertexPointer(comPorVertices,gl.GL_FLOAT,0,bufferVertices);
         gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
 
-        System.out.println(numPuntos);
-
-
 
         bufferColores.position(0);
         gl.glColorPointer(comPorColor,gl.GL_FLOAT,0,bufferColores);

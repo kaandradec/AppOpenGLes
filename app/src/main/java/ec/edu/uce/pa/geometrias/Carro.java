@@ -100,7 +100,6 @@ public class Carro {
         //PARA RUEDA 1
         for (int i = 0; i < puntosRueda; i++) {
             float theta = (float) ((2.0f * Math.PI * i )/ puntosRueda);
-            System.out.println("Angulo Theta "  + theta);
             x = RADIUS * (float) Math.cos(theta);
             y = RADIUS * (float) Math.sin(theta);
 
@@ -112,7 +111,6 @@ public class Carro {
 
         for (int i = 0; i < puntosRueda; i++) {
             float theta = (float) ((2.0f * Math.PI * i )/ puntosRueda);
-            System.out.println("Angulo Theta "  + theta);
             x = RADIUS * (float) Math.cos(theta);
             y = RADIUS * (float) Math.sin(theta);
 

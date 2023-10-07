@@ -14,7 +14,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.geometrias.Cilindro;
 import ec.edu.uce.pa.geometrias.Cono;
-import ec.edu.uce.pa.geometriasIluminacion.PlanoIluminacion;
+import ec.edu.uce.pa.geometrias.PlanoIluminacion;
 import ec.edu.uce.pa.utilidades.Funciones;
 
 public class RenderLuzLampara implements GLSurfaceView.Renderer {

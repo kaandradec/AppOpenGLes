@@ -4,85 +4,64 @@ import android.content.Context;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ObjFileReader{
+public class ObjFileReader {
     private float[] vertices;
-    private float[] vTexturas;
-    private float[] vNormarles;
     private short[] indices;
 
-    Context context;
-
-    public ObjFileReader(String  archivoObj, Context context) {
-
-        ArrayList<Float> verticesList = new ArrayList<>();
-        ArrayList<Float> vTexturasList = new ArrayList<>();
-        ArrayList<Float> vNormalesList = new ArrayList<>();
-        ArrayList<Short> indicesList = new ArrayList<>();
+    public ObjFileReader(String archivoObj, Context context) {
         try {
-
             InputStream ruta = context.getAssets().open(archivoObj);
             Scanner scanner = new Scanner(ruta);
 
+            int numVertices = 0;
+            int numIndices = 0;
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                // Ignorar las líneas que comienzan con "#" (comentarios)
-                if (line.startsWith("#")||line.startsWith("m")||line.startsWith("o")||line.startsWith("u")||line.startsWith("s")) {
+                if (line.startsWith("#") || line.matches("^[mous].*")) {
                     continue;
                 }
 
-                // Dividir la línea en palabras
                 String[] words = line.trim().split("\\s+");
-
-                // Procesar las líneas que contienen vértices
                 if (words[0].equals("v")) {
-                    verticesList.add(Float.parseFloat(words[1]));
-                    verticesList.add(Float.parseFloat(words[2]));
-                    verticesList.add(Float.parseFloat(words[3]));
+                    numVertices++;
+                } else if (words[0].equals("f")) {
+                    numIndices += words.length - 1;
                 }
-                // Procesar las líneas que contienen coordenadas de textura
-                else if (words[0].equals("vt")) {
-                    vTexturasList.add(Float.parseFloat(words[1]));
-                    vTexturasList.add(Float.parseFloat(words[2]));
+            }
+
+            vertices = new float[numVertices * 3];
+            indices = new short[numIndices];
+
+            int vertexIndex = 0;
+            int indexIndex = 0;
+
+            scanner = new Scanner(context.getAssets().open(archivoObj));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.startsWith("#") || line.matches("^[mous].*")) {
+                    continue;
                 }
-                // Procesar las líneas que contienen normales
-                else if (words[0].equals("vn")) {
-                    vNormalesList.add(Float.parseFloat(words[1]));
-                    vNormalesList.add(Float.parseFloat(words[2]));
-                    vNormalesList.add(Float.parseFloat(words[3]));
-                }
-                // Procesar las líneas que contienen índices
-                else if (words[0].equals("f")) {
-                    // Iterar sobre las palabras que representan los índices
+
+                String[] words = line.trim().split("\\s+");
+                if (words[0].equals("v")) {
+                    for (int i = 1; i < 4; i++) {
+                        vertices[vertexIndex++] = Float.parseFloat(words[i]);
+                    }
+                } else if (words[0].equals("f")) {
                     for (int i = 1; i < words.length; i++) {
                         String[] vertexData = words[i].split("/");
-
-                        //int vertexIndex = Integer.parseInt(vertexData[0]);
-                        //int textureCoordIndex = Integer.parseInt(vertexData[1]);
-                        //int normalIndex = Integer.parseInt(vertexData[2]);
-                        short indx = (short) (Short.parseShort(vertexData[0])-1);
-                        indicesList.add(indx);
+                        indices[indexIndex++] = (short) (Short.parseShort(vertexData[0]) - 1);
                     }
                 }
-            }
-
-            vertices = new float[verticesList.size()];
-            for (int i=0;i<vertices.length;i++) {
-                vertices[i] =  verticesList.get(i);
-            }
-
-            indices = new short[indicesList.size()];
-            for (int i=0;i<indices.length;i++) {
-                indices[i] =  indicesList.get(i);
             }
 
             scanner.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public float[] getVertices() {
@@ -93,4 +72,3 @@ public class ObjFileReader{
         return indices;
     }
 }
-

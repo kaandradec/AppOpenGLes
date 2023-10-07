@@ -101,6 +101,15 @@
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp" />
 
+                <RadioButton
+                    android:id="@+id/rbSistemaSolar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Sistema Solar"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16dp" />
+
             </RadioGroup>
 
         </LinearLayout>

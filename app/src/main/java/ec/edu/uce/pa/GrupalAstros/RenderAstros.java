@@ -12,7 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
 import ec.edu.uce.pa.R;
 import ec.edu.uce.pa.utilidades.Funciones;
 
-public class RenderSistemaSolar implements GLSurfaceView.Renderer {
+public class RenderAstros implements GLSurfaceView.Renderer {
     private float vIncremento = 0f;
     private Context context;
 
@@ -24,7 +24,7 @@ public class RenderSistemaSolar implements GLSurfaceView.Renderer {
 
     float[] posicionLuz0= {0.0f, -10.0f,-4f,1.0f};
 
-    public RenderSistemaSolar(Context context){
+    public RenderAstros(Context context){
         this.context = context;
     }
     @Override

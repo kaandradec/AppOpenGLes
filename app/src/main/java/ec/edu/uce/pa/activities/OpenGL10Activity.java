@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolar;
-import ec.edu.uce.pa.GrupalAstros.RenderSistemaSolarMaterial;
+import java.util.HashMap;
+
+import ec.edu.uce.pa.GrupalAstros.RenderAstrosMaterial;
 import ec.edu.uce.pa.R;
+import ec.edu.uce.pa.grupalAstros20.RenderSistemaSolar;
 import ec.edu.uce.pa.renderers.RenderCarro;
 import ec.edu.uce.pa.renderers.RenderCirculo;
 import ec.edu.uce.pa.renderers.RenderColores;
@@ -31,13 +34,13 @@ import ec.edu.uce.pa.renderers.RenderEsfera;
 import ec.edu.uce.pa.renderers.RenderFiguras;
 import ec.edu.uce.pa.renderers.RenderGrupalCamarasAntiguo;
 import ec.edu.uce.pa.renderers.RenderLuzLampara;
+import ec.edu.uce.pa.renderers.RenderObjModel;
 import ec.edu.uce.pa.renderers.RenderPiramideTextura;
 import ec.edu.uce.pa.renderers.RenderPlanoMaterial;
 import ec.edu.uce.pa.renderers.RenderPunto;
 import ec.edu.uce.pa.renderers.RenderPushPop;
 import ec.edu.uce.pa.renderers.RenderSpotLight;
 import ec.edu.uce.pa.renderers.RenderTierraLuces;
-import ec.edu.uce.pa.renderers.RenderTriangulo;
 
 public class OpenGL10Activity extends AppCompatActivity {
     private GLSurfaceView view;
@@ -64,6 +67,8 @@ public class OpenGL10Activity extends AppCompatActivity {
         EditText inputNumPrimitivas = (EditText) findViewById(R.id.inputNumPrimitivas);
 
         Button btnDibujar = findViewById(R.id.btnDibujar);
+
+
         btnDibujar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//SE CAMBIO View view por View a
@@ -73,80 +78,42 @@ public class OpenGL10Activity extends AppCompatActivity {
                 RadioGroup rgOpciones = findViewById(R.id.rgOpciones);
                 optionSel = rgOpciones.getCheckedRadioButtonId();
 
-                if (optionSel > 0) {
 
-                    if (optionSel == R.id.rbColorFijo) {
-                        renderer = new RenderColores();
-                    }
-                    if (optionSel == R.id.rbPuntos) {
-                        renderer = new RenderPunto();//REVISAR
-                    }
-                    if (optionSel == R.id.rbCasa) {
-                        renderer = new RenderTriangulo();//REVISAR
-                    }
-                    if (optionSel == R.id.rbCirculo) {
-                        renderer = new RenderCirculo();//REVISAR
-                    }
-                    if (optionSel == R.id.rbCarro) {
-                        renderer = new RenderCarro();
-                    }
-                    if (optionSel == R.id.rbPushPop) {
-                        renderer = new RenderPushPop();
-                    }
-                    if (optionSel == R.id.rbCubo) {
-                        renderer = new RenderCuboLookAtCamera();
-                    }
-                    if (optionSel == R.id.rbCuboRubik) {
-                        renderer = new RenderCuboRubik();
-                    }
-                    if (optionSel == R.id.rbDeptTest) {
-                        renderer = new RenderDepthTest();
-                    }
+                if (optionSel > 0) {
                     if (optionSel == R.id.rbCuboMovTeclado) {
                         Intent intent = new Intent(view.getContext(), TrabajoFiguras.class);
                         startActivity(intent);
                         finish();
                         return;
                     }
-                    if (optionSel == R.id.rbEsfera) {
-                        renderer = new RenderEsfera();
-                    }
-                    if (optionSel == R.id.rbPlanosIluminacion) {
-                        renderer = new RenderPlanoMaterial();//REVISAR
-                    }
-                    if (optionSel == R.id.rbFiguras3d) {//12
-                        renderer = new RenderFiguras();//FALTA
-                    }
-                    if (optionSel == R.id.rbSpotLightAnimada) {//13
-                        renderer = new RenderTierraLuces(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbSpotLightAnimada) {//13
-                        renderer = new RenderSpotLight();
-                    }
-                    if (optionSel == R.id.rbUniversoEscalaMateriales) {//14
-                        renderer = new RenderSistemaSolarMaterial();//REVISAR
-                    }
-                    if (optionSel == R.id.rbUniversoEscalaTexturas) {//15
-                        renderer = new RenderSistemaSolar(getApplicationContext());//REVISAR
-                    }
-                    if (optionSel == R.id.rbBlending) {//16
-                        renderer = new RenderCuadradoBlend(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbPiramideTextura) {//17
-                        renderer = new RenderPiramideTextura(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbMipMap) {//18
-                        renderer = new RenderCuadradoMipMap(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbNeblina) {//19
-                        renderer = new RenderCuboNeblina();//REVISAR
-                    }
-                    if (optionSel == R.id.rbLinternaPlano) {//20
-                        renderer = new RenderLuzLampara(getApplicationContext());
-                    }
+
+                    HashMap<Integer, GLSurfaceView.Renderer> map = new HashMap<>();
+
+                    map.put(R.id.rbColorFijo, new RenderColores());
+                    map.put(R.id.rbPuntos, new RenderPunto());
+                    map.put(R.id.rbCasa, new RenderCarro());
+                    map.put(R.id.rbCirculo, new RenderCirculo());
+                    map.put(R.id.rbCarro, new RenderCarro());
+                    map.put(R.id.rbPushPop, new RenderPushPop());
+                    map.put(R.id.rbCubo, new RenderCuboLookAtCamera());
+                    map.put(R.id.rbCuboRubik, new RenderCuboRubik());
+                    map.put(R.id.rbDeptTest, new RenderDepthTest());
+                    map.put(R.id.rbEsfera, new RenderEsfera());
+                    map.put(R.id.rbPlanosIluminacion, new RenderPlanoMaterial());
+                    map.put(R.id.rbFiguras3d, new RenderFiguras());
+                    map.put(R.id.rbObjModel, new RenderObjModel(getApplicationContext()));
+                    map.put(R.id.rbSpotLightAnimada, new RenderTierraLuces(getApplicationContext()));
+                    map.put(R.id.rbSpotLightAnimada, new RenderSpotLight());
+                    map.put(R.id.rbUniversoEscalaMateriales, new RenderAstrosMaterial());
+                    map.put(R.id.rbUniversoEscalaTexturas, new RenderSistemaSolar(getApplicationContext()));
+                    map.put(R.id.rbBlending, new RenderCuadradoBlend(getApplicationContext()));
+                    map.put(R.id.rbPiramideTextura, new RenderPiramideTextura(getApplicationContext()));
+                    map.put(R.id.rbMipMap, new RenderCuadradoMipMap(getApplicationContext()));
+                    map.put(R.id.rbNeblina, new RenderCuboNeblina());
+                    map.put(R.id.rbLinternaPlano, new RenderLuzLampara(getApplicationContext()));
 
 
-                    view.setRenderer(renderer);
+                    view.setRenderer(map.get(optionSel));
                     setContentView(view);
 
                 } else {
@@ -164,212 +131,28 @@ public class OpenGL10Activity extends AppCompatActivity {
             }
         });
 
+
         Button btnSalir = findViewById(R.id.btnSalir);
-        btnSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MenuActivity.class);
-                startActivity(intent);
-                finish();
+        btnSalir.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), MenuActivity.class);
+            startActivity(intent);
+            finish();
 
-            }
         });
-
-        RadioButton rbPantalla = findViewById(R.id.rbColorFijo);
-        rbPantalla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
 
         RadioButton rbPunto = findViewById(R.id.rbPuntos);
-        rbPunto.setOnClickListener(new View.OnClickListener() {
+        rbPunto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-
-                inputNumPrimitivas.setHint("Puntos a dibujar| Max:12");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    inputNumPrimitivas.setHint("Puntos a dibujar| Max:12");
+                    findViewById(R.id.inputNumPrimitivas).setVisibility(View.VISIBLE);
+                } else {
+                    findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
+                }
             }
         });
 
-        RadioButton rbCasa = findViewById(R.id.rbCasa);
-        rbCasa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //inputNumPrimitivas.setHint("Cantidad a dibujar");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-
-        RadioButton rbCirculo = findViewById(R.id.rbCirculo);
-        rbCirculo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //inputNumPrimitivas.setHint("Segmentos para el circulo");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbCarro = findViewById(R.id.rbCarro);
-        rbCarro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbPushPop = findViewById(R.id.rbPushPop);
-        rbPushPop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-
-        RadioButton rbCubo = findViewById(R.id.rbCubo);
-        rbCubo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbCuboRubik = findViewById(R.id.rbCuboRubik);
-        rbCuboRubik.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbDeptTest = findViewById(R.id.rbDeptTest);
-        rbDeptTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbCuboMovTeclado = findViewById(R.id.rbCuboMovTeclado);
-        rbCuboMovTeclado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbEsfera = findViewById(R.id.rbEsfera);
-        rbEsfera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbPlanosIluminacion = findViewById(R.id.rbPlanosIluminacion);
-        rbPlanosIluminacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbFiguras3d = findViewById(R.id.rbFiguras3d);
-        rbFiguras3d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbSpotLightAnimada = findViewById(R.id.rbSpotLightAnimada);
-        rbSpotLightAnimada.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbUniversoEscalaMateriales = findViewById(R.id.rbUniversoEscalaMateriales);
-        rbUniversoEscalaMateriales.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbUniversoEscalaTexturas = findViewById(R.id.rbUniversoEscalaTexturas);
-        rbUniversoEscalaTexturas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbBlending = findViewById(R.id.rbBlending);
-        rbBlending.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbPiramideTextura = findViewById(R.id.rbPiramideTextura);
-        rbPiramideTextura.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbMipMap = findViewById(R.id.rbMipMap);
-        rbMipMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbNeblina = findViewById(R.id.rbNeblina);
-        rbNeblina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
-
-        RadioButton rbLinternaPlano = findViewById(R.id.rbLinternaPlano);
-        rbLinternaPlano.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //inputNumPrimitivas.setHint("Puntos para cada rueda");
-                findViewById(R.id.inputNumPrimitivas).setVisibility(View.INVISIBLE);
-            }
-        });
 
     }
 

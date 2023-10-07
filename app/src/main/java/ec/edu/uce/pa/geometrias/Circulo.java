@@ -42,7 +42,6 @@ public class Circulo {
         for (int i=0;i<verticesAL.size();i++) {
             vertices[i] =  verticesAL.get(i);
 
-            System.out.println("X: "+ vertices[i]);
         }
 
 //---------------------------------------------------------------------------------------
@@ -84,7 +83,6 @@ public class Circulo {
         for (int i=0;i<verticesAL.size();i++) {
             vertices[i] =  verticesAL.get(i);
 
-            System.out.println("X: "+ vertices[i]);
         }
         bufferVertices = Funciones.generarBuffer(vertices);
         bufferColores = Funciones.generarBuffer(coloresPorCara);

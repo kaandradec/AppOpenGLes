@@ -71,7 +71,7 @@ public class HexagonoTextura {
         String sourceVS = null;
         String sourceFS = null;
 
-        sourceVS = Funciones20.leerArchivo(R.raw.textura_vertex_shader, contexto);
+        sourceVS = Funciones20.leerArchivo(R.raw.hexagono_textura_vertex_shader, contexto);
         vertexShader = Funciones20.crearShader(gl.GL_VERTEX_SHADER, sourceVS, gl);
 
 

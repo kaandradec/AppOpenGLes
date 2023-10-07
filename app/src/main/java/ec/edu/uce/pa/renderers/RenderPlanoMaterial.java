@@ -10,7 +10,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import ec.edu.uce.pa.geometrias.Cono;
-import ec.edu.uce.pa.geometriasIluminacion.PlanoMaterial;
+import ec.edu.uce.pa.geometrias.PlanoMaterial;
 import ec.edu.uce.pa.utilidades.Funciones;
 
 public class RenderPlanoMaterial implements GLSurfaceView.Renderer {

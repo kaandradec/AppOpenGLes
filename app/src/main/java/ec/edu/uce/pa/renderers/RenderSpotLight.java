@@ -12,7 +12,7 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import ec.edu.uce.pa.geometriasIluminacion.PlanoIluminacion;
+import ec.edu.uce.pa.geometrias.PlanoIluminacion;
 import ec.edu.uce.pa.utilidades.Funciones;
 
 public

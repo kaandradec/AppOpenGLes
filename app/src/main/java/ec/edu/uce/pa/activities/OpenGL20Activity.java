@@ -13,7 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 import ec.edu.uce.pa.R;
+import ec.edu.uce.pa.grupalAstros20.RenderSistemaSolar;
 import ec.edu.uce.pa.renderers20.RenderHexagonoColor;
 import ec.edu.uce.pa.renderers20.RenderHexagonoProyFP;
 import ec.edu.uce.pa.renderers20.RenderHexagonoStride;
@@ -55,26 +58,20 @@ public class OpenGL20Activity extends AppCompatActivity {
 
                 if (optionSel > 0) {
 
-                    if (optionSel == R.id.rbColorFijo) {
-                        renderer = new RenderHexagonoColor(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbPuntos) {
-                        renderer = new RenderHexagonoStride(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbCasa) {
-                        renderer = new RenderHexagonoProyFP(getApplicationContext());
-                    }
-                    if (optionSel == R.id.rbCirculo) {
-                        renderer = new RenderHexagonoTextura(getApplicationContext());
-                    }
+                    HashMap<Integer, GLSurfaceView.Renderer> map = new HashMap<>();
 
-                    view.setRenderer(renderer);
+                    map.put(R.id.rbColorFijo, new RenderHexagonoColor(getApplicationContext()));
+                    map.put(R.id.rbPuntos, new RenderHexagonoStride(getApplicationContext()));
+                    map.put(R.id.rbCasa, new RenderHexagonoProyFP(getApplicationContext()));
+                    map.put(R.id.rbCirculo, new RenderHexagonoTextura(getApplicationContext()));
+                    map.put(R.id.rbSistemaSolar, new RenderSistemaSolar(getApplicationContext()));
+
+                    view.setRenderer(map.get(optionSel));
                     setContentView(view);
 
                 } else {
                     Toast.makeText(OpenGL20Activity.this, "Seleccione una figura", Toast.LENGTH_SHORT).show();
                 }
-
                 //input numero de primitivas a dibujar -> int
                 try {
                     numPrimitivas = Integer.parseInt(inputNumPrimitivas.getText().toString());
